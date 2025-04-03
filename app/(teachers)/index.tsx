@@ -1,0 +1,93 @@
+import { View, Text, useColorScheme } from 'react-native';
+import { ScrollView } from 'react-native-virtualized-view';
+import { NetworkStatus } from '@/components/NetworkStatus';
+import { ExamCard } from '@/components/ExamCard';
+import { StatsCard } from '@/components/StatsCard';
+import { QuickActions } from '@/components/QuickActions';
+
+
+export default function Index() {
+  const colorScheme = useColorScheme();
+  const isDark = colorScheme === 'dark';
+
+  const upcomingExams = [
+    {
+      id: 1,
+      title: 'Final Exam - Advanced Mathematics',
+      date: '2024-04-15T09:00:00',
+      students: 45,
+      duration: '180',
+      status: 'scheduled',
+    },
+    {
+      id: 2,
+      title: 'Midterm - Computer Science',
+      date: '2024-04-10T14:00:00',
+      students: 32,
+      duration: '120',
+      status: 'draft',
+    },
+  ];
+
+  const stats = [
+    { title: 'Active Exams', value: '3' },
+    { title: 'Students Online', value: '127' },
+    { title: 'Completed Today', value: '45' },
+    { title: 'Pending Review', value: '12' },
+  ];
+
+  return (
+    <ScrollView className="flex-1 bg-gray-50 dark:bg-gray-900">
+      <View className="px-6 py-8 bg-[#1a367b] dark:bg-[#0f1f4d]">
+        <Text className="text-3xl font-bold text-white mb-2">
+          ExamLock Dashboard
+        </Text>
+        <Text className="text-gray-200 text-lg">
+          Welcome back, Professor Smith
+        </Text>
+        <NetworkStatus />
+      </View>
+
+      <View className="p-6">
+        <View className="mb-8">
+          <Text className="text-xl font-semibold mb-4 text-gray-800 dark:text-gray-200">
+            Quick Stats
+          </Text>
+          <View className="flex-row flex-wrap gap-4">
+            {stats.map((stat, index) => (
+              <StatsCard key={index} {...stat} />
+            ))}
+          </View>
+        </View>
+
+        <View className="mb-8">
+          <Text className="text-xl font-semibold mb-4 text-gray-800 dark:text-gray-200">
+            Upcoming Exams
+          </Text>
+          <View className="gap-4">
+            {upcomingExams.map((exam) => (
+              <ExamCard key={exam.id} {...exam} />
+            ))}
+          </View>
+        </View>
+
+        <View className="mb-8">
+          <Text className="text-xl font-semibold mb-4 text-gray-800 dark:text-gray-200">
+            Quick Actions
+          </Text>
+          <View className="gap-4">
+            <QuickActions
+              actions={[
+                { title: 'Create Exam', icon: 'plus-circle' },
+                { title: 'View Reports', icon: 'chart-bar' },
+                { title: 'Manage Students', icon: 'users' },
+                { title: 'Settings', icon: 'cog' },
+              ]}
+            />
+          </View>
+        </View>
+      </View>
+    </ScrollView>
+  );
+}
+
