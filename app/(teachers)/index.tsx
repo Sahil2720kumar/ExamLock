@@ -79,9 +79,9 @@ export default function Index() {
               actions={[
                 { title: 'View Exams', icon: 'eye',route: '/exam' },
                 { title: 'Create Exam', icon: 'plus-circle',route: '/exam/create' },
-                { title: 'View Reports', icon: 'chart-bar',route: '/exam' },
-                { title: 'Manage Students', icon: 'users',route: '/exam' },
-                { title: 'Settings', icon: 'cog',route: '/exam' },
+                { title: 'View Reports', icon: 'chart-bar',route: '/reports' },
+                { title: 'Manage Students', icon: 'users',route: '/students' },
+                { title: 'Settings', icon: 'cog',route: '/settings' },
               ]}
             />
           </View>
