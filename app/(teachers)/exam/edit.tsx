@@ -187,7 +187,7 @@ export default function EditExam() {
               </Text>
               <TouchableOpacity 
                 className="bg-[#1a367b] px-4 py-2 rounded-lg flex-row items-center"
-                onPress={() => {/* Handle add question */}}
+                onPress={() => router.push('/exam/question/add')}
               >
                 <FontAwesome name="plus" size={14} color="white" />
                 <Text className="text-white ml-2">Add Question</Text>

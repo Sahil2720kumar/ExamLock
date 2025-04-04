@@ -4,6 +4,8 @@ import { FontAwesome } from '@expo/vector-icons';
 import * as ImagePicker from 'expo-image-picker';
 import InputField from '@/components/InputField';
 
+
+
 export default function QuestionEdit() {
   const [question, setQuestion] = useState({
     id: 1,
@@ -57,14 +59,20 @@ export default function QuestionEdit() {
           <Text className="text-3xl font-bold text-white">
             Edit Question
           </Text>
-          <TouchableOpacity
-            className="bg-white/20 px-4 py-2 rounded-lg"
-            onPress={() => setIsPreviewMode(!isPreviewMode)}
-          >
-            <Text className="text-white">
-              {isPreviewMode ? 'Edit Mode' : 'Preview'}
-            </Text>
-          </TouchableOpacity>
+          <View className="flex-row gap-3">
+            <TouchableOpacity
+              className="bg-white/20 px-4 py-2 rounded-lg"
+              onPress={() => setIsPreviewMode(!isPreviewMode)}
+            >
+              <Text className="text-white">
+                {isPreviewMode ? 'Edit Mode' : 'Preview'}
+              </Text>
+            </TouchableOpacity>
+            <TouchableOpacity className="bg-red-500 px-4 py-2 rounded-lg">
+              <Text className="text-white" >Delete</Text>
+            </TouchableOpacity>
+          </View>
+
         </View>
       </View>
 
