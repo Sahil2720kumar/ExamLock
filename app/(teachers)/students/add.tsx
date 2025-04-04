@@ -21,6 +21,7 @@ interface FormData {
     section: string;
     batch: string;
     username: string;
+    admistratorName: string;
   };
   accountInfo: {
     password: string;
@@ -47,6 +48,7 @@ export default function AddStudent() {
       year: '',
       section: '',
       batch: '',
+      admistratorName: '',
     },
     accountInfo: {
       password: '',
@@ -54,7 +56,7 @@ export default function AddStudent() {
     },
   });
 
-  
+
   const sections = ['A', 'B', 'C', 'D'];
 
   const pickImage = async () => {
@@ -231,17 +233,33 @@ export default function AddStudent() {
               Academic Information
             </Text>
 
-            <Text className="text-gray-700 dark:text-gray-300 mb-1">Roll Number</Text>
-            <InputField
-              label="Roll Number"
-              value={formData.academicInfo.rollNumber}
-              onChangeText={(text) => setFormData(prev => ({
-                ...prev,
-                academicInfo: { ...prev.academicInfo, rollNumber: text }
-              }))}
-              placeholder="Enter roll number"
-              required
-            />
+            <View className="flex-1">
+              <Text className="text-gray-700 dark:text-gray-300 mb-1">School or College or University Name</Text>
+              <InputField
+                label="School or College or University Name"
+                value={formData.academicInfo.admistratorName}
+                onChangeText={(text) => setFormData(prev => ({
+                  ...prev,
+                  academicInfo: { ...prev.academicInfo, admistratorName: text }
+                }))}
+                placeholder="Enter school or college or university name"
+                required
+              />
+            </View>
+
+            <View className="flex-1">
+              <Text className="text-gray-700 dark:text-gray-300 mb-1">Roll Number</Text>
+              <InputField
+                label="Roll Number"
+                value={formData.academicInfo.rollNumber}
+                onChangeText={(text) => setFormData(prev => ({
+                  ...prev,
+                  academicInfo: { ...prev.academicInfo, rollNumber: text }
+                }))}
+                placeholder="Enter roll number"
+                required
+              />
+            </View>
             <View className="flex-1">
               <Text className="text-gray-700 dark:text-gray-300 mb-1">Class</Text>
               <InputField
