@@ -5,7 +5,6 @@ import { ExamCard } from '@/components/ExamCard';
 import { StatsCard } from '@/components/StatsCard';
 import { QuickActions } from '@/components/QuickActions';
 
-
 export default function Index() {
   const colorScheme = useColorScheme();
   const isDark = colorScheme === 'dark';
@@ -78,10 +77,11 @@ export default function Index() {
           <View className="gap-4">
             <QuickActions
               actions={[
-                { title: 'Create Exam', icon: 'plus-circle' },
-                { title: 'View Reports', icon: 'chart-bar' },
-                { title: 'Manage Students', icon: 'users' },
-                { title: 'Settings', icon: 'cog' },
+                { title: 'View Exams', icon: 'eye',route: '/exam' },
+                { title: 'Create Exam', icon: 'plus-circle',route: '/exam/create' },
+                { title: 'View Reports', icon: 'chart-bar',route: '/exam' },
+                { title: 'Manage Students', icon: 'users',route: '/exam' },
+                { title: 'Settings', icon: 'cog',route: '/exam' },
               ]}
             />
           </View>

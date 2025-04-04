@@ -2,11 +2,13 @@ import React from 'react';
 import { View, Text, Pressable } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import Feather from '@expo/vector-icons/Feather';
+import { router } from 'expo-router';
 
 interface QuickAction {
   title: string;
   icon: string;
   color?: string;
+  route?: string;
   onPress?: () => void;
 }
 
@@ -33,7 +35,7 @@ export function QuickActions({ actions }: QuickActionsProps) {
           className="bg-white dark:bg-gray-800 rounded-xl p-4 shadow-sm flex-1 min-w-[140px] max-h-[150px]
             active:opacity-80 active:scale-95"
           style={{ minHeight: 150 }}
-          onPress={action.onPress}
+          onPress={() => router.push(action.route as any || '')}
         >
           <View className="flex-1 justify-between">
             <View
@@ -79,21 +81,21 @@ export const defaultQuickActions: QuickAction[] = [
   {
     title: 'Create Exam',
     icon: 'plus-circle',
-    onPress: () => console.log('Create Exam pressed'),
+    route: '/exam',
   },
   {
     title: 'View Reports',
     icon: 'chart-bar',
-    onPress: () => console.log('View Reports pressed'),
+    route: '/exam',
   },
   {
     title: 'Manage Students',
     icon: 'account-group',
-    onPress: () => console.log('Manage Students pressed'),
+    route: '/exam',
   },
   {
     title: 'Settings',
     icon: 'cog',
-    onPress: () => console.log('Settings pressed'),
+    route: '/exam',
   },
 ];

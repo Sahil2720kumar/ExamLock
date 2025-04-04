@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, Pressable } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { router } from 'expo-router';
+
 
 interface NetworkStatusProps {
   onPress?: () => void;
@@ -48,12 +50,12 @@ export function NetworkStatus({ onPress }: NetworkStatusProps) {
   return (
     <Pressable 
       className="mt-4 bg-white/10 rounded-lg p-4"
-      onPress={onPress}
+      onPress={() => router.push('/networkInfo')}
     >
       <View className="flex-row items-center justify-between">
         <View className="flex-row items-center gap-3">
           <MaterialCommunityIcons
-            name={statusInfo.icon}
+            name={statusInfo.icon as any}
             size={24}
             color={statusInfo.color}
           />

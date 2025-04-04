@@ -9,7 +9,7 @@ const ExamHeader = ({
   isSecure = true, 
   showBack = false,
   title,
-  showProfile = true,
+  showProfile = false,
   notifications = 0
 }) => {
   const router = useRouter();
@@ -48,7 +48,7 @@ const ExamHeader = ({
       {showProfile && (
         <TouchableOpacity 
           style={headerStyles.avatarContainer}
-          onPress={() => router.push('/profile')}
+          onPress={() => router.push('/sahil')}
         >
           <Text style={headerStyles.avatarText}>JS</Text>
           {notifications > 0 && (
