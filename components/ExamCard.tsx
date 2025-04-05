@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, Pressable } from 'react-native';
+import { View, Text, Pressable, TouchableOpacity } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 interface ExamCardProps {
@@ -46,7 +46,7 @@ export function ExamCard({ title, date, students, duration, status, onPress }: E
   const timeUntilExam = getTimeUntilExam(examDate);
 
   return (
-    <Pressable 
+    <TouchableOpacity 
       className="bg-white dark:bg-gray-800 rounded-xl p-4 shadow-sm"
       onPress={onPress}
     >
@@ -106,7 +106,7 @@ export function ExamCard({ title, date, students, duration, status, onPress }: E
           </Text>
         </View>
       </View>
-    </Pressable>
+    </TouchableOpacity>
   );
 }
 

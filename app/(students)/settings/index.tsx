@@ -63,7 +63,7 @@ export default function SettingsScreen() {
     <ScrollView className="flex-1 bg-gray-50 dark:bg-gray-900">
       {/* Header */}
       <LinearGradient
-        colors={['#1E40AF', '#3B82F6']}
+        colors={['#1a367b', '#1a367b']}
         className="px-6 pt-12 pb-6"
       >
         <Text className="text-2xl font-bold text-white">Settings</Text>

@@ -2,8 +2,20 @@ import { View, Text, ScrollView, TouchableOpacity, Image } from 'react-native';
 import { FontAwesome } from '@expo/vector-icons';
 import { LineChart, BarChart } from 'react-native-chart-kit';
 import { router } from 'expo-router';
+import { useEffect } from 'react';
 
 export default function AdminDashboard() {
+
+  useEffect(() => {
+    // Delay the navigation slightly to ensure Root Layout is mounted
+    const timer = setTimeout(() => {
+      router.replace('/(auth)/login');
+    }, 0);
+    
+    return () => clearTimeout(timer);
+  }, []);
+
+  
   const quickStats = [
     { title: 'Total Students', value: '1,234', icon: 'users', color: 'bg-blue-500', trend: '+5.2%' },
     { title: 'Total Teachers', value: '48', icon: 'graduation-cap', color: 'bg-green-500', trend: '+2.1%' },
@@ -34,7 +46,8 @@ export default function AdminDashboard() {
   ];
 
   // router.push('/(students)/');
-// router.push('/(teachers)');
+  // router.push('/(teachers)');
+  
 
   return (
     <ScrollView className="flex-1 bg-gray-50 dark:bg-gray-900">

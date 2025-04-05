@@ -24,15 +24,15 @@ export default function ExamDetails() {
     <ScrollView className="flex-1 bg-gray-50 dark:bg-gray-900">
       {/* Header Banner */}
       <LinearGradient
-        colors={['#1E40AF', '#3B82F6']}
+        colors={['#1a367b', '#1a367b']}
         className="px-6 pt-12 pb-8 rounded-b-3xl"
       >
         <View className="flex-row items-center mb-4">
           <TouchableOpacity
-            onPress={() => router.back()}
+            // onPress={() => router.back()}
             className="bg-white/20 p-2 rounded-full"
           >
-            <FontAwesome name="arrow-left" size={20} color="white" />
+            {/* <FontAwesome name="arrow-left" size={20} color="white" /> */}
           </TouchableOpacity>
           <Text className="text-white text-lg ml-4">Exam Details</Text>
         </View>
@@ -52,16 +52,16 @@ export default function ExamDetails() {
         </View>
 
         {/* Main Content Cards */}
-        <View className="space-y-6">
+        <View className="gap-y-6">
           {/* Time & Location Card */}
           <View className="bg-white dark:bg-gray-800 rounded-3xl p-6 shadow-lg">
             <Text className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
               Time & Location
             </Text>
-            <View className="space-y-4">
+            <View className="gap-y-4">
               <View className="flex-row items-center">
                 <View className="bg-blue-100 p-2 rounded-full">
-                  <FontAwesome name="calendar" size={20} color="#3B82F6" />
+                  <FontAwesome name="calendar" size={20} color="#1a367b" />
                 </View>
                 <View className="ml-3">
                   <Text className="text-sm text-gray-500 dark:text-gray-400">Date</Text>
@@ -78,7 +78,7 @@ export default function ExamDetails() {
 
               <View className="flex-row items-center">
                 <View className="bg-blue-100 p-2 rounded-full">
-                  <FontAwesome name="clock-o" size={20} color="#3B82F6" />
+                  <FontAwesome name="clock-o" size={20} color="#1a367b" />
                 </View>
                 <View className="ml-3">
                   <Text className="text-sm text-gray-500 dark:text-gray-400">Time</Text>
@@ -90,7 +90,7 @@ export default function ExamDetails() {
 
               <View className="flex-row items-center">
                 <View className="bg-blue-100 p-2 rounded-full">
-                  <FontAwesome name="map-marker" size={20} color="#3B82F6" />
+                  <FontAwesome name="map-marker" size={20} color="#1a367b" />
                 </View>
                 <View className="ml-3">
                   <Text className="text-sm text-gray-500 dark:text-gray-400">Location</Text>
@@ -107,7 +107,7 @@ export default function ExamDetails() {
             </Text>
             <View className="flex-row items-center">
               <View className="bg-blue-100 p-2 rounded-full">
-                <FontAwesome name="user" size={20} color="#3B82F6" />
+                <FontAwesome name="user" size={20} color="#1a367b" />
                 </View>
               <View className="ml-3">
                 <Text className="text-base font-semibold text-gray-900 dark:text-white">
