@@ -79,10 +79,11 @@ export default function EditProfile() {
     keyboardType = 'default',
   }) => (
     <View className="mb-4">
-      <Text className="text-gray-700 dark:text-gray-300 mb-1">
+      <Text style={{fontFamily: 'Poppins_400Regular'}} className="text-gray-700 dark:text-gray-300 mb-1">
         {label}
       </Text>
       <TextInput
+        style={{fontFamily: 'Poppins_400Regular'}}
         className={`
           bg-white dark:bg-gray-800 
           px-4 ${multiline ? 'py-4' : 'py-3'}
@@ -283,10 +284,10 @@ export default function EditProfile() {
     <ScrollView className="flex-1 bg-gray-50 dark:bg-gray-900">
       {/* Header */}
       <View className="px-6 py-8 bg-[#1a367b] dark:bg-[#0f1f4d]">
-        <Text className="text-3xl font-bold text-white mb-2">
+        <Text style={{fontFamily: 'Poppins_600SemiBold'}} className="text-3xl font-bold text-white mb-2">
           Edit Profile
         </Text>
-        <Text className="text-gray-200 text-lg">
+        <Text style={{fontFamily: 'Poppins_400Regular'}} className="text-gray-200 text-lg">
           Update your profile information
         </Text>
       </View>
@@ -303,7 +304,7 @@ export default function EditProfile() {
               `}
               onPress={() => setActiveSection(section)}
             >
-              <Text className={`
+              <Text style={{fontFamily: 'Poppins_400Regular'}} className={`
                 text-center capitalize
                 ${activeSection === section ? 'text-white' : 'text-gray-600 dark:text-gray-400'}
               `}>
@@ -323,7 +324,7 @@ export default function EditProfile() {
           className="bg-[#1a367b] py-3 rounded-xl mt-6"
           onPress={() => Alert.alert('Success', 'Profile updated successfully!')}
         >
-          <Text className="text-white text-center font-semibold">
+          <Text style={{fontFamily: 'Poppins_400Regular'}}  className="text-white text-center font-semibold">
             Save Changes
           </Text>
         </TouchableOpacity>

@@ -76,7 +76,7 @@ export default function StudentsList() {
       {/* Header */}
       <View className="px-6 py-8 bg-[#1a367b] dark:bg-[#0f1f4d]">
         <View className="flex-row justify-between items-center mb-6">
-          <Text className="text-3xl font-bold text-white">
+          <Text style={{fontFamily: 'Poppins_600SemiBold'}}  className="text-3xl font-bold text-white">
             Students
           </Text>
           <TouchableOpacity 
@@ -84,7 +84,7 @@ export default function StudentsList() {
             onPress={() => {/* Navigate to add student */}}
           >
             <FontAwesome name="plus" size={16} color="white" />
-            <Text className="text-white ml-2">Add Student</Text>
+            <Text style={{fontFamily: 'Poppins_400Regular'}}    className="text-white ml-2">Add Student</Text>
           </TouchableOpacity>
         </View>
 
@@ -92,6 +92,7 @@ export default function StudentsList() {
         <View className="flex-row items-center bg-white/10 rounded-lg px-4 py-2">
           <FontAwesome name="search" size={16} color="white" />
           <TextInput
+            style={{fontFamily: 'Poppins_400Regular'}}
             className="flex-1 ml-3 text-white"
             placeholder="Search students..."
             placeholderTextColor="rgba(255, 255, 255, 0.6)"
@@ -103,16 +104,16 @@ export default function StudentsList() {
         {/* Quick Stats */}
         <View className="flex-row mt-6 gap-4">
           <View className="flex-1 bg-white/10 rounded-lg p-4">
-            <Text className="text-white/60">Total Students</Text>
-            <Text className="text-white text-2xl font-bold">1,234</Text>
+            <Text style={{fontFamily: 'Poppins_400Regular'}}    className="text-white/60">Total Students</Text>
+            <Text style={{fontFamily: 'Poppins_600SemiBold'}}    className="text-white text-2xl font-bold">1,234</Text>
           </View>
           <View className="flex-1 bg-white/10 rounded-lg p-4">
-            <Text className="text-white/60">Active</Text>
-            <Text className="text-white text-2xl font-bold">1,180</Text>
+            <Text style={{fontFamily: 'Poppins_400Regular'}}    className="text-white/60">Active</Text>
+            <Text style={{fontFamily: 'Poppins_600SemiBold'}}    className="text-white text-2xl font-bold">1,180</Text>
           </View>
           <View className="flex-1 bg-white/10 rounded-lg p-4">
-            <Text className="text-white/60">Avg. Performance</Text>
-            <Text className="text-white text-2xl font-bold">76%</Text>
+            <Text style={{fontFamily: 'Poppins_400Regular'}}    className="text-white/60">Avg. Performance</Text>
+            <Text style={{fontFamily: 'Poppins_600SemiBold'}}    className="text-white text-2xl font-bold">76%</Text>
           </View>
         </View>
       </View>
@@ -137,7 +138,7 @@ export default function StudentsList() {
                 `}
                 onPress={() => setSelectedYear(year.id)}
               >
-                <Text className={
+                <Text style={{fontFamily: 'Poppins_400Regular'}}    className={
                   selectedYear === year.id 
                     ? 'text-white' 
                     : 'text-gray-700 dark:text-gray-300'
@@ -154,7 +155,7 @@ export default function StudentsList() {
             onPress={() => {/* Handle sort options */}}
           >
             <FontAwesome name="sort" size={14} color="#6b7280" />
-            <Text className="ml-2 text-gray-600 dark:text-gray-400">Sort</Text>
+            <Text style={{fontFamily: 'Poppins_400Regular'}}    className="ml-2 text-gray-600 dark:text-gray-400">Sort</Text>
           </TouchableOpacity>
         </View>
 
@@ -174,10 +175,10 @@ export default function StudentsList() {
                 <View className="flex-1 ml-4">
                   <View className="flex-row justify-between items-start">
                     <View>
-                      <Text className="text-lg font-semibold text-gray-900 dark:text-gray-100">
+                      <Text style={{fontFamily: 'Poppins_600SemiBold'}}    className="text-lg font-semibold text-gray-900 dark:text-gray-100">
                         {student.name}
                       </Text>
-                      <Text className="text-gray-500 dark:text-gray-400">
+                      <Text style={{fontFamily: 'Poppins_400Regular'}}    className="text-gray-500 dark:text-gray-400">
                         {student.rollNumber}
                       </Text>
                     </View>
@@ -190,7 +191,7 @@ export default function StudentsList() {
 
                   <View className="flex-row items-center mt-2">
                     <FontAwesome name="graduation-cap" size={14} color="#6b7280" />
-                    <Text className="ml-2 text-gray-600 dark:text-gray-400">
+                    <Text style={{fontFamily: 'Poppins_400Regular'}}    className="ml-2 text-gray-600 dark:text-gray-400">
                       {student.department} • {student.year}
                     </Text>
                   </View>
@@ -198,13 +199,13 @@ export default function StudentsList() {
                   {/* <View className="flex-row justify-between mt-4 pt-4 border-t border-gray-100 dark:border-gray-700">
                     <View className="flex-row items-center">
                       <FontAwesome name="calendar-check-o" size={14} color="#6b7280" />
-                      <Text className="ml-2 text-gray-600 dark:text-gray-400">
+                      <Text style={{fontFamily: 'Poppins_400Regular'}}      className="ml-2 text-gray-600 dark:text-gray-400">
                         {student.attendance}% Attendance
                       </Text>
                     </View>
                     <View className="flex-row items-center">
                       <FontAwesome name="line-chart" size={14} color="#6b7280" />
-                      <Text className={`ml-2 ${getPerformanceColor(student.performance)}`}>
+                      <Text style={{fontFamily: 'Poppins_400Regular'}}   className={`ml-2 ${getPerformanceColor(student.performance)}`}>
                         {student.performance}% Performance
                       </Text>
                     </View>

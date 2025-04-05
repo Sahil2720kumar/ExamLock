@@ -98,28 +98,28 @@ export default function NotificationsScreen() {
       {/* Header */}
       <View className="px-6 py-8 bg-[#1a367b] dark:bg-[#0f1f4d]">
         <View className="flex-row justify-between items-center mb-4">
-          <Text className="text-3xl font-bold text-white">
+          <Text style={{fontFamily: 'Poppins_600SemiBold'}} className="text-3xl font-bold text-white">
             Notifications
           </Text>
           <TouchableOpacity 
             className="bg-white/20 px-4 py-2 rounded-lg"
             onPress={markAllAsRead}
           >
-            <Text className="text-white">Mark all as read</Text>
+            <Text style={{fontFamily: 'Poppins_400Regular'}} className="text-white">Mark all as read</Text>
           </TouchableOpacity>
         </View>
         
         {/* Quick Stats */}
         <View className="flex-row gap-4">
           <View className="flex-1 bg-white/10 rounded-lg p-3">
-            <Text className="text-white/60">Unread</Text>
-            <Text className="text-white text-xl font-bold">
+            <Text style={{fontFamily: 'Poppins_400Regular'}} className="text-white/60">Unread</Text>
+            <Text style={{fontFamily: 'Poppins_600SemiBold'}} className="text-white text-xl font-bold">
               {notifications.filter(n => !n.read).length}
             </Text>
           </View>
           <View className="flex-1 bg-white/10 rounded-lg p-3">
-            <Text className="text-white/60">Total</Text>
-            <Text className="text-white text-xl font-bold">
+            <Text style={{fontFamily: 'Poppins_400Regular'}} className="text-white/60">Total</Text>
+            <Text style={{fontFamily: 'Poppins_600SemiBold'}} className="text-white text-xl font-bold">
               {notifications.length}
             </Text>
           </View>
@@ -144,7 +144,7 @@ export default function NotificationsScreen() {
                   bg-${getNotificationIcon(notification.type).color}/10
                 `}>
                   <FontAwesome 
-                    name={getNotificationIcon(notification.type).name}
+                    name={getNotificationIcon(notification.type).name as any}
                     size={24}
                     color={getNotificationIcon(notification.type).color}
                   />
@@ -153,10 +153,10 @@ export default function NotificationsScreen() {
                 <View className="flex-1 ml-4">
                   <View className="flex-row justify-between items-start">
                     <View className="flex-1">
-                      <Text className="text-lg font-semibold text-gray-900 dark:text-gray-100">
+                      <Text style={{fontFamily: 'Poppins_600SemiBold'}} className="text-lg font-semibold text-gray-900 dark:text-gray-100">
                         {notification.title}
                       </Text>
-                      <Text className="text-gray-600 dark:text-gray-400 mt-1">
+                      <Text style={{fontFamily: 'Poppins_400Regular'}} className="text-gray-600 dark:text-gray-400 mt-1">
                         {notification.message}
                       </Text>
                     </View>
@@ -176,13 +176,13 @@ export default function NotificationsScreen() {
                             source={{ uri: notification.sender.avatar }}
                             className="w-6 h-6 rounded-full"
                           />
-                          <Text className="ml-2 text-gray-500 dark:text-gray-500">
+                          <Text style={{fontFamily: 'Poppins_400Regular'}} className="ml-2 text-gray-500 dark:text-gray-500">
                             {notification.sender.name}
                           </Text>
                         </>
                       )}
                     </View>
-                    <Text className="text-gray-500 dark:text-gray-500">
+                    <Text style={{fontFamily: 'Poppins_400Regular'}} className="text-gray-500 dark:text-gray-500">
                       {notification.time}
                     </Text>
                   </View>
@@ -190,11 +190,11 @@ export default function NotificationsScreen() {
                   {notification.actionable && (
                     <View className="flex-row gap-2 mt-4">
                       <TouchableOpacity className="bg-[#1a367b] px-4 py-2 rounded-lg">
-                        <Text className="text-white">View Details</Text>
+                        <Text style={{fontFamily: 'Poppins_400Regular'}} className="text-white">View Details</Text>
                       </TouchableOpacity>
                       {notification.type === 'exam' && (
                         <TouchableOpacity className="bg-gray-100 dark:bg-gray-700 px-4 py-2 rounded-lg">
-                          <Text className="text-gray-700 dark:text-gray-300">Set Reminder</Text>
+                          <Text style={{fontFamily: 'Poppins_400Regular'}} className="text-gray-700 dark:text-gray-300">Set Reminder</Text>
                         </TouchableOpacity>
                       )}
                     </View>

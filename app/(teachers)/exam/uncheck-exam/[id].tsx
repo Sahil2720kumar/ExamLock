@@ -66,7 +66,7 @@ export default function UncheckExamByStudent() {
               `}
               onPress={() => setCurrentQuestion(index)}
             >
-              <Text className={`
+              <Text style={{fontFamily: 'Poppins_400Regular'}} className={`
                 font-medium
                 ${currentQuestion === index ? 'text-white' : 'text-gray-700'}
               `}>
@@ -80,15 +80,15 @@ export default function UncheckExamByStudent() {
         <ScrollView className="flex-1 p-6">
           <View className="bg-white rounded-xl p-6 shadow-sm">
             <View className="flex-row justify-between items-center mb-4">
-              <Text className="text-sm text-gray-500">
+              <Text style={{fontFamily: 'Poppins_400Regular'}} className="text-sm text-gray-500">
                 Question {currentQuestion + 1} of {questions.length}
               </Text>
-              <Text className="text-sm text-gray-500">
+              <Text style={{fontFamily: 'Poppins_400Regular'}} className="text-sm text-gray-500">
                 Max Marks: {questions[currentQuestion].marks}
               </Text>
             </View>
 
-            <Text className="text-lg text-gray-900 mb-6">
+            <Text style={{fontFamily: 'Poppins_400Regular'}} className="text-lg text-gray-900 mb-6">
               {questions[currentQuestion].question}
             </Text>
             {questions[currentQuestion].type === 'mcq' && (
@@ -102,8 +102,8 @@ export default function UncheckExamByStudent() {
                     `}
                     onPress={() => setMarks(prev => ({ ...prev, [currentQuestion]: index }))}
                   >
-                    <Text className="mr-2">{String.fromCharCode(65 + index)}</Text>
-                    <Text>{option}</Text>
+                      <Text style={{fontFamily: 'Poppins_400Regular'}} className="mr-2">{String.fromCharCode(65 + index)}</Text>
+                    <Text style={{fontFamily: 'Poppins_400Regular'}}>{option}</Text>
                   </TouchableOpacity>
                 ))}
               </View>
@@ -112,15 +112,15 @@ export default function UncheckExamByStudent() {
 
             {/* Student's Answer */}
             <View className="bg-gray-50 p-4 rounded-lg mb-4">
-              <Text className="text-gray-500 mb-2">Student's Answer:</Text>
+              <Text style={{fontFamily: 'Poppins_400Regular'}} className="text-gray-500 mb-2">Student's Answer:</Text>
               {questions[currentQuestion].type === 'mcq' && (
-                <Text className="text-gray-700">
+                <Text style={{fontFamily: 'Poppins_400Regular'}} className="text-gray-700">
                   {questions[currentQuestion].options?.[questions[currentQuestion].studentAnswer]}
                 </Text>
               )}
               {questions[currentQuestion].type === 'descriptive' && (
                 <>
-                  <Text className="text-gray-700">
+                  <Text style={{fontFamily: 'Poppins_400Regular'}} className="text-gray-700">
                     {questions[currentQuestion].studentAnswer.text}
                   </Text>
                   {questions[currentQuestion].studentAnswer.images?.length > 0 && (
@@ -144,8 +144,9 @@ export default function UncheckExamByStudent() {
 
             {/* Grading Section */}
             <View className="mt-4">
-              <Text className="text-gray-700 font-medium mb-2">Marks:</Text>
+              <Text style={{fontFamily: 'Poppins_400Regular'}} className="text-gray-700 font-medium mb-2">Marks:</Text>
               <TextInput
+                style={{fontFamily: 'Poppins_400Regular'}}
                 keyboardType="numeric"
                 className="border border-gray-200 rounded-lg p-3 mb-4"
                 placeholder={`Enter marks (max: ${questions[currentQuestion].marks})`}
@@ -158,8 +159,9 @@ export default function UncheckExamByStudent() {
                 }}
               />
 
-              <Text className="text-gray-700 font-medium mb-2">Feedback:</Text>
+              <Text style={{fontFamily: 'Poppins_400Regular'}} className="text-gray-700 font-medium mb-2">Feedback:</Text>
               <TextInput
+                style={{fontFamily: 'Poppins_400Regular'}}
                 multiline
                 numberOfLines={4}
                 className="border border-gray-200 rounded-lg p-3"
@@ -181,7 +183,7 @@ export default function UncheckExamByStudent() {
                 className="bg-gray-100 px-4 py-2 rounded-lg"
                 onPress={() => setCurrentQuestion(prev => prev - 1)}
               >
-                <Text className="text-gray-700">Previous</Text>
+                <Text style={{fontFamily: 'Poppins_400Regular'}} className="text-gray-700">Previous</Text>
               </TouchableOpacity>
             )}
             
@@ -190,14 +192,14 @@ export default function UncheckExamByStudent() {
                 className="bg-[#1a367b] px-4 py-2 rounded-lg ml-auto"
                 onPress={() => setCurrentQuestion(prev => prev + 1)}
               >
-                <Text className="text-white">Next</Text>
+                <Text style={{fontFamily: 'Poppins_400Regular'}} className="text-white">Next</Text>
               </TouchableOpacity>
             ) : (
               <TouchableOpacity
                 className="bg-green-600 px-4 py-2 rounded-lg ml-auto"
                 onPress={handleMarkSubmission}
               >
-                <Text className="text-white">Submit Grading</Text>
+                <Text style={{fontFamily: 'Poppins_400Regular'}}  className="text-white">Submit Grading</Text>
               </TouchableOpacity>
             )}
           </View>

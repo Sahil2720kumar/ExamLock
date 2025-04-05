@@ -42,12 +42,12 @@ export default function AdminReports() {
       <View className={`w-12 h-12 ${color} rounded-full items-center justify-center mb-3`}>
         <FontAwesome name={icon} size={24} color="white" />
       </View>
-      <Text className="text-gray-600 dark:text-gray-400">{title}</Text>
+      <Text style={{fontFamily: 'Poppins_400Regular'}}    className="text-gray-600 dark:text-gray-400">{title}</Text>
       <View className="flex-row items-center justify-between mt-2">
-        <Text className="text-2xl font-bold text-gray-900 dark:text-gray-100">
+        <Text style={{fontFamily: 'Poppins_600SemiBold'}}    className="text-2xl font-bold text-gray-900 dark:text-gray-100">
           {value}
         </Text>
-        <Text className={`
+        <Text style={{fontFamily: 'Poppins_400Regular'}}    className={`
           ${trend.startsWith('+') ? 'text-green-500' : 'text-red-500'}
         `}>
           {trend}
@@ -60,10 +60,10 @@ export default function AdminReports() {
     <ScrollView className="flex-1 bg-gray-50 dark:bg-gray-900">
       {/* Header */}
       <View className="px-6 py-8 bg-[#1a367b] dark:bg-[#0f1f4d]">
-        <Text className="text-3xl font-bold text-white mb-2">
+        <Text style={{fontFamily: 'Poppins_600SemiBold'}}    className="text-3xl font-bold text-white mb-2">
           Reports & Analytics
         </Text>
-        <Text className="text-gray-200 text-lg">
+        <Text style={{fontFamily: 'Poppins_400Regular'}}    className="text-gray-200 text-lg">
           Comprehensive institution insights
         </Text>
       </View>
@@ -87,7 +87,7 @@ export default function AdminReports() {
                 `}
                 onPress={() => setSelectedPeriod(period.id)}
               >
-                <Text className={
+                <Text style={{fontFamily: 'Poppins_400Regular'}}    className={
                   selectedPeriod === period.id 
                     ? 'text-white' 
                     : 'text-gray-700 dark:text-gray-300'
@@ -133,7 +133,7 @@ export default function AdminReports() {
 
         {/* Performance Chart */}
         <View className="bg-white dark:bg-gray-800 rounded-xl p-4 mb-6">
-          <Text className="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-4">
+          <Text style={{fontFamily: 'Poppins_400Regular'}}    className="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-4">
             Department Performance
           </Text>
           <BarChart
@@ -159,7 +159,7 @@ export default function AdminReports() {
 
         {/* Attendance Distribution */}
         <View className="bg-white dark:bg-gray-800 rounded-xl p-4 mb-6">
-          <Text className="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-4">
+          <Text style={{fontFamily: 'Poppins_400Regular'}}    className="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-4">
             Attendance Distribution
           </Text>
           <PieChart
@@ -196,10 +196,10 @@ export default function AdminReports() {
                 <FontAwesome name={metric.icon} size={20} color="#1a367b" />
               </View>
               <View className="flex-1 ml-4">
-                <Text className="text-gray-600 dark:text-gray-400">
+                <Text style={{fontFamily: 'Poppins_400Regular'}}    className="text-gray-600 dark:text-gray-400">
                   {metric.title}
                 </Text>
-                <Text className="text-lg font-semibold text-gray-900 dark:text-gray-100">
+                <Text style={{fontFamily: 'Poppins_600SemiBold'}}    className="text-lg font-semibold text-gray-900 dark:text-gray-100">
                   {metric.value}
                 </Text>
               </View>
@@ -214,7 +214,7 @@ export default function AdminReports() {
             onPress={() => {/* Handle PDF export */}}
           >
             <FontAwesome name="file-pdf-o" size={20} color="#ef4444" />
-            <Text className="ml-2 text-gray-700 dark:text-gray-300">
+            <Text style={{fontFamily: 'Poppins_400Regular'}}    className="ml-2 text-gray-700 dark:text-gray-300">
               Export PDF
             </Text>
           </TouchableOpacity>
@@ -223,7 +223,7 @@ export default function AdminReports() {
             onPress={() => {/* Handle Excel export */}}
           >
             <FontAwesome name="file-excel-o" size={20} color="#22c55e" />
-            <Text className="ml-2 text-gray-700 dark:text-gray-300">
+            <Text style={{fontFamily: 'Poppins_400Regular'}}    className="ml-2 text-gray-700 dark:text-gray-300">
               Export Excel
             </Text>
           </TouchableOpacity>

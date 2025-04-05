@@ -218,7 +218,7 @@ export default function TakeExam() {
   const renderImageUploadSection = (questionId: number) => (
     <View className="mt-4">
       <View className="flex-row items-center justify-between mb-3">
-        <Text className="text-gray-700 dark:text-gray-300 font-medium">
+        <Text style={{fontFamily: 'Poppins_400Regular'}} className="text-gray-700 dark:text-gray-300 font-medium">
           Attach Images
         </Text>
         <TouchableOpacity
@@ -226,7 +226,7 @@ export default function TakeExam() {
           className="bg-blue-500 px-4 py-2 rounded-lg flex-row items-center"
         >
           <FontAwesome name="camera" size={16} color="white" />
-          <Text className="text-white ml-2">Upload</Text>
+          <Text style={{fontFamily: 'Poppins_400Regular'}}  className="text-white ml-2">Upload</Text>
         </TouchableOpacity>
       </View>
 
@@ -261,11 +261,11 @@ export default function TakeExam() {
       {/* Header with Timer */}
       <View className="bg-[#1a367b] dark:bg-[#0f1f4d] px-6 py-4">
         <View className="flex-row justify-between items-center">
-          <Text className="text-xl font-bold text-white">
+          <Text style={{fontFamily: 'Poppins_700Bold'}} className="text-xl font-bold text-white">
             {examDetails.title}
           </Text>
           <View className="bg-white/20 px-4 py-2 rounded-lg">
-            <Text className="text-white font-mono text-lg">
+            <Text style={{fontFamily: 'Poppins_400Regular'}} className="text-white font-mono text-lg">
               {formatTime(timeLeft)}
             </Text>
           </View>
@@ -290,7 +290,7 @@ export default function TakeExam() {
                 ${markedForReview.includes(q.id) ? 'border-2 border-yellow-500' : ''}
               `}
             >
-              <Text className={`
+              <Text style={{fontFamily: 'Poppins_600SemiBold'}} className={`
                 font-medium
                 ${currentQuestion === index ? 'text-white' : 'text-gray-700 dark:text-gray-300'}
               `}>
@@ -305,15 +305,15 @@ export default function TakeExam() {
       <ScrollView className="flex-1 p-6">
         <View className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-sm">
           <View className="flex-row justify-between items-center mb-4">
-            <Text className="text-sm text-gray-500 dark:text-gray-400">
+            <Text style={{fontFamily: 'Poppins_400Regular'}} className="text-sm text-gray-500 dark:text-gray-400">
               Question {currentQuestion + 1} of {questions.length}
             </Text>
-            <Text className="text-sm text-gray-500 dark:text-gray-400">
+            <Text style={{fontFamily: 'Poppins_400Regular'}} className="text-sm text-gray-500 dark:text-gray-400">
               Marks: {questions[currentQuestion].marks}
             </Text>
           </View>
 
-          <Text className="text-lg text-gray-900 dark:text-gray-100 mb-6">
+          <Text style={{fontFamily: 'Poppins_400Regular'}} className="text-lg text-gray-900 dark:text-gray-100 mb-6">
             {questions[currentQuestion].question}
           </Text>
 
@@ -331,7 +331,7 @@ export default function TakeExam() {
                   `}
                   onPress={() => handleAnswer(questions[currentQuestion].id, index+1)}
                 >
-                  <Text className={`
+                  <Text style={{fontFamily: 'Poppins_400Regular'}} className={`
                     ${selectedAnswers[questions[currentQuestion].id] === index+1
                       ? 'text-blue-700 dark:text-blue-300'
                       : 'text-gray-700 dark:text-gray-300'}
@@ -390,7 +390,7 @@ export default function TakeExam() {
               size={20} 
               color="#eab308"
             />
-            <Text className="ml-2 text-gray-700 dark:text-gray-300">
+            <Text style={{fontFamily: 'Poppins_400Regular'}} className="ml-2 text-gray-700 dark:text-gray-300">
               Mark for Review
             </Text>
           </TouchableOpacity>
@@ -401,7 +401,7 @@ export default function TakeExam() {
                 className="bg-gray-100 dark:bg-gray-700 px-4 py-2 rounded-lg"
                 onPress={() => setCurrentQuestion(prev => prev - 1)}
               >
-                <Text className="text-gray-700 dark:text-gray-300">Previous</Text>
+                <Text style={{fontFamily: 'Poppins_400Regular'}} className="text-gray-700 dark:text-gray-300">Previous</Text>
               </TouchableOpacity>
             )}
             
@@ -410,14 +410,14 @@ export default function TakeExam() {
                 className="bg-[#1a367b] px-4 py-2 rounded-lg"
                 onPress={() => setCurrentQuestion(prev => prev + 1)}
               >
-                <Text className="text-white">Next</Text>
+                <Text style={{fontFamily: 'Poppins_400Regular'}} className="text-white">Next</Text>
               </TouchableOpacity>
             ) : (
               <TouchableOpacity
                 className="bg-green-600 px-4 py-2 rounded-lg"
                 onPress={handleSubmit}
               >
-                <Text className="text-white">Submit</Text>
+                <Text style={{fontFamily: 'Poppins_400Regular'}} className="text-white">Submit</Text>
               </TouchableOpacity>
             )}
           </View>

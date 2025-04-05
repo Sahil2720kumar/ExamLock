@@ -24,8 +24,9 @@ export default function LoginScreen() {
 
   const handleLogin = () => {
     // Add your login logic here
-    router.push('/(students)');
+    router.push('/(administrators)');
   };
+
 
   return (
     <KeyboardAvoidingView 
@@ -40,11 +41,11 @@ export default function LoginScreen() {
         >
           <View className="items-center">
             <View className="flex-row items-center justify-center">
-              <Text className="text-3xl font-bold text-white mt-4">
+              <Text style={{fontFamily: 'Poppins_700Bold'}} className="text-3xl font-bold text-white mt-4">
                 ExamLock
               </Text>
             </View>
-            <Text className="text-blue-100 text-base mt-2">
+            <Text style={{fontFamily: 'Poppins_400Regular'}} className="text-blue-100 text-base mt-2">
               Secure Online Examination Platform
             </Text>
           </View>
@@ -53,7 +54,7 @@ export default function LoginScreen() {
         {/* Login Form */}
         <View className="px-6 pt-8">
           <View className="bg-white dark:bg-gray-800 rounded-3xl p-6 shadow-xl">
-            <Text className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+            <Text style={{fontFamily: 'Poppins_700Bold'}} className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
               Welcome Back
             </Text>
 
@@ -113,13 +114,13 @@ export default function LoginScreen() {
                       <MaterialCommunityIcons name="check" size={16} color="white" />
                     )}
                   </View>
-                  <Text className="text-gray-600 dark:text-gray-400">
+                  <Text style={{fontFamily: 'Poppins_400Regular'}} className="text-gray-600 dark:text-gray-400">
                     Remember me
                   </Text>
                 </TouchableOpacity>
 
                 <TouchableOpacity onPress={() => router.push('/forgot-password')}>
-                  <Text className="text-blue-600 dark:text-blue-400">
+                  <Text style={{fontFamily: 'Poppins_600SemiBold'}} className="text-blue-600 dark:text-blue-400">
                     Forgot Password?
                   </Text>
                 </TouchableOpacity>
@@ -130,7 +131,7 @@ export default function LoginScreen() {
                 className="bg-[#1a367b] py-4 rounded-xl mt-4"
                 onPress={handleLogin}
               >
-                <Text className="text-white text-center font-semibold text-lg">
+                <Text style={{fontFamily: 'Poppins_600SemiBold'}} className="text-white text-center font-semibold text-lg">
                   Login
                 </Text>
               </TouchableOpacity>
@@ -138,7 +139,7 @@ export default function LoginScreen() {
           </View>
 
           {/* Alternative Login Methods */}
-          <View className="mt-8 mb-6">
+          {/* <View className="mt-8 mb-6">
             <View className="flex-row items-center mb-6">
               <View className="flex-1 h-[1px] bg-gray-300 dark:bg-gray-700" />
               <Text className="mx-4 text-gray-500 dark:text-gray-400">
@@ -161,15 +162,15 @@ export default function LoginScreen() {
                 </TouchableOpacity>
               ))}
             </View>
-          </View>
+          </View> */}
 
           {/* Sign Up Link */}
-          <View className="flex-row justify-center mb-8">
-            <Text className="text-gray-600 dark:text-gray-400">
+          <View className="flex-row justify-center mt-8 mb-8">
+            <Text style={{fontFamily: 'Poppins_400Regular'}} className="text-gray-600 dark:text-gray-400">
               Don't have an account?{' '}
             </Text>
             <TouchableOpacity onPress={() => router.push('/(auth)/signup')}>
-              <Text className="text-blue-600 dark:text-blue-400 font-semibold ">
+              <Text style={{fontFamily: 'Poppins_600SemiBold'}} className="text-blue-600 dark:text-blue-400 font-semibold">
                 Sign Up
               </Text>
             </TouchableOpacity>

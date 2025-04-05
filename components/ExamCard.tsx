@@ -51,7 +51,7 @@ export function ExamCard({ title, date, students, duration, status, onPress }: E
       onPress={onPress}
     >
       <View className="flex-row justify-between items-start mb-3">
-        <Text className="text-lg font-semibold text-gray-900 dark:text-gray-100 flex-1 mr-3">
+        <Text style={{fontFamily: 'Poppins_600SemiBold'}} className="text-lg font-semibold text-gray-900 dark:text-gray-100 flex-1 mr-3">
           {title}
         </Text>
         <View className={`${statusStyle.bg} rounded-full px-3 py-1 flex-row items-center`}>
@@ -60,14 +60,14 @@ export function ExamCard({ title, date, students, duration, status, onPress }: E
             size={16}
             className={statusStyle.text}
           />
-          <Text className={`${statusStyle.text} text-sm font-medium ml-1 capitalize`}>
+          <Text style={{fontFamily: 'Poppins_400Regular'}} className={`${statusStyle.text} text-sm font-medium ml-1 capitalize`}>
             {status}
           </Text>
         </View>
       </View>
 
       <View className="border-b border-gray-100 dark:border-gray-700 pb-3">
-        <Text className="text-sm font-medium text-[#4f85e5] dark:text-[#6d9eff]">
+        <Text style={{fontFamily: 'Poppins_400Regular'}} className="text-sm font-medium text-[#4f85e5] dark:text-[#6d9eff]">
           {timeUntilExam}
         </Text>
       </View>
@@ -79,7 +79,7 @@ export function ExamCard({ title, date, students, duration, status, onPress }: E
             size={18}
             color="#64748b"
           />
-          <Text className="text-sm text-gray-600 dark:text-gray-300 ml-2">
+          <Text style={{fontFamily: 'Poppins_400Regular'}} className="text-sm text-gray-600 dark:text-gray-300 ml-2">
             {students} Students
           </Text>
         </View>
@@ -90,7 +90,7 @@ export function ExamCard({ title, date, students, duration, status, onPress }: E
             size={18}
             color="#64748b"
           />
-          <Text className="text-sm text-gray-600 dark:text-gray-300 ml-2">
+          <Text style={{fontFamily: 'Poppins_400Regular'}} className="text-sm text-gray-600 dark:text-gray-300 ml-2">
             {duration} mins
           </Text>
         </View>
@@ -101,7 +101,7 @@ export function ExamCard({ title, date, students, duration, status, onPress }: E
             size={18}
             color="#64748b"
           />
-          <Text className="text-sm text-gray-600 dark:text-gray-300 ml-2">
+          <Text style={{fontFamily: 'Poppins_400Regular'}}  className="text-sm text-gray-600 dark:text-gray-300 ml-2">
             {examDate.toLocaleDateString()}
           </Text>
         </View>

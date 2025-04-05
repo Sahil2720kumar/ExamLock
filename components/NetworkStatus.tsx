@@ -60,10 +60,10 @@ export function NetworkStatus({ onPress }: NetworkStatusProps) {
             color={statusInfo.color}
           />
           <View>
-            <Text className="text-white text-base font-medium">
+            <Text style={{fontFamily: 'Poppins_600SemiBold'}} className="text-white text-base font-medium">
               {statusInfo.text}
             </Text>
-            <Text className="text-white/90 text-sm">
+            <Text style={{fontFamily: 'Poppins_400Regular'}} className="text-white/90 text-sm">
               {networkName}
             </Text>
           </View>
@@ -74,7 +74,7 @@ export function NetworkStatus({ onPress }: NetworkStatusProps) {
           color="rgba(255,255,255,0.5)"
         />
       </View>
-      <Text className="text-gray-200 text-sm mt-2">
+      <Text style={{fontFamily: 'Poppins_400Regular'}} className="text-gray-200 text-sm mt-2">
         {statusInfo.detail}
       </Text>
     </Pressable>

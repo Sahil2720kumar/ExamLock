@@ -57,6 +57,7 @@ const InputField = ({
         )}
 
         <TextInput
+          style={{fontFamily: 'Poppins_400Regular'}}
           className={`       
             px-4 text-gray-900 dark:text-gray-100 flex-1 
             ${disabled ? 'opacity-50' : ''}

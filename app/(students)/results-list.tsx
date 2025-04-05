@@ -77,8 +77,8 @@ export default function CompletedExams() {
     <View className="flex-1 bg-gray-50">
       {/* Header */}
       <View className="bg-[#1a367b] p-6">
-        <Text className="text-white text-xl font-bold">Completed Exams</Text>
-        <Text className="text-white/80 mt-1">
+        <Text style={{fontFamily: 'Poppins_600SemiBold'}} className="text-white text-xl font-bold">Completed Exams</Text>
+        <Text style={{fontFamily: 'Poppins_400Regular'}} className="text-white/80 mt-1">
           View your exam history and performance
         </Text>
       </View>
@@ -86,14 +86,14 @@ export default function CompletedExams() {
       {/* Stats Overview */}
       <View className="flex-row justify-between mx-4 -mt-6">
         <View className="flex-1 bg-white rounded-xl shadow-sm p-4 mr-2">
-          <Text className="text-gray-500">Total Exams</Text>
-          <Text className="text-2xl font-bold text-[#1a367b]">
+          <Text style={{fontFamily: 'Poppins_400Regular'}} className="text-gray-500">Total Exams</Text>
+          <Text style={{fontFamily: 'Poppins_600SemiBold'}} className="text-2xl font-bold text-[#1a367b]">
             {completedExams.length}
           </Text>
         </View>
         <View className="flex-1 bg-white rounded-xl shadow-sm p-4 ml-2">
-          <Text className="text-gray-500">Avg. Score</Text>
-          <Text className="text-2xl font-bold text-[#1a367b]">
+          <Text style={{fontFamily: 'Poppins_400Regular'}} className="text-gray-500">Avg. Score</Text>
+            <Text style={{fontFamily: 'Poppins_600SemiBold'}} className="text-2xl font-bold text-[#1a367b]">
             {Math.round(
               completedExams.reduce((acc, exam) => 
                 acc + (exam.marksObtained / exam.totalMarks) * 100, 0
@@ -115,13 +115,13 @@ export default function CompletedExams() {
               {/* Exam Header */}
               <View className="flex-row justify-between items-start mb-3">
                 <View className="flex-1">
-                  <Text className="text-lg font-semibold text-gray-800">
+                  <Text style={{fontFamily: 'Poppins_600SemiBold'}} className="text-lg font-semibold text-gray-800">
                     {exam.title}
                   </Text>
-                  <Text className="text-gray-500">{exam.subject}</Text>
+                  <Text style={{fontFamily: 'Poppins_400Regular'}} className="text-gray-500">{exam.subject}</Text>
                 </View>
                 <View className={`px-3 py-1 rounded-full ${getStatusColor(exam.status)}`}>
-                  <Text className="text-sm font-medium">
+                  <Text style={{fontFamily: 'Poppins_400Regular'}} className="text-sm font-medium">
                     {getStatusText(exam.status)}
                   </Text>
                 </View>
@@ -131,19 +131,19 @@ export default function CompletedExams() {
               <View className="flex-row justify-between items-center mb-3">
                 <View className="flex-row items-center">
                   <FontAwesome name="calendar" size={14} color="#6b7280" />
-                  <Text className="text-gray-500 ml-2">{exam.completedOn}</Text>
+                  <Text style={{fontFamily: 'Poppins_400Regular'}} className="text-gray-500 ml-2">{exam.completedOn}</Text>
                 </View>
                 <View className="flex-row items-center">
                   <FontAwesome name="clock-o" size={14} color="#6b7280" />
-                  <Text className="text-gray-500 ml-2">{exam.duration}</Text>
+                  <Text style={{fontFamily: 'Poppins_400Regular'}} className="text-gray-500 ml-2">{exam.duration}</Text>
                 </View>
               </View>
 
               {/* Score Section */}
               <View className="bg-gray-50 rounded-lg p-3">
                 <View className="flex-row justify-between mb-2">
-                  <Text className="text-gray-600">Score</Text>
-                  <Text className="font-semibold text-[#1a367b]">
+                  <Text style={{fontFamily: 'Poppins_400Regular'}} className="text-gray-600">Score</Text>
+                  <Text style={{fontFamily: 'Poppins_600SemiBold'}} className="font-semibold text-[#1a367b]">
                     {exam.marksObtained}/{exam.totalMarks}
                   </Text>
                 </View>
@@ -152,13 +152,13 @@ export default function CompletedExams() {
                   <View className="flex-row justify-between">
                     <View className="flex-row items-center">
                       <FontAwesome name="bullseye" size={14} color="#6b7280" />
-                      <Text className="text-gray-600 ml-2">
+                      <Text style={{fontFamily: 'Poppins_400Regular'}} className="text-gray-600 ml-2">
                         Accuracy: {exam.accuracy}%
                       </Text>
                     </View>
                     <View className="flex-row items-center">
                       <FontAwesome name="trophy" size={14} color="#6b7280" />
-                      <Text className="text-gray-600 ml-2">
+                      <Text style={{fontFamily: 'Poppins_400Regular'}} className="text-gray-600 ml-2">
                         Rank: {exam.rank}/{exam.totalStudents}
                       </Text>
                     </View>
@@ -169,7 +169,7 @@ export default function CompletedExams() {
               {/* View Details Button */}
               <View className="flex-row justify-end mt-3">
                 <View className="flex-row items-center">
-                  <Text className="text-[#1a367b] mr-1">View Details</Text>
+                  <Text style={{fontFamily: 'Poppins_400Regular'}} className="text-[#1a367b] mr-1">View Details</Text>
                   <FontAwesome name="chevron-right" size={12} color="#1a367b" />
                 </View>
               </View>
@@ -182,10 +182,10 @@ export default function CompletedExams() {
       {completedExams.length === 0 && (
         <View className="flex-1 items-center justify-center p-4">
           <FontAwesome name="file-text-o" size={48} color="#9ca3af" />
-          <Text className="text-gray-500 text-lg mt-4">No completed exams yet</Text>
+          <Text style={{fontFamily: 'Poppins_400Regular'}} className="text-gray-500 text-lg mt-4">No completed exams yet</Text>
           <Link href="/exam" asChild>
             <TouchableOpacity className="mt-4 bg-[#1a367b] px-6 py-3 rounded-lg">
-              <Text className="text-white">View Available Exams</Text>
+              <Text style={{fontFamily: 'Poppins_400Regular'}} className="text-white">View Available Exams</Text>
             </TouchableOpacity>
           </Link>
         </View>

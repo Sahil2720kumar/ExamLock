@@ -80,10 +80,10 @@ export default function ExamManagement() {
     <ScrollView className="flex-1 bg-gray-50 dark:bg-gray-900">
       {/* Header */}
       <View className="px-6 py-8 bg-[#1a367b] dark:bg-[#0f1f4d]">
-        <Text className="text-3xl font-bold text-white mb-2">
+        <Text style={{fontFamily: 'Poppins_600SemiBold'}} className="text-3xl font-bold text-white mb-2">
           Exam Management
         </Text>
-        <Text className="text-gray-200 text-lg">
+        <Text style={{fontFamily: 'Poppins_400Regular'}} className="text-gray-200 text-lg">
           Manage all your exams in one place
         </Text>
       </View>
@@ -93,7 +93,8 @@ export default function ExamManagement() {
         <View className="flex-row justify-between items-center mb-6">
           <View className="flex-1 mr-4">
             <TextInput
-              className="bg-white dark:bg-gray-800 px-4 py-2 rounded-lg"
+              style={{fontFamily: 'Poppins_400Regular'}}
+              className="bg-white dark:bg-gray-800 dark:text-white px-4 py-2 rounded-lg"
               placeholder="Search exams..."
               value={searchQuery}
               onChangeText={setSearchQuery}
@@ -104,7 +105,7 @@ export default function ExamManagement() {
             onPress={() => router.push('/exam/create')}
           >
             <FontAwesome name="plus" size={16} color="white" />
-            <Text className="text-white ml-2">Add Exam</Text>
+            <Text style={{fontFamily: 'Poppins_400Regular'}} className="text-white ml-2">Add Exam</Text>
           </TouchableOpacity>
         </View>
 
@@ -117,26 +118,26 @@ export default function ExamManagement() {
             >
               <View className="flex-row justify-between items-start">
                 <View className="flex-1">
-                  <Text className="text-lg font-semibold text-gray-900 dark:text-gray-100">
+                  <Text style={{fontFamily: 'Poppins_600SemiBold'}} className="text-lg font-semibold text-gray-900 dark:text-gray-100">
                     {exam.title}
                   </Text>
                   <View className="flex-row items-center mt-2">
                     <FontAwesome name="calendar" size={14} color="#6b7280" />
-                    <Text className="ml-2 text-gray-600 dark:text-gray-400">
+                    <Text style={{fontFamily: 'Poppins_400Regular'}} className="ml-2 text-gray-600 dark:text-gray-400">
                       {new Date(exam.date).toLocaleDateString()}
                     </Text>
                     <FontAwesome name="clock-o" size={14} color="#6b7280" className="ml-4" />
-                    <Text className="ml-2 text-gray-600 dark:text-gray-400">
+                    <Text style={{fontFamily: 'Poppins_400Regular'}} className="ml-2 text-gray-600 dark:text-gray-400">
                       {exam.duration} mins
                     </Text>
                     <FontAwesome name="users" size={14} color="#6b7280" className="ml-4" />
-                    <Text className="ml-2 text-gray-600 dark:text-gray-400">
+                    <Text style={{fontFamily: 'Poppins_400Regular'}} className="ml-2 text-gray-600 dark:text-gray-400">
                       {exam.students} students
                     </Text>
                   </View>
                 </View>
                 <View className={`px-3 py-1 rounded-full ${getStatusColor(exam.status)}`}>
-                  <Text className="text-sm capitalize">{exam.status}</Text>
+                  <Text style={{fontFamily: 'Poppins_400Regular'}}    className="text-sm capitalize">{exam.status}</Text>
                 </View>
               </View>
 

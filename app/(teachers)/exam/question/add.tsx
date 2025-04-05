@@ -68,7 +68,7 @@ export default function AddQuestion() {
       case 1:
         return (
           <View className="space-y-4">
-            <Text className="text-xl font-semibold text-gray-800 dark:text-gray-200 mb-4">
+            <Text style={{fontFamily: 'Poppins_600SemiBold'}} className="text-xl font-semibold text-gray-800 dark:text-gray-200 mb-4">
               Select Question Type
             </Text>
             {questionTypes.map((type) => (
@@ -93,10 +93,10 @@ export default function AddQuestion() {
                     />
                   </View>
                   <View className="ml-3 flex-1">
-                    <Text className="font-semibold text-gray-800 dark:text-gray-200">
+                    <Text style={{fontFamily: 'Poppins_600SemiBold'}} className="font-semibold text-gray-800 dark:text-gray-200">
                       {type.label}
                     </Text>
-                    <Text className="text-gray-500 dark:text-gray-400 text-sm">
+                    <Text style={{fontFamily: 'Poppins_400Regular'}} className="text-gray-500 dark:text-gray-400 text-sm">
                       {type.description}
                     </Text>
                   </View>
@@ -114,7 +114,7 @@ export default function AddQuestion() {
       case 2:
         return (
           <View className="space-y-6">
-            <Text className="text-xl font-semibold text-gray-800 dark:text-gray-200 mb-4">
+            <Text style={{fontFamily: 'Poppins_600SemiBold'}} className="text-xl font-semibold text-gray-800 dark:text-gray-200 mb-4">
               Question Content
             </Text>
             
@@ -150,7 +150,7 @@ export default function AddQuestion() {
                 ) : (
                   <View className="items-center">
                     <FontAwesome name="image" size={24} color="#6b7280" />
-                    <Text className="text-gray-500 mt-2">Add Image (Optional)</Text>
+                    <Text style={{fontFamily: 'Poppins_400Regular'}} className="text-gray-500 mt-2">Add Image (Optional)</Text>
                   </View>
                 )}
               </TouchableOpacity>
@@ -158,7 +158,7 @@ export default function AddQuestion() {
 
             {question.type === 'mcq' && (
               <View className="bg-white dark:bg-gray-800 rounded-xl p-4">
-                <Text className="font-semibold text-gray-800 dark:text-gray-200 mb-3">
+                <Text style={{fontFamily: 'Poppins_600SemiBold'}} className="font-semibold text-gray-800 dark:text-gray-200 mb-3">
                   Answer Options
                 </Text>
                 {question.options.map((option, index) => (
@@ -199,7 +199,7 @@ export default function AddQuestion() {
                   }))}
                 >
                   <FontAwesome name="plus" size={14} color="#1a367b" />
-                  <Text className="text-[#1a367b] ml-2">Add Option</Text>
+                  <Text style={{fontFamily: 'Poppins_400Regular'}}  className="text-[#1a367b] ml-2">Add Option</Text>
                 </TouchableOpacity>
               </View>
             )}
@@ -209,13 +209,13 @@ export default function AddQuestion() {
       case 3:
         return (
           <View className="space-y-6">
-            <Text className="text-xl font-semibold text-gray-800 dark:text-gray-200 mb-4">
+            <Text style={{fontFamily: 'Poppins_600SemiBold'}} className="text-xl font-semibold text-gray-800 dark:text-gray-200 mb-4">
               Additional Details
             </Text>
 
             <View className="bg-white dark:bg-gray-800 rounded-xl p-4">
               <View className="mb-4">
-                <Text className="text-gray-600 dark:text-gray-400 mb-2">Marks</Text>
+                <Text style={{fontFamily: 'Poppins_400Regular'}}  className="text-gray-600 dark:text-gray-400 mb-2">Marks</Text>
                 <InputField
                   label="Marks"
                   value={question.marks.toString()}
@@ -243,7 +243,7 @@ export default function AddQuestion() {
                     `}
                     onPress={() => setQuestion(prev => ({ ...prev, difficulty: level.id }))}
                   >
-                    <Text className={
+                    <Text style={{fontFamily: 'Poppins_400Regular'}}  className={
                       question.difficulty === level.id ? 'text-white font-medium' : 'text-gray-700'
                     }>
                       {level.label}
@@ -280,10 +280,10 @@ export default function AddQuestion() {
     <ScrollView className="flex-1 bg-gray-50 dark:bg-gray-900">
       {/* Header */}
       <View className="px-6 py-8 bg-[#1a367b] dark:bg-[#0f1f4d]">
-        <Text className="text-3xl font-bold text-white mb-2">
+        <Text  style={{fontFamily: 'Poppins_600SemiBold'}} className="text-3xl font-bold text-white mb-2">
           Add New Question
         </Text>
-        <Text className="text-gray-200 text-lg">
+        <Text style={{fontFamily: 'Poppins_400Regular'}} className="text-gray-200 text-lg">
           Step {activeStep} of 3
         </Text>
       </View>
@@ -309,7 +309,7 @@ export default function AddQuestion() {
               className="flex-1 bg-gray-200 py-3 rounded-xl"
               onPress={() => setActiveStep(activeStep - 1)}
             >
-              <Text className="text-gray-700 text-center font-semibold">
+              <Text style={{fontFamily: 'Poppins_400Regular'}} className="text-gray-700 text-center font-semibold">
                 Previous
               </Text>
             </TouchableOpacity>
@@ -326,7 +326,7 @@ export default function AddQuestion() {
               }
             }}
           >
-            <Text className="text-white text-center font-semibold">
+            <Text style={{fontFamily: 'Poppins_400Regular'}}  className="text-white text-center font-semibold">
               {activeStep === 3 ? 'Add Question' : 'Next'}
             </Text>
           </TouchableOpacity>

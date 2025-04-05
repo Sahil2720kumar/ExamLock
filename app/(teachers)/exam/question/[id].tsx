@@ -56,7 +56,7 @@ export default function QuestionEdit() {
       {/* Header */}
       <View className="px-6 py-8 bg-[#1a367b] dark:bg-[#0f1f4d]">
         <View className="flex-row justify-between items-center">
-          <Text className="text-3xl font-bold text-white">
+          <Text  style={{fontFamily: 'Poppins_600SemiBold'}} className="text-3xl font-bold text-white">
             Edit Question
           </Text>
           <View className="flex-row gap-3">
@@ -64,12 +64,12 @@ export default function QuestionEdit() {
               className="bg-white/20 px-4 py-2 rounded-lg"
               onPress={() => setIsPreviewMode(!isPreviewMode)}
             >
-              <Text className="text-white">
+              <Text style={{fontFamily: 'Poppins_400Regular'}} className="text-white">
                 {isPreviewMode ? 'Edit Mode' : 'Preview'}
               </Text>
             </TouchableOpacity>
             <TouchableOpacity className="bg-red-500 px-4 py-2 rounded-lg">
-              <Text className="text-white" >Delete</Text>
+              <Text style={{fontFamily: 'Poppins_400Regular'}} className="text-white" >Delete</Text>
             </TouchableOpacity>
           </View>
 
@@ -81,7 +81,7 @@ export default function QuestionEdit() {
           <>
             {/* Question Type Selection */}
             <View className="mb-6">
-              <Text className="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-3">
+              <Text style={{fontFamily: 'Poppins_600SemiBold'}} className="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-3">
                 Question Type
               </Text>
               <View className="flex-row flex-wrap gap-3">
@@ -102,7 +102,7 @@ export default function QuestionEdit() {
                       size={16}
                       color={question.type === type.id ? 'white' : '#6b7280'}
                     />
-                    <Text className={`
+                    <Text style={{fontFamily: 'Poppins_400Regular'}} className={`
                       ml-2
                       ${question.type === type.id
                         ? 'text-white'
@@ -150,7 +150,7 @@ export default function QuestionEdit() {
                 ) : (
                   <>
                     <FontAwesome name="image" size={24} color="#6b7280" />
-                    <Text className="text-gray-500 mt-2">Add Image (Optional)</Text>
+                    <Text style={{fontFamily: 'Poppins_400Regular'}} className="text-gray-500 mt-2">Add Image (Optional)</Text>
                   </>
                 )}
               </TouchableOpacity>
@@ -159,7 +159,7 @@ export default function QuestionEdit() {
             {/* Options Section for MCQ */}
             {question.type === 'mcq' && (
               <View className="bg-white dark:bg-gray-800 rounded-xl p-4 mb-6">
-                <Text className="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-3">
+                <Text style={{fontFamily: 'Poppins_600SemiBold'}} className="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-3">
                   Options
                 </Text>
                 {question.options.map((option, index) => (
@@ -199,20 +199,20 @@ export default function QuestionEdit() {
                   }))}
                 >
                   <FontAwesome name="plus" size={14} color="#1a367b" />
-                  <Text className="text-[#1a367b] ml-2">Add Option</Text>
+                  <Text style={{fontFamily: 'Poppins_400Regular'}}  className="text-[#1a367b] ml-2">Add Option</Text>
                 </TouchableOpacity>
               </View>
             )}
 
             {/* Additional Settings */}
             <View className="bg-white dark:bg-gray-800 rounded-xl p-4 mb-6">
-              <Text className="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-3">
+              <Text style={{fontFamily: 'Poppins_600SemiBold'}} className="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-3">
                 Settings
               </Text>
 
               {/* Marks */}
               <View className="mb-4">
-                <Text className="text-gray-600 dark:text-gray-400 mb-2">Marks</Text>
+                <Text style={{fontFamily: 'Poppins_400Regular'}} className="text-gray-600 dark:text-gray-400 mb-2">Marks</Text>
                 <InputField
                   value={question.marks.toString()}
                   onChangeText={(text) => setQuestion(prev => ({
@@ -273,13 +273,13 @@ export default function QuestionEdit() {
         ) : (
           // Preview Mode
           <View className="bg-white dark:bg-gray-800 rounded-xl p-4">
-            <Text className="text-xl font-semibold text-gray-800 dark:text-gray-200 mb-4">
+            <Text style={{fontFamily: 'Poppins_600SemiBold'}} className="text-xl font-semibold text-gray-800 dark:text-gray-200 mb-4">
               Question Preview
             </Text>
             {/* Preview content here */}
             <View className="flex flex-row justify-between">
-              <Text className="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-3">{question.question}</Text>
-              <Text className="text-gray-700 dark:text-gray-300">Marks: {question.marks}</Text>
+              <Text style={{fontFamily: 'Poppins_600SemiBold'}} className="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-3">{question.question}</Text>
+              <Text style={{fontFamily: 'Poppins_400Regular'}} className="text-gray-700 dark:text-gray-300">Marks: {question.marks}</Text>
             </View>
             {question.imageUrl && (
               <Image
@@ -304,7 +304,7 @@ export default function QuestionEdit() {
                     <FontAwesome name="check" size={12} color="white" />
                   )}
                 </TouchableOpacity>
-                <Text className="text-gray-700 dark:text-gray-300">{option}</Text>
+                <Text style={{fontFamily: 'Poppins_400Regular'}} className="text-gray-700 dark:text-gray-300">{option}</Text>
               </View>
             ))}
 
@@ -325,7 +325,7 @@ export default function QuestionEdit() {
             className="flex-1 bg-gray-200 py-3 rounded-xl"
             onPress={() => Alert.alert('Discard Changes?')}
           >
-            <Text className="text-gray-700 text-center font-semibold">
+            <Text style={{fontFamily: 'Poppins_400Regular'}} className="text-gray-700 text-center font-semibold">
               Cancel
             </Text>
           </TouchableOpacity>
@@ -333,7 +333,7 @@ export default function QuestionEdit() {
             className="flex-1 bg-[#1a367b] py-3 rounded-xl"
             onPress={() => Alert.alert('Success', 'Question saved successfully!')}
           >
-            <Text className="text-white text-center font-semibold">
+            <Text style={{fontFamily: 'Poppins_400Regular'}}  className="text-white text-center font-semibold">
               Save Question
             </Text>
           </TouchableOpacity>

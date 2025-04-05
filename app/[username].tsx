@@ -130,7 +130,7 @@ export default function Profile() {
               source={{ uri: user.avatar || 'https://ui-avatars.com/api/?name=' + user.name }}
               className="w-24 h-24 rounded-full border-4 border-white dark:border-gray-800 shadow-md"
             />
-            <Text className="text-2xl font-bold text-gray-900 dark:text-gray-100 mt-4">
+            <Text style={{fontFamily: 'Poppins_600SemiBold'}} className="text-2xl font-bold text-gray-900 dark:text-gray-100 mt-4">
               {user.name}
             </Text>
             <View className="flex-row items-center mt-1 bg-gray-100 dark:bg-gray-700 px-4 py-1 rounded-full">
@@ -139,7 +139,7 @@ export default function Profile() {
                 size={16}
                 color={COLORS.secondary}
               />
-              <Text className="ml-2 text-sm text-gray-600 dark:text-gray-400 capitalize">
+              <Text style={{fontFamily: 'Poppins_400Regular'}} className="ml-2 text-sm text-gray-600 dark:text-gray-400 capitalize">
                 {user.role}
               </Text>
             </View>
@@ -152,7 +152,7 @@ export default function Profile() {
                 size={20}
                 color={COLORS.secondary}
               />
-              <Text className="ml-3 text-gray-600 dark:text-gray-400">
+              <Text style={{fontFamily: 'Poppins_400Regular'}} className="ml-3 text-gray-600 dark:text-gray-400">
                 {user.email}
               </Text>
             </View>
@@ -163,7 +163,7 @@ export default function Profile() {
                   size={20}
                   color={COLORS.secondary}
                 />
-                <Text className="ml-3 text-gray-600 dark:text-gray-400">
+                <Text style={{fontFamily: 'Poppins_400Regular'}} className="ml-3 text-gray-600 dark:text-gray-400">
                   {user.department}
                 </Text>
               </View>
@@ -175,7 +175,7 @@ export default function Profile() {
       {/* Stats Section */}
       {user.role === 'student' && (
         <View className="mt-6 px-6">
-          <Text className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">
+          <Text style={{fontFamily: 'Poppins_600SemiBold'}} className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">
             Performance Overview
           </Text>
           <View className="bg-white dark:bg-gray-800 rounded-2xl shadow-sm p-6">
@@ -186,7 +186,7 @@ export default function Profile() {
                     {user.examsTaken}
                   </Text>
                 </View>
-                <Text className="text-sm text-gray-600 dark:text-gray-400">
+                <Text style={{fontFamily: 'Poppins_400Regular'}} className="text-sm text-gray-600 dark:text-gray-400">
                   Exams
                 </Text>
               </View>
@@ -196,7 +196,7 @@ export default function Profile() {
                     {user.averageScore}%
                   </Text>
                 </View>
-                <Text className="text-sm text-gray-600 dark:text-gray-400">
+                <Text style={{fontFamily: 'Poppins_400Regular'}} className="text-sm text-gray-600 dark:text-gray-400">
                   Average
                 </Text>
               </View>
@@ -206,7 +206,7 @@ export default function Profile() {
                     {user.courseCount}
                   </Text>
                 </View>
-                <Text className="text-sm text-gray-600 dark:text-gray-400">
+                <Text style={{fontFamily: 'Poppins_400Regular'}} className="text-sm text-gray-600 dark:text-gray-400">
                   Courses
                 </Text>
               </View>
@@ -217,7 +217,7 @@ export default function Profile() {
 
       {/* Actions Section */}
       <View className="p-6">
-        <Text className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">
+        <Text style={{fontFamily: 'Poppins_600SemiBold'}} className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">
           Quick Actions
         </Text>
         <View className="bg-white dark:bg-gray-800 rounded-2xl shadow-sm overflow-hidden">
@@ -238,12 +238,12 @@ export default function Profile() {
                   color={COLORS.secondary}
                 />
               </View>
-              <Text className="flex-1 ml-3 text-gray-700 dark:text-gray-300 font-medium">
+              <Text style={{fontFamily: 'Poppins_400Regular'}} className="flex-1 ml-3 text-gray-700 dark:text-gray-300 font-medium">
                 {action.title}
               </Text>
               {action.badge && (
                 <View className="bg-red-100 dark:bg-red-900/30 px-2 py-1 rounded-full mr-2">
-                  <Text className="text-xs text-red-600 dark:text-red-300 font-medium">
+                  <Text style={{fontFamily: 'Poppins_400Regular'}} className="text-xs text-red-600 dark:text-red-300 font-medium">
                     {action.badge}
                   </Text>
                 </View>

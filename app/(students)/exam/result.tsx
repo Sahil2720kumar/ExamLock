@@ -49,10 +49,10 @@ export default function ExamResult() {
     <ScrollView className="flex-1 bg-gray-50">
       {/* Result Header */}
       <View className="bg-[#1a367b] p-6">
-        <Text className="text-white text-xl font-bold mb-2">
+        <Text style={{fontFamily: 'Poppins_700Bold'}} className="text-white text-xl font-bold mb-2">
           {examResult.examTitle}
         </Text>
-        <Text className="text-white/80">
+        <Text style={{fontFamily: 'Poppins_400Regular'}} className="text-white/80">
           Submitted on {examResult.submittedAt}
         </Text>
       </View>
@@ -60,10 +60,10 @@ export default function ExamResult() {
       {/* Score Card */}
       <View className="mx-4 -mt-6 bg-white rounded-xl shadow-sm p-6">
         <View className="items-center">
-          <Text className="text-4xl font-bold text-[#1a367b]">
+          <Text style={{fontFamily: 'Poppins_700Bold'}} className="text-4xl font-bold text-[#1a367b]">
             {examResult.marksObtained}/{examResult.totalMarks}
           </Text>
-          <Text className="text-gray-500 mt-2">
+          <Text style={{fontFamily: 'Poppins_400Regular'}} className="text-gray-500 mt-2">
             Time Taken: {examResult.timeTaken}
           </Text>
         </View>
@@ -71,35 +71,35 @@ export default function ExamResult() {
         {/* Performance Stats */}
         <View className="flex-row justify-between mt-6 bg-gray-50 rounded-lg p-4">
           <View className="items-center">
-            <Text className="text-green-600 font-bold text-xl">{examResult.analysis.correct}</Text>
-            <Text className="text-gray-600">Correct</Text>
+            <Text style={{fontFamily: 'Poppins_600SemiBold'}} className="text-green-600 font-bold text-xl">{examResult.analysis.correct}</Text>
+            <Text style={{fontFamily: 'Poppins_400Regular'}} className="text-gray-600">Correct</Text>
           </View>
           <View className="items-center">
-            <Text className="text-red-600 font-bold text-xl">{examResult.analysis.incorrect}</Text>
-            <Text className="text-gray-600">Incorrect</Text>
+            <Text style={{fontFamily: 'Poppins_600SemiBold'}} className="text-red-600 font-bold text-xl">{examResult.analysis.incorrect}</Text>
+            <Text style={{fontFamily: 'Poppins_400Regular'}} className="text-gray-600">Incorrect</Text>
           </View>
           <View className="items-center">
-            <Text className="text-yellow-600 font-bold text-xl">{examResult.analysis.partial}</Text>
-            <Text className="text-gray-600">Partial</Text>
+            <Text style={{fontFamily: 'Poppins_600SemiBold'}} className="text-yellow-600 font-bold text-xl">{examResult.analysis.partial}</Text>
+            <Text style={{fontFamily: 'Poppins_400Regular'}} className="text-gray-600">Partial</Text>
           </View>
           <View className="items-center">
-            <Text className="text-gray-600 font-bold text-xl">{examResult.analysis.accuracy}%</Text>
-            <Text className="text-gray-600">Accuracy</Text>
+              <Text style={{fontFamily: 'Poppins_600SemiBold'}} className="text-gray-600 font-bold text-xl">{examResult.analysis.accuracy}%</Text>
+            <Text style={{fontFamily: 'Poppins_400Regular'}} className="text-gray-600">Accuracy</Text>
           </View>
         </View>
       </View>
 
       {/* Detailed Questions Review */}
       <View className="m-4">
-        <Text className="text-lg font-bold mb-4">Question Review</Text>
+        <Text style={{fontFamily: 'Poppins_600SemiBold'}} className="text-lg font-bold mb-4">Question Review</Text>
         
         {examResult.questions.map((question, index) => (
           <View key={question.id} className="bg-white rounded-lg p-4 mb-4 shadow-sm">
             <View className="flex-row justify-between mb-2">
-              <Text className="text-gray-500">Question {index + 1}</Text>
+              <Text style={{fontFamily: 'Poppins_400Regular'}} className="text-gray-500">Question {index + 1}</Text>
               <View className="flex-row items-center">
-                <Text className="text-gray-500">Marks: </Text>
-                <Text className={`font-bold ${
+                <Text style={{fontFamily: 'Poppins_400Regular'}} className="text-gray-500">Marks: </Text>
+                <Text style={{fontFamily: 'Poppins_600SemiBold'}} className={`font-bold ${
                   question.marksObtained === question.marks ? 'text-green-600' :
                   question.marksObtained === 0 ? 'text-red-600' : 'text-yellow-600'
                 }`}>
@@ -108,7 +108,7 @@ export default function ExamResult() {
               </View>
             </View>
 
-            <Text className="text-gray-800 mb-3">{question.question}</Text>
+            <Text style={{fontFamily: 'Poppins_400Regular'}} className="text-gray-800 mb-3">{question.question}</Text>
 
             {question.type === 'mcq' && (
               <View>
@@ -121,7 +121,7 @@ export default function ExamResult() {
                       'bg-gray-50'
                     }`}
                   >
-                    <Text className={`flex-1 ${
+                    <Text style={{fontFamily: 'Poppins_600SemiBold'}} className={`flex-1 ${
                       optIndex === question.correctAnswer ? 'text-green-700' :
                       optIndex === question.studentAnswer && optIndex !== question.correctAnswer ? 'text-red-700' :
                       'text-gray-700'
@@ -142,7 +142,7 @@ export default function ExamResult() {
             {question.type === 'descriptive' && (
               <View>
                 <View className="bg-gray-50 p-3 rounded-lg mb-2">
-                  <Text className="text-gray-700">{question.studentAnswer.text}</Text>
+                  <Text style={{fontFamily: 'Poppins_400Regular'}} className="text-gray-700">{question.studentAnswer.text}</Text>
                 </View>
                 {question.studentAnswer.images?.length > 0 && (
                   <ScrollView horizontal showsHorizontalScrollIndicator={false}>
@@ -157,8 +157,8 @@ export default function ExamResult() {
                 )}
                 {question.feedback && (
                   <View className="mt-3 bg-blue-50 p-3 rounded-lg">
-                    <Text className="text-blue-700 font-medium">Feedback:</Text>
-                    <Text className="text-blue-600">{question.feedback}</Text>
+                    <Text style={{fontFamily: 'Poppins_600SemiBold'}} className="text-blue-700 font-medium">Feedback:</Text>
+                    <Text style={{fontFamily: 'Poppins_400Regular'}} className="text-blue-600">{question.feedback}</Text>
                   </View>
                 )}
               </View>
@@ -171,12 +171,12 @@ export default function ExamResult() {
       <View className="p-4 flex-row justify-center gap-4">
         <Link href="/" asChild>
           <View className="bg-gray-200 px-6 py-3 rounded-lg">
-            <Text className="text-gray-700">Back to Home</Text>
+            <Text style={{fontFamily: 'Poppins_400Regular'}} className="text-gray-700">Back to Home</Text>
           </View>
         </Link>
         <Link href="/exam" asChild>
           <View className="bg-[#1a367b] px-6 py-3 rounded-lg">
-            <Text className="text-white">View All Exams</Text>
+            <Text style={{fontFamily: 'Poppins_400Regular'}}  className="text-white">View All Exams</Text>
           </View>
         </Link>
       </View>

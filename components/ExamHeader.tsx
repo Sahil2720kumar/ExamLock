@@ -27,19 +27,19 @@ const ExamHeader = ({
       ) : (
         <View style={headerStyles.logoContainer}>
           <Ionicons name="lock-closed" size={24} color={COLORS.white} />
-          <Text style={headerStyles.logoText}>ExamLock</Text>
+          <Text  style={[headerStyles.logoText,{fontFamily: 'Poppins_600SemiBold'}]}>ExamLock</Text>
         </View>
       )}
       
       {title ? (
-        <Text style={headerStyles.headerTitle}>{title}</Text>
+        <Text style={[headerStyles.headerTitle,{fontFamily: 'Poppins_600SemiBold'}]}>{title}</Text>
       ) : (
         <View style={headerStyles.secureConnectionIndicator}>
           <View style={[
             headerStyles.statusDot, 
             isSecure ? headerStyles.secureDot : headerStyles.insecureDot
           ]} />
-          <Text style={headerStyles.statusText}>
+          <Text style={[headerStyles.statusText,{fontFamily: 'Poppins_400Regular'}]}>
             {isSecure ? 'Secure Connection' : 'Unsecure Connection'}
           </Text>
         </View>
@@ -50,10 +50,10 @@ const ExamHeader = ({
           style={headerStyles.avatarContainer}
           onPress={() => router.push('/sahil')}
         >
-          <Text style={headerStyles.avatarText}>JS</Text>
+          <Text style={[headerStyles.avatarText,{fontFamily: 'Poppins_600SemiBold'}]}>JS</Text>
           {notifications > 0 && (
             <View style={headerStyles.notificationBadge}>
-              <Text style={headerStyles.badgeText}>
+              <Text style={[headerStyles.badgeText,{fontFamily: 'Poppins_400Regular'}]}>
                 {notifications > 9 ? '9+' : notifications}
               </Text>
             </View>

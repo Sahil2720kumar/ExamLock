@@ -22,26 +22,26 @@ export default function NotFoundScreen() {
           </View>
 
           {/* Error Message */}
-          <Text className="text-4xl font-bold text-gray-900 dark:text-gray-100 text-center mb-4">
+          <Text style={{fontFamily: 'Poppins_600SemiBold'}} className="text-4xl font-bold text-gray-900 dark:text-gray-100 text-center mb-4">
             Oops!
           </Text>
-          <Text className="text-xl text-gray-600 dark:text-gray-400 text-center mb-2">
+          <Text style={{fontFamily: 'Poppins_400Regular'}} className="text-xl text-gray-600 dark:text-gray-400 text-center mb-2">
             Page Not Found
           </Text>
-          <Text className="text-base text-gray-500 dark:text-gray-500 text-center mb-8 max-w-sm">
+          <Text style={{fontFamily: 'Poppins_400Regular'}} className="text-base text-gray-500 dark:text-gray-500 text-center mb-8 max-w-sm">
             The page you're looking for doesn't exist or has been moved.
           </Text>
 
           {/* Navigation Links */}
           <View className="gap-y-4 w-full max-w-xs">
             <TouchableOpacity onPress={() => router.back()} className="bg-[#1a367b] py-3 px-6 rounded-xl">
-              <Text className="text-white text-center font-semibold">
+              <Text style={{fontFamily: 'Poppins_400Regular'}} className="text-white text-center font-semibold">
                 Go Back
               </Text>
             </TouchableOpacity>
 
             <TouchableOpacity onPress={() => router.push('/help')} className="bg-white dark:bg-gray-800 py-3 px-6 rounded-xl border border-gray-200 dark:border-gray-700">
-              <Text className="text-gray-700 dark:text-gray-300 text-center">
+              <Text style={{fontFamily: 'Poppins_400Regular'}} className="text-gray-700 dark:text-gray-300 text-center">
                 Visit Help Center
               </Text>
             </TouchableOpacity>
@@ -49,11 +49,11 @@ export default function NotFoundScreen() {
 
           {/* Additional Help */}
           <View className="mt-12 items-center">
-            <Text className="text-gray-500 dark:text-gray-500 text-center mb-2">
+            <Text style={{fontFamily: 'Poppins_400Regular'}} className="text-gray-500 dark:text-gray-500 text-center mb-2">
               Need assistance?
             </Text>
             <Link href="/contact" asChild>
-              <Text className="text-[#1a367b] dark:text-blue-400 font-medium">
+              <Text style={{fontFamily: 'Poppins_400Regular'}}  className="text-[#1a367b] dark:text-blue-400 font-medium">
                 Contact Support
               </Text>
             </Link>

@@ -34,19 +34,23 @@ export default function ExamDetails() {
           >
             {/* <FontAwesome name="arrow-left" size={20} color="white" /> */}
           </TouchableOpacity>
-          <Text className="text-white text-lg ml-4">Exam Details</Text>
+          <Text style={{fontFamily: 'Poppins_600SemiBold'}} className="text-white text-lg ml-4">
+            Exam Details
+          </Text>
         </View>
 
-        <Text className="text-3xl font-bold text-white mb-2">
+        <Text style={{fontFamily: 'Poppins_700Bold'}} className="text-3xl font-bold text-white mb-2">
           {exam.title}
         </Text>
-        <Text className="text-blue-100 text-lg">{exam.subject}</Text>
+        <Text style={{fontFamily: 'Poppins_400Regular'}} className="text-blue-100 text-lg">
+          {exam.subject}
+        </Text>
       </LinearGradient>
 
       {/* Status Badge */}
       <View className="px-6">
         <View className={`${getStatusBackgroundColor(exam.status)} self-start px-4 py-2 rounded-full -mt-4 mb-6 shadow-sm`}>
-          <Text className={`${getStatusTextColor(exam.status)} font-semibold`}>
+          <Text style={{fontFamily: 'Poppins_600SemiBold'}} className={`${getStatusTextColor(exam.status)} font-semibold`}>
             {exam.status.charAt(0).toUpperCase() + exam.status.slice(1)}
           </Text>
         </View>
@@ -55,7 +59,7 @@ export default function ExamDetails() {
         <View className="gap-y-6">
           {/* Time & Location Card */}
           <View className="bg-white dark:bg-gray-800 rounded-3xl p-6 shadow-lg">
-            <Text className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
+            <Text style={{fontFamily: 'Poppins_600SemiBold'}} className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
               Time & Location
             </Text>
             <View className="gap-y-4">
@@ -64,8 +68,8 @@ export default function ExamDetails() {
                   <FontAwesome name="calendar" size={20} color="#1a367b" />
                 </View>
                 <View className="ml-3">
-                  <Text className="text-sm text-gray-500 dark:text-gray-400">Date</Text>
-                  <Text className="text-base font-semibold text-gray-900 dark:text-white">
+                  <Text style={{fontFamily: 'Poppins_400Regular'}} className="text-sm text-gray-500 dark:text-gray-400">Date</Text>
+                  <Text style={{fontFamily: 'Poppins_600SemiBold'}} className="text-base font-semibold text-gray-900 dark:text-white">
                     {new Date(exam.date).toLocaleDateString('en-US', {
                       weekday: 'long',
                       year: 'numeric',
@@ -81,8 +85,8 @@ export default function ExamDetails() {
                   <FontAwesome name="clock-o" size={20} color="#1a367b" />
                 </View>
                 <View className="ml-3">
-                  <Text className="text-sm text-gray-500 dark:text-gray-400">Time</Text>
-                  <Text className="text-base font-semibold text-gray-900 dark:text-white">
+                  <Text style={{fontFamily: 'Poppins_400Regular'}} className="text-sm text-gray-500 dark:text-gray-400">Time</Text>
+                  <Text style={{fontFamily: 'Poppins_600SemiBold'}} className="text-base font-semibold text-gray-900 dark:text-white">
                     {exam.startTime} - {exam.endTime} ({exam.duration} minutes)
                   </Text>
                 </View>
@@ -93,8 +97,8 @@ export default function ExamDetails() {
                   <FontAwesome name="map-marker" size={20} color="#1a367b" />
                 </View>
                 <View className="ml-3">
-                  <Text className="text-sm text-gray-500 dark:text-gray-400">Location</Text>
-                  <Text className="text-base font-semibold text-gray-900 dark:text-white">
+                  <Text style={{fontFamily: 'Poppins_400Regular'}} className="text-sm text-gray-500 dark:text-gray-400">Location</Text>
+                  <Text style={{fontFamily: 'Poppins_600SemiBold'}} className="text-base font-semibold text-gray-900 dark:text-white">
                     {exam.venue}
                   </Text>
                 </View>
@@ -102,7 +106,7 @@ export default function ExamDetails() {
             </View>
           </View>
           <View className="bg-white dark:bg-gray-800 rounded-3xl p-6 shadow-lg">
-            <Text className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
+            <Text style={{fontFamily: 'Poppins_600SemiBold'}} className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
               Teacher
             </Text>
             <View className="flex-row items-center">
@@ -110,7 +114,7 @@ export default function ExamDetails() {
                 <FontAwesome name="user" size={20} color="#1a367b" />
                 </View>
               <View className="ml-3">
-                <Text className="text-base font-semibold text-gray-900 dark:text-white">
+                <Text style={{fontFamily: 'Poppins_600SemiBold'}} className="text-base font-semibold text-gray-900 dark:text-white">
                   {exam.teacher}
                 </Text>
               </View>

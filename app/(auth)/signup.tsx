@@ -49,7 +49,7 @@ export default function SignupScreen() {
   };
 
   const renderStepIndicator = () => (
-    <View className="flex-row justify-center space-x-2 mb-6">
+    <View className="flex-row justify-center gap-x-2 mb-6">
       {[1, 2].map((step) => (
         <View
           key={step}
@@ -124,7 +124,7 @@ export default function SignupScreen() {
     <View className="space-y-4">
       {/* Role Selection */}
       <View className="mb-4">
-        <Text className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+        <Text style={{fontFamily: 'Poppins_600SemiBold'}} className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
           Select Role <Text className="text-red-500">*</Text>
         </Text>
         <View className="flex-row gap-4">
@@ -147,7 +147,7 @@ export default function SignupScreen() {
                   size={24}
                   color={formData.role === role.value ? '#2563EB' : '#6B7280'}
                 />
-                <Text className={`mt-2 font-medium ${formData.role === role.value
+                <Text style={{fontFamily: 'Poppins_600SemiBold'}} className={`mt-2 font-medium ${formData.role === role.value
                   ? 'text-blue-600 dark:text-blue-400'
                   : 'text-gray-600 dark:text-gray-400'
                   }`}>
@@ -194,20 +194,20 @@ export default function SignupScreen() {
 
       {/* Password Requirements */}
       <View className="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-xl">
-        <Text className="text-sm font-medium text-blue-800 dark:text-blue-200 mb-2">
+        <Text style={{fontFamily: 'Poppins_600SemiBold'}} className="text-sm font-medium text-blue-800 dark:text-blue-200 mb-2">
           Password Requirements:
         </Text>
         <View className="space-y-1">
-          <Text className="text-xs text-blue-700 dark:text-blue-300">
+          <Text style={{fontFamily: 'Poppins_400Regular'}} className="text-xs text-blue-700 dark:text-blue-300">
             • Minimum 8 characters
           </Text>
-          <Text className="text-xs text-blue-700 dark:text-blue-300">
+          <Text style={{fontFamily: 'Poppins_400Regular'}} className="text-xs text-blue-700 dark:text-blue-300">
             • At least one uppercase letter
           </Text>
-          <Text className="text-xs text-blue-700 dark:text-blue-300">
+          <Text style={{fontFamily: 'Poppins_400Regular'}} className="text-xs text-blue-700 dark:text-blue-300">
             • At least one number
           </Text>
-          <Text className="text-xs text-blue-700 dark:text-blue-300">
+          <Text style={{fontFamily: 'Poppins_400Regular'}} className="text-xs text-blue-700 dark:text-blue-300">
             • At least one special character
           </Text>
         </View>
@@ -218,7 +218,7 @@ export default function SignupScreen() {
           className="flex-1 bg-gray-200 dark:bg-gray-700 py-4 rounded-xl"
           onPress={() => setCurrentStep(1)}
         >
-          <Text className="text-gray-700 dark:text-gray-200 text-center font-semibold text-lg">
+          <Text style={{fontFamily: 'Poppins_600SemiBold'}} className="text-gray-700 dark:text-gray-200 text-center font-semibold text-lg">
             Back
           </Text>
         </TouchableOpacity>
@@ -227,7 +227,7 @@ export default function SignupScreen() {
           className="flex-1 bg-[#1a367b] py-4 rounded-xl"
           onPress={handleSignup}
         >
-          <Text className="text-white text-center font-semibold text-lg">
+          <Text style={{fontFamily: 'Poppins_600SemiBold'}}   className="text-white text-center font-semibold text-lg">
             Sign Up
           </Text>
         </TouchableOpacity>
@@ -253,10 +253,10 @@ export default function SignupScreen() {
             >
               <MaterialCommunityIcons name="arrow-left" size={24} color="white" />
             </TouchableOpacity>
-            <Text className="text-3xl font-bold text-white">
+            <Text style={{fontFamily: 'Poppins_700Bold'}} className="text-3xl font-bold text-white">
               Create Account
             </Text>
-            <Text className="text-blue-100 text-base mt-2">
+            <Text style={{fontFamily: 'Poppins_400Regular'}} className="text-blue-100 text-base mt-2">
               Join ExamLock today
             </Text>
           </View>
@@ -271,11 +271,11 @@ export default function SignupScreen() {
 
           {/* Sign In Link */}
           <View className="flex-row justify-center my-8">
-            <Text className="text-gray-600 dark:text-gray-400">
+            <Text style={{fontFamily: 'Poppins_400Regular'}} className="text-gray-600 dark:text-gray-400">
               Already have an account?{' '}
             </Text>
             <TouchableOpacity onPress={() => router.push('/login')}>
-              <Text className="text-blue-600 dark:text-blue-400 font-semibold">
+              <Text style={{fontFamily: 'Poppins_600SemiBold'}} className="text-blue-600 dark:text-blue-400 font-semibold">
                 Sign In
               </Text>
             </TouchableOpacity>

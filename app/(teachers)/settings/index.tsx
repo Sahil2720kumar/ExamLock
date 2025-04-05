@@ -46,7 +46,7 @@ export default function TeacherSettings() {
 
   const SettingSection = ({ title, children }) => (
     <View className="bg-white dark:bg-gray-800 rounded-xl p-4 mb-6">
-      <Text className="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-4">
+      <Text style={{fontFamily: 'Poppins_600SemiBold'}} className="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-4">
         {title}
       </Text>
       {children}
@@ -56,7 +56,7 @@ export default function TeacherSettings() {
   const SettingToggle = ({ label, value, onChange, description = null }) => (
     <View className="mb-4 last:mb-0">
       <View className="flex-row justify-between items-center">
-        <Text className="text-gray-700 dark:text-gray-300">{label}</Text>
+        <Text style={{fontFamily: 'Poppins_400Regular'}} className="text-gray-700 dark:text-gray-300">{label}</Text>
         <Switch
           value={value}
           onValueChange={onChange}
@@ -65,7 +65,7 @@ export default function TeacherSettings() {
         />
       </View>
       {description && (
-        <Text className="text-gray-500 dark:text-gray-400 text-sm mt-1">
+        <Text style={{fontFamily: 'Poppins_400Regular'}}  className="text-gray-500 dark:text-gray-400 text-sm mt-1">
           {description}
         </Text>
       )}
@@ -76,10 +76,10 @@ export default function TeacherSettings() {
     <ScrollView className="flex-1 bg-gray-50 dark:bg-gray-900">
       {/* Header */}
       <View className="px-6 py-8 bg-[#1a367b] dark:bg-[#0f1f4d]">
-        <Text className="text-3xl font-bold text-white mb-2">
+        <Text style={{fontFamily: 'Poppins_600SemiBold'}} className="text-3xl font-bold text-white mb-2">
           Settings
         </Text>
-        <Text className="text-gray-200 text-lg">
+        <Text style={{fontFamily: 'Poppins_400Regular'}} className="text-gray-200 text-lg">
           Customize your teaching experience
         </Text>
       </View>
@@ -105,10 +105,10 @@ export default function TeacherSettings() {
                 </View>
               </View>
             </TouchableOpacity>
-            <Text className="text-lg font-semibold text-gray-800 dark:text-gray-200 mt-4">
+            <Text style={{fontFamily: 'Poppins_600SemiBold'}} className="text-lg font-semibold text-gray-800 dark:text-gray-200 mt-4">
               Dr. John Smith
             </Text>
-            <Text className="text-gray-500 dark:text-gray-400">
+            <Text style={{fontFamily: 'Poppins_400Regular'}} className="text-gray-500 dark:text-gray-400">
               Computer Science Department
             </Text>
           </View>
@@ -117,14 +117,14 @@ export default function TeacherSettings() {
             className="bg-gray-100 dark:bg-gray-700 rounded-lg p-4 flex-row justify-between items-center"
             onPress={() => router.push('/settings/edit-profile')}
           >
-            <Text className="text-gray-700 dark:text-gray-300">Edit Profile</Text>
+            <Text style={{fontFamily: 'Poppins_400Regular'}} className="text-gray-700 dark:text-gray-300">Edit Profile</Text>
             <FontAwesome name="chevron-right" size={14} color="#6b7280" />
           </TouchableOpacity>
         </SettingSection>
 
         {/*  Settings Warning: Feature Not Implemented*/}
         <View className="bg-yellow-50 dark:bg-yellow-900/20 rounded-lg p-4 mb-6">
-          <Text className="text-yellow-700 dark:text-yellow-300">
+          <Text style={{fontFamily: 'Poppins_400Regular'}} className="text-yellow-700 dark:text-yellow-300">
           Settings Warning: Feature Not Implemented
           </Text>
         </View>
@@ -223,7 +223,7 @@ export default function TeacherSettings() {
           >
             <View className="flex-row items-center">
               <FontAwesome name="lock" size={16} color="#6b7280" />
-              <Text className="text-gray-700 dark:text-gray-300 ml-3">
+              <Text style={{fontFamily: 'Poppins_400Regular'}} className="text-gray-700 dark:text-gray-300 ml-3">
                 Change Password
               </Text>
             </View>
@@ -236,7 +236,7 @@ export default function TeacherSettings() {
           >
             <View className="flex-row items-center">
               <FontAwesome name="question-circle" size={16} color="#6b7280" />
-              <Text className="text-gray-700 dark:text-gray-300 ml-3">
+              <Text style={{fontFamily: 'Poppins_400Regular'}} className="text-gray-700 dark:text-gray-300 ml-3">
                 Help Center
               </Text>
             </View>
@@ -254,7 +254,7 @@ export default function TeacherSettings() {
               ]
             )}
           >
-            <Text className="text-red-600 dark:text-red-400 text-center font-semibold">
+            <Text style={{fontFamily: 'Poppins_400Regular'}}  className="text-red-600 dark:text-red-400 text-center font-semibold">
               Logout
             </Text>
           </TouchableOpacity>

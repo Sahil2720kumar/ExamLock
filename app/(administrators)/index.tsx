@@ -6,14 +6,14 @@ import { useEffect } from 'react';
 
 export default function AdminDashboard() {
 
-  useEffect(() => {
-    // Delay the navigation slightly to ensure Root Layout is mounted
-    const timer = setTimeout(() => {
-      router.replace('/(auth)/login');
-    }, 0);
+  // useEffect(() => {
+  //   // Delay the navigation slightly to ensure Root Layout is mounted
+  //   const timer = setTimeout(() => {
+  //     router.replace('/(auth)/login');
+  //   }, 0);
     
-    return () => clearTimeout(timer);
-  }, []);
+  //   return () => clearTimeout(timer);
+  // }, []);
 
   
   const quickStats = [
@@ -45,9 +45,6 @@ export default function AdminDashboard() {
     // Add more activities as needed
   ];
 
-  // router.push('/(students)/');
-  // router.push('/(teachers)');
-  
 
   return (
     <ScrollView className="flex-1 bg-gray-50 dark:bg-gray-900">
@@ -55,10 +52,10 @@ export default function AdminDashboard() {
       <View className="px-6 py-8 bg-[#1a367b] dark:bg-[#0f1f4d]">
         <View className="flex-row justify-between items-center mb-6">
           <View>
-            <Text className="text-3xl font-bold text-white mb-2">
+            <Text style={{fontFamily: 'Poppins_600SemiBold'}}   className="text-3xl font-bold text-white mb-2">
               Admin Dashboard
             </Text>
-            <Text className="text-gray-200 text-lg">
+            <Text style={{fontFamily: 'Poppins_400Regular'}}  className="text-gray-200 text-lg">
               Welcome back, Administrator
             </Text>
           </View>
@@ -79,8 +76,8 @@ export default function AdminDashboard() {
               className="bg-white/10 px-4 py-3 rounded-xl flex-1"
               onPress={() => router.push(action.route as any)}
             >
-              <FontAwesome name={action.icon} size={20} color="white" />
-              <Text className="text-white mt-2 font-medium">{action.title}</Text>
+              <FontAwesome name={action.icon as any} size={20} color="white" />
+              <Text style={{fontFamily: 'Poppins_400Regular'}}  className="text-white mt-2 font-medium">{action.title}</Text>
             </TouchableOpacity>
           ))}
         </View>
@@ -95,14 +92,14 @@ export default function AdminDashboard() {
               className="flex-1 min-w-[160px] bg-white dark:bg-gray-800 rounded-xl p-4 shadow-sm"
             >
               <View className={`w-12 h-12 ${stat.color} rounded-full items-center justify-center mb-3`}>
-                <FontAwesome name={stat.icon} size={24} color="white" />
+                  <FontAwesome name={stat.icon as any} size={24} color="white" />
               </View>
-              <Text className="text-gray-600 dark:text-gray-400">{stat.title}</Text>
+              <Text style={{fontFamily: 'Poppins_400Regular'}}  className="text-gray-600 dark:text-gray-400">{stat.title}</Text>
               <View className="flex-row items-center justify-between mt-2">
-                <Text className="text-2xl font-bold text-gray-900 dark:text-gray-100">
+                  <Text style={{fontFamily: 'Poppins_600SemiBold'}}  className="text-2xl font-bold text-gray-900 dark:text-gray-100">
                   {stat.value}
                 </Text>
-                <Text className={`
+                <Text style={{fontFamily: 'Poppins_400Regular'}}  className={`
                   ${stat.trend.startsWith('+') ? 'text-green-500' : 'text-gray-500'}
                 `}>
                   {stat.trend}
@@ -177,7 +174,7 @@ export default function AdminDashboard() {
 
         {/* Recent Activities */}
         <View className="bg-white dark:bg-gray-800 rounded-xl p-4 mb-6">
-          <Text className="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-4">
+          <Text style={{fontFamily: 'Poppins_600SemiBold'}}  className="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-4">
             Recent Activities
           </Text>
           {recentActivities.map((activity) => (
@@ -190,13 +187,13 @@ export default function AdminDashboard() {
                 className="w-10 h-10 rounded-full"
               />
               <View className="flex-1 ml-3">
-                <Text className="text-gray-900 dark:text-gray-100 font-medium">
+                <Text style={{fontFamily: 'Poppins_400Regular'}}  className="text-gray-900 dark:text-gray-100 font-medium">
                   {activity.title}
                 </Text>
-                <Text className="text-gray-500 dark:text-gray-400 text-sm">
+                <Text style={{fontFamily: 'Poppins_400Regular'}}  className="text-gray-500 dark:text-gray-400 text-sm">
                   {activity.description}
                 </Text>
-                <Text className="text-gray-400 dark:text-gray-500 text-xs mt-1">
+                <Text style={{fontFamily: 'Poppins_400Regular'}}  className="text-gray-400 dark:text-gray-500 text-xs mt-1">
                   {activity.time} • {activity.user}
                 </Text>
               </View>
@@ -223,9 +220,9 @@ export default function AdminDashboard() {
               onPress={() => router.push(link.route as any)}
             >
               <View className={`w-10 h-10 ${link.color} rounded-full items-center justify-center mb-2`}>
-                <FontAwesome name={link.icon} size={20} color="white" />
+                <FontAwesome name={link.icon as any} size={20} color="white" />
               </View>
-              <Text className="text-gray-900 dark:text-gray-100 font-medium">
+              <Text style={{fontFamily: 'Poppins_400Regular'}}  className="text-gray-900 dark:text-gray-100 font-medium">
                 {link.title}
               </Text>
             </TouchableOpacity>

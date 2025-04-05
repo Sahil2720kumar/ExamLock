@@ -71,10 +71,10 @@ export default function CreateExam() {
     <ScrollView className="flex-1 bg-gray-50 dark:bg-gray-900">
       {/* Header */}
       <View className="px-6 py-8 bg-[#1a367b] dark:bg-[#0f1f4d]">
-        <Text className="text-3xl font-bold text-white mb-2">
+        <Text style={{fontFamily: 'Poppins_600SemiBold'}} className="text-3xl font-bold text-white mb-2">
           Create New Exam
         </Text>
-        <Text className="text-gray-200 text-lg">
+        <Text style={{fontFamily: 'Poppins_400Regular'}} className="text-gray-200 text-lg">
           Step {currentStep} of 3
         </Text>
       </View>
@@ -93,7 +93,7 @@ export default function CreateExam() {
         {/* Step 1: Basic Details */}
         {currentStep === 1 && (
           <View className="space-y-2">
-            <Text className="text-xl font-semibold text-gray-800 dark:text-gray-200 mb-6">
+            <Text style={{fontFamily: 'Poppins_600SemiBold'}} className="text-xl font-semibold text-gray-800 dark:text-gray-200 mb-6">
               Exam Details
             </Text>
             
@@ -171,7 +171,7 @@ export default function CreateExam() {
         {currentStep === 2 && (
           <View>
             <View className="flex-row justify-between items-center mb-6">
-              <Text className="text-xl font-semibold text-gray-800 dark:text-gray-200">
+              <Text style={{fontFamily: 'Poppins_600SemiBold'}} className="text-xl font-semibold text-gray-800 dark:text-gray-200">
                 Add Questions
               </Text>
               <View className="flex-row gap-2">
@@ -181,7 +181,7 @@ export default function CreateExam() {
                   }`}
                   onPress={() => setCurrentQuestion({...currentQuestion, type: 'mcq'})}
                 >
-                  <Text className={currentQuestion.type === 'mcq' ? 'text-white' : 'text-gray-700'}>
+                  <Text style={{fontFamily: 'Poppins_400Regular'}} className={currentQuestion.type === 'mcq' ? 'text-white' : 'text-gray-700'}>
                     MCQ
                   </Text>
                 </TouchableOpacity>
@@ -191,7 +191,7 @@ export default function CreateExam() {
                   }`}
                   onPress={() => setCurrentQuestion({...currentQuestion, type: 'descriptive'})}
                 >
-                  <Text className={currentQuestion.type === 'descriptive' ? 'text-white' : 'text-gray-700'}>
+                  <Text style={{fontFamily: 'Poppins_400Regular'}} className={currentQuestion.type === 'descriptive' ? 'text-white' : 'text-gray-700'}>
                     Descriptive
                   </Text>
                 </TouchableOpacity>
@@ -201,7 +201,7 @@ export default function CreateExam() {
                   }`}
                   onPress={() => setCurrentQuestion({...currentQuestion, type: 'image'})}
                 >
-                  <Text className={currentQuestion.type === 'image' ? 'text-white' : 'text-gray-700'}>
+                  <Text style={{fontFamily: 'Poppins_400Regular'}} className={currentQuestion.type === 'image' ? 'text-white' : 'text-gray-700'}>
                     Image
                   </Text>
                 </TouchableOpacity>
@@ -268,7 +268,7 @@ export default function CreateExam() {
                     ) : (
                       <View className="items-center">
                         <FontAwesome name="image" size={24} color="#6b7280" />
-                        <Text className="text-gray-500 mt-2">Upload Image</Text>
+                        <Text style={{fontFamily: 'Poppins_400Regular'}} className="text-gray-500 mt-2">Upload Image</Text>
                       </View>
                     )}
                   </TouchableOpacity>
@@ -276,7 +276,7 @@ export default function CreateExam() {
               )}
 
               <View className="flex-row items-center gap-4 mt-4">
-                <Text className="text-gray-600 dark:text-gray-400">Marks:</Text>
+                <Text style={{fontFamily: 'Poppins_400Regular'}} className="text-gray-600 dark:text-gray-400">Marks:</Text>
                 <InputField
                   label="Marks"
                   value={currentQuestion.marks.toString()}
@@ -288,14 +288,14 @@ export default function CreateExam() {
             </View>
 
             <View className="flex-row justify-between">
-              <Text className="text-gray-600 dark:text-gray-400">
+              <Text style={{fontFamily: 'Poppins_400Regular'}} className="text-gray-600 dark:text-gray-400">
                 Total Questions: {questions.length}
               </Text>
               <TouchableOpacity
                 className="bg-[#1a367b] px-4 py-2 rounded-lg"
                 onPress={addQuestion}
               >
-                <Text className="text-white">Add Question</Text>
+                <Text style={{fontFamily: 'Poppins_400Regular'}} className="text-white">Add Question</Text>
               </TouchableOpacity>
             </View>
           </View>
@@ -304,25 +304,25 @@ export default function CreateExam() {
         {/* Step 3: Review */}
         {currentStep === 3 && (
           <View>
-            <Text className="text-xl font-semibold text-gray-800 dark:text-gray-200 mb-4">
+            <Text style={{fontFamily: 'Poppins_600SemiBold'}} className="text-xl font-semibold text-gray-800 dark:text-gray-200 mb-4">
               Review Exam
             </Text>
             
             <View className="bg-white dark:bg-gray-800 rounded-xl p-4 mb-4">
-              <Text className="text-lg font-semibold">{examDetails.title}</Text>
-              <Text className="text-gray-600 mt-2">{examDetails.description}</Text>
+              <Text style={{fontFamily: 'Poppins_600SemiBold'}} className="text-lg font-semibold text-gray-900 dark:text-gray-100">{examDetails.title}</Text>
+              <Text style={{fontFamily: 'Poppins_400Regular'}} className="text-gray-600 mt-2 dark:text-gray-400">{examDetails.description}</Text>
               <View className="flex-row gap-4 mt-4">
-                <Text>Duration: {examDetails.duration} mins</Text>
-                <Text>Marks: {examDetails.totalMarks}</Text>
+                <Text style={{fontFamily: 'Poppins_400Regular'}} className="text-gray-600 dark:text-gray-400">Duration: {examDetails.duration} mins</Text>
+                <Text style={{fontFamily: 'Poppins_400Regular'}} className="text-gray-600 dark:text-gray-400">Marks: {examDetails.totalMarks}</Text>
               </View>
             </View>
 
-            <Text className="text-lg font-semibold mb-2">Questions ({questions.length})</Text>
+            <Text style={{fontFamily: 'Poppins_600SemiBold'}} className="text-lg font-semibold mb-2 text-gray-900 dark:text-gray-100">Questions ({questions.length})</Text>
             {questions.map((q, index) => (
               <View key={index} className="bg-white dark:bg-gray-800 rounded-xl p-4 mb-2">
-                <Text className="font-medium">Q{index + 1}: {q.question}</Text>
-                <Text className="text-gray-600 mt-1">Type: {q.type}</Text>
-                <Text className="text-gray-600">Marks: {q.marks}</Text>
+                <Text style={{fontFamily: 'Poppins_400Regular'}} className="font-medium">Q{index + 1}: {q.question}</Text>
+                <Text style={{fontFamily: 'Poppins_400Regular'}} className="text-gray-600 mt-1">Type: {q.type}</Text>
+                <Text style={{fontFamily: 'Poppins_400Regular'}} className="text-gray-600">Marks: {q.marks}</Text>
               </View>
             ))}
           </View>
@@ -335,7 +335,7 @@ export default function CreateExam() {
               className="bg-gray-200 px-6 py-2 rounded-lg"
               onPress={() => setCurrentStep(currentStep - 1)}
             >
-              <Text>Previous</Text>
+              <Text style={{fontFamily: 'Poppins_400Regular'}}>Previous</Text>
             </TouchableOpacity>
           )}
           
@@ -350,7 +350,7 @@ export default function CreateExam() {
               }
             }}
           >
-            <Text className="text-white">
+            <Text style={{fontFamily: 'Poppins_400Regular'}}  className="text-white">
               {currentStep === 3 ? 'Create Exam' : 'Next'}
             </Text>
           </TouchableOpacity>

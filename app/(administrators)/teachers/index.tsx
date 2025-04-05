@@ -78,7 +78,7 @@ export default function TeachersList() {
       {/* Header */}
       <View className="px-6 py-8 bg-[#1a367b] dark:bg-[#0f1f4d]">
         <View className="flex-row justify-between items-center mb-6">
-          <Text className="text-3xl font-bold text-white">
+          <Text style={{fontFamily: 'Poppins_600SemiBold'}}  className="text-3xl font-bold text-white">
             Teachers
           </Text>
           <TouchableOpacity 
@@ -86,7 +86,7 @@ export default function TeachersList() {
             onPress={() => router.push('/(administrators)/teachers/add')}
           >
             <FontAwesome name="plus" size={16} color="white" />
-            <Text className="text-white ml-2">Add Teacher</Text>
+            <Text style={{fontFamily: 'Poppins_400Regular'}}  className="text-white ml-2">Add Teacher</Text>
           </TouchableOpacity>
         </View>
 
@@ -94,6 +94,7 @@ export default function TeachersList() {
         <View className="flex-row items-center bg-white/10 rounded-lg px-4 py-2">
           <FontAwesome name="search" size={16} color="white" />
           <TextInput
+            style={{fontFamily: 'Poppins_400Regular'}}    
             className="flex-1 ml-3 text-white"
             placeholder="Search teachers..."
             placeholderTextColor="rgba(255, 255, 255, 0.6)"
@@ -122,7 +123,7 @@ export default function TeachersList() {
                 `}
                 onPress={() => setSelectedDepartment(dept.id)}
               >
-                <Text className={
+                <Text style={{fontFamily: 'Poppins_400Regular'}}   className={
                   selectedDepartment === dept.id 
                     ? 'text-white' 
                     : 'text-gray-700 dark:text-gray-300'
@@ -148,7 +149,7 @@ export default function TeachersList() {
                 `}
                 onPress={() => setSelectedStatus(status.id)}
               >
-                <Text className={
+                <Text style={{fontFamily: 'Poppins_400Regular'}}   className={
                   selectedStatus === status.id 
                     ? 'text-white' 
                     : 'text-gray-700 dark:text-gray-300'
@@ -165,7 +166,7 @@ export default function TeachersList() {
             onPress={() => { Handle sort options }}
           >
             <FontAwesome name="sort" size={14} color="#6b7280" />
-            <Text className="ml-2 text-gray-600 dark:text-gray-400">Sort</Text>
+            <Text style={{fontFamily: 'Poppins_400Regular'}}    className="ml-2 text-gray-600 dark:text-gray-400">Sort</Text>
           </TouchableOpacity>
         </View> */}
 
@@ -186,10 +187,10 @@ export default function TeachersList() {
                 <View className="flex-1 ml-4">
                   <View className="flex-row justify-between items-start">
                     <View>
-                      <Text className="text-lg font-semibold text-gray-900 dark:text-gray-100">
+                      <Text style={{fontFamily: 'Poppins_600SemiBold'}}  className="text-lg font-semibold text-gray-900 dark:text-gray-100">
                         {teacher.name}
                       </Text>
-                      <Text className="text-gray-500 dark:text-gray-400">
+                      <Text style={{fontFamily: 'Poppins_400Regular'}}  className="text-gray-500 dark:text-gray-400">
                         {teacher.designation}
                       </Text>
                     </View>
@@ -202,7 +203,7 @@ export default function TeachersList() {
 
                   <View className="flex-row items-center mt-2">
                     <FontAwesome name="building" size={14} color="#6b7280" />
-                    <Text className="ml-2 text-gray-600 dark:text-gray-400">
+                    <Text style={{fontFamily: 'Poppins_400Regular'}}  className="ml-2 text-gray-600 dark:text-gray-400">
                       {teacher.department}
                     </Text>
                   </View>
@@ -213,7 +214,7 @@ export default function TeachersList() {
                         key={index}
                         className="bg-gray-100 dark:bg-gray-700 rounded-full px-3 py-1 mr-2 mb-2"
                       >
-                        <Text className="text-xs text-gray-600 dark:text-gray-300">
+                        <Text style={{fontFamily: 'Poppins_400Regular'}}    className="text-xs text-gray-600 dark:text-gray-300">
                           {subject}
                         </Text>
                       </View>

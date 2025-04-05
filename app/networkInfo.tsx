@@ -50,10 +50,10 @@ export default function NetworkInfo() {
     <ScrollView className="flex-1 bg-gray-50 dark:bg-gray-900">
       {/* Header */}
       <View className="px-6 py-8 bg-[#1a367b] dark:bg-[#0f1f4d]">
-        <Text className="text-3xl font-bold text-white mb-2">
+        <Text style={{fontFamily: 'Poppins_600SemiBold'}} className="text-3xl font-bold text-white mb-2">
           Network Information
         </Text>
-        <Text className="text-gray-200 text-lg">
+        <Text style={{fontFamily: 'Poppins_400Regular'}} className="text-gray-200 text-lg">
           System Connection Status
         </Text>
       </View>
@@ -61,7 +61,7 @@ export default function NetworkInfo() {
       {/* Network Stats Cards */}
       <View className="p-6">
         <View className="mb-8">
-          <Text className="text-xl font-semibold mb-4 text-gray-800 dark:text-gray-200">
+          <Text style={{fontFamily: 'Poppins_600SemiBold'}} className="text-xl font-semibold mb-4 text-gray-800 dark:text-gray-200">
             Network Statistics
           </Text>
           <View className="flex-row flex-wrap gap-4">
@@ -72,7 +72,7 @@ export default function NetworkInfo() {
               >
                 <View className="flex-row justify-between items-center mb-2">
                   <FontAwesome 
-                    name={stat.icon} 
+                    name={stat.icon as any} 
                     size={20} 
                     color={isDark ? '#9ca3af' : '#4b5563'} 
                   />
@@ -81,10 +81,10 @@ export default function NetworkInfo() {
                     stat.status === 'warning' ? 'bg-yellow-500' : 'bg-red-500'
                   }`} />
                 </View>
-                <Text className="text-sm text-gray-500 dark:text-gray-400">
+                <Text style={{fontFamily: 'Poppins_400Regular'}} className="text-sm text-gray-500 dark:text-gray-400">
                   {stat.title}
                 </Text>
-                <Text className="text-lg font-semibold text-gray-900 dark:text-gray-100">
+                <Text style={{fontFamily: 'Poppins_600SemiBold'}} className="text-lg font-semibold text-gray-900 dark:text-gray-100">
                   {stat.value}
                 </Text>
               </View>
@@ -94,7 +94,7 @@ export default function NetworkInfo() {
 
         {/* Recent Issues */}
         <View className="mb-8">
-          <Text className="text-xl font-semibold mb-4 text-gray-800 dark:text-gray-200">
+          <Text style={{fontFamily: 'Poppins_600SemiBold'}} className="text-xl font-semibold mb-4 text-gray-800 dark:text-gray-200">
             Recent Issues
           </Text>
           <View className="bg-white dark:bg-gray-800 rounded-xl shadow-sm">
@@ -110,11 +110,11 @@ export default function NetworkInfo() {
                     issue.severity === 'low' ? 'bg-yellow-500' : 
                     issue.severity === 'medium' ? 'bg-orange-500' : 'bg-red-500'
                   }`} />
-                  <Text className="text-gray-900 dark:text-gray-100">
+                  <Text style={{fontFamily: 'Poppins_400Regular'}} className="text-gray-900 dark:text-gray-100">
                     {issue.description}
                   </Text>
                 </View>
-                <Text className="text-gray-500 dark:text-gray-400">
+                <Text style={{fontFamily: 'Poppins_400Regular'}} className="text-gray-500 dark:text-gray-400">
                   {issue.time}
                 </Text>
               </View>
@@ -124,14 +124,14 @@ export default function NetworkInfo() {
 
         {/* Connection Quality */}
         <View className="mb-8">
-          <Text className="text-xl font-semibold mb-4 text-gray-800 dark:text-gray-200">
+          <Text style={{fontFamily: 'Poppins_600SemiBold'}} className="text-xl font-semibold mb-4 text-gray-800 dark:text-gray-200">
             Connection Quality
           </Text>
           <View className="bg-white dark:bg-gray-800 rounded-xl p-4 shadow-sm">
             <View className="h-2 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
               <View className="h-full w-[85%] bg-green-500 rounded-full" />
             </View>
-            <Text className="text-center mt-2 text-gray-600 dark:text-gray-300">
+            <Text style={{fontFamily: 'Poppins_400Regular'}}  className="text-center mt-2 text-gray-600 dark:text-gray-300">
               Excellent (85%)
             </Text>
           </View>

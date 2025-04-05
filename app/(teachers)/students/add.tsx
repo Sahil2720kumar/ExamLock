@@ -88,8 +88,8 @@ export default function AddStudent() {
     required = false
   }) => (
     <View className="mb-4">
-      <Text className="text-gray-700 dark:text-gray-300 mb-1">
-        {label} {required && <Text className="text-red-500">*</Text>}
+      <Text style={{fontFamily: 'Poppins_400Regular'}}  className="text-gray-700 dark:text-gray-300 mb-1">
+        {label} {required && <Text style={{fontFamily: 'Poppins_400Regular'}}   className="text-red-500">*</Text>}
       </Text>
       <View className="flex-row flex-wrap gap-2">
         {options.map((option) => (
@@ -104,7 +104,7 @@ export default function AddStudent() {
             `}
             onPress={() => onChange(option)}
           >
-            <Text className={
+            <Text style={{fontFamily: 'Poppins_400Regular'}}    className={
               value === option
                 ? 'text-white'
                 : 'text-gray-700 dark:text-gray-300'
@@ -122,7 +122,7 @@ export default function AddStudent() {
       case 1:
         return (
           <View>
-            <Text className="text-xl font-semibold text-gray-800 dark:text-gray-200 mb-6">
+            <Text style={{fontFamily: 'Poppins_600SemiBold'}} className="text-xl font-semibold text-gray-800 dark:text-gray-200 mb-6">
               Personal Information
             </Text>
 
@@ -146,7 +146,7 @@ export default function AddStudent() {
                   <FontAwesome name="camera" size={14} color="white" />
                 </View>
               </View>
-              <Text className="text-[#1a367b] mt-2">Upload Photo</Text>
+              <Text style={{fontFamily: 'Poppins_400Regular'}}  className="text-[#1a367b] mt-2">Upload Photo</Text>
             </TouchableOpacity>
             <View className=" flex-1">
 
@@ -229,13 +229,14 @@ export default function AddStudent() {
       case 2:
         return (
           <View>
-            <Text className="text-xl font-semibold text-gray-800 dark:text-gray-200 mb-6">
+            <Text style={{fontFamily: 'Poppins_600SemiBold'}} className="text-xl font-semibold text-gray-800 dark:text-gray-200 mb-6">
               Academic Information
             </Text>
 
             <View className="flex-1">
-              <Text className="text-gray-700 dark:text-gray-300 mb-1">School or College or University Name</Text>
+              <Text style={{fontFamily: 'Poppins_400Regular'}}    className="text-gray-700 dark:text-gray-300 mb-1">School or College or University Name</Text>
               <InputField
+
                 label="School or College or University Name"
                 value={formData.academicInfo.admistratorName}
                 onChangeText={(text) => setFormData(prev => ({
@@ -248,7 +249,7 @@ export default function AddStudent() {
             </View>
 
             <View className="flex-1">
-              <Text className="text-gray-700 dark:text-gray-300 mb-1">Roll Number</Text>
+              <Text style={{fontFamily: 'Poppins_400Regular'}}    className="text-gray-700 dark:text-gray-300 mb-1">Roll Number</Text>
               <InputField
                 label="Roll Number"
                 value={formData.academicInfo.rollNumber}
@@ -261,7 +262,7 @@ export default function AddStudent() {
               />
             </View>
             <View className="flex-1">
-              <Text className="text-gray-700 dark:text-gray-300 mb-1">Class</Text>
+              <Text style={{fontFamily: 'Poppins_400Regular'}}    className="text-gray-700 dark:text-gray-300 mb-1">Class</Text>
               <InputField
                 label="Class"
                 value={formData.academicInfo.class}
@@ -288,7 +289,7 @@ export default function AddStudent() {
                 />
               </View>
               <View className="">
-                <Text className="text-gray-700 dark:text-gray-300 mb-1">Batch Year</Text>
+                <Text style={{fontFamily: 'Poppins_400Regular'}}    className="text-gray-700 dark:text-gray-300 mb-1">Batch Year</Text>
                 <InputField
                   label="Batch"
                   value={formData.academicInfo.batch}
@@ -307,7 +308,7 @@ export default function AddStudent() {
       case 3:
         return (
           <View>
-            <Text className="text-xl font-semibold text-gray-800 dark:text-gray-200 mb-6">
+            <Text style={{fontFamily: 'Poppins_600SemiBold'}} className="text-xl font-semibold text-gray-800 dark:text-gray-200 mb-6">
               Account Setup
             </Text>
 
@@ -336,14 +337,14 @@ export default function AddStudent() {
             />
 
             <View className="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg mt-4">
-              <Text className="text-blue-800 dark:text-blue-200">
+              <Text style={{fontFamily: 'Poppins_400Regular'}}    className="text-blue-800 dark:text-blue-200">
                 Password must contain:
               </Text>
               <View className="mt-2 space-y-1">
-                <Text className="text-blue-700 dark:text-blue-300">• At least 8 characters</Text>
-                <Text className="text-blue-700 dark:text-blue-300">• One uppercase letter</Text>
-                <Text className="text-blue-700 dark:text-blue-300">• One number</Text>
-                <Text className="text-blue-700 dark:text-blue-300">• One special character</Text>
+                <Text style={{fontFamily: 'Poppins_400Regular'}}    className="text-blue-700 dark:text-blue-300">• At least 8 characters</Text>
+                <Text style={{fontFamily: 'Poppins_400Regular'}}    className="text-blue-700 dark:text-blue-300">• One uppercase letter</Text>
+                <Text style={{fontFamily: 'Poppins_400Regular'}}    className="text-blue-700 dark:text-blue-300">• One number</Text>
+                <Text style={{fontFamily: 'Poppins_400Regular'}}    className="text-blue-700 dark:text-blue-300">• One special character</Text>
               </View>
             </View>
           </View>
@@ -355,10 +356,10 @@ export default function AddStudent() {
     <ScrollView className="flex-1 bg-gray-50 dark:bg-gray-900">
       {/* Header */}
       <View className="px-6 py-8 bg-[#1a367b] dark:bg-[#0f1f4d]">
-        <Text className="text-3xl font-bold text-white mb-2">
+        <Text style={{fontFamily: 'Poppins_600SemiBold'}} className="text-3xl font-bold text-white mb-2">
           Add New Student
         </Text>
-        <Text className="text-gray-200 text-lg">
+        <Text style={{fontFamily: 'Poppins_400Regular'}}    className="text-gray-200 text-lg">
           Step {activeStep} of 3
         </Text>
       </View>
@@ -384,7 +385,7 @@ export default function AddStudent() {
               className="flex-1 bg-gray-200 py-3 rounded-xl"
               onPress={() => setActiveStep(activeStep - 1)}
             >
-              <Text className="text-gray-700 text-center font-semibold">
+              <Text style={{fontFamily: 'Poppins_400Regular'}}    className="text-gray-700 text-center font-semibold">
                 Previous
               </Text>
             </TouchableOpacity>
@@ -401,7 +402,7 @@ export default function AddStudent() {
               }
             }}
           >
-            <Text className="text-white text-center font-semibold">
+            <Text style={{fontFamily: 'Poppins_400Regular'}}      className="text-white text-center font-semibold">
               {activeStep === 3 ? 'Add Student' : 'Next'}
             </Text>
           </TouchableOpacity>

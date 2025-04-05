@@ -46,10 +46,10 @@ export default function Reports() {
     <ScrollView className="flex-1 bg-gray-50 dark:bg-gray-900">
       {/* Header */}
       <View className="px-6 py-8 bg-[#1a367b] dark:bg-[#0f1f4d]">
-        <Text className="text-3xl font-bold text-white mb-2">
+        <Text style={{fontFamily: 'Poppins_600SemiBold'}} className="text-3xl font-bold text-white mb-2">
           Reports & Analytics
         </Text>
-        <Text className="text-gray-200 text-lg">
+        <Text style={{fontFamily: 'Poppins_400Regular'}} className="text-gray-200 text-lg">
           Track exam performance and student progress
         </Text>
       </View>
@@ -68,10 +68,10 @@ export default function Reports() {
               className="flex-1 min-w-[150px] bg-white dark:bg-gray-800 rounded-xl p-4 shadow-sm"
             >
               <View className={`w-10 h-10 ${stat.color} rounded-full items-center justify-center mb-2`}>
-                <FontAwesome name={stat.icon} size={20} color="white" />
+                <FontAwesome name={stat.icon as any} size={20} color="white" />
               </View>
-              <Text className="text-gray-600 dark:text-gray-400">{stat.title}</Text>
-              <Text className="text-2xl font-bold text-gray-900 dark:text-gray-100">
+              <Text style={{fontFamily: 'Poppins_400Regular'}} className="text-gray-600 dark:text-gray-400">{stat.title}</Text>
+              <Text style={{fontFamily: 'Poppins_600SemiBold'}} className="text-2xl font-bold text-gray-900 dark:text-gray-100">
                 {stat.value}
               </Text>
             </View>
@@ -81,7 +81,7 @@ export default function Reports() {
         {/* Performance Trends */}
         <View className="bg-white dark:bg-gray-800 rounded-xl py-4 mb-6">
           <View className="flex-row justify-between items-center mb-4">
-            <Text className="text-lg font-semibold text-gray-800 dark:text-gray-200">
+            <Text style={{fontFamily: 'Poppins_600SemiBold'}} className="text-lg font-semibold text-gray-800 dark:text-gray-200">
               Performance Trends
             </Text>
             <View className="flex-row bg-gray-100 dark:bg-gray-700 rounded-lg p-1">
@@ -95,7 +95,7 @@ export default function Reports() {
                   }`}
                   onPress={() => setSelectedPeriod(period.id)}
                 >
-                  <Text className={
+                  <Text style={{fontFamily: 'Poppins_400Regular'}} className={
                     selectedPeriod === period.id 
                       ? 'text-white' 
                       : 'text-gray-600 dark:text-gray-400'
@@ -136,7 +136,7 @@ export default function Reports() {
 
         {/* Score Distribution */}
         <View className="bg-white dark:bg-gray-800 rounded-xl py-4 mb-6">
-          <Text className="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-4">
+          <Text style={{fontFamily: 'Poppins_600SemiBold'}} className="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-4">
             Score Distribution
           </Text>
           
@@ -169,7 +169,7 @@ export default function Reports() {
         {/* Recent Exams */}
         <View>
           <View className="flex-row justify-between items-center mb-4">
-            <Text className="text-lg font-semibold text-gray-800 dark:text-gray-200">
+            <Text style={{fontFamily: 'Poppins_600SemiBold'}} className="text-lg font-semibold text-gray-800 dark:text-gray-200">
               Recent Exams
             </Text>
             <View className="flex-row bg-gray-100 dark:bg-gray-700 rounded-lg p-1">
@@ -183,7 +183,7 @@ export default function Reports() {
                   }`}
                   onPress={() => setActiveFilter(filter.id)}
                 >
-                  <Text className={
+                  <Text style={{fontFamily: 'Poppins_400Regular'}} className={
                     activeFilter === filter.id 
                       ? 'text-white' 
                       : 'text-gray-600 dark:text-gray-400'
@@ -201,14 +201,14 @@ export default function Reports() {
               className="bg-white dark:bg-gray-800 rounded-xl p-4 mb-4 shadow-sm"
             >
               <View className="flex-row justify-between items-start mb-2">
-                <Text className="text-lg font-semibold text-gray-800 dark:text-gray-200">
+                <Text style={{fontFamily: 'Poppins_600SemiBold'}} className="text-lg font-semibold text-gray-800 dark:text-gray-200">
                   {exam.title}
                 </Text>
                 <View className={`
                   px-2 py-1 rounded-full
                   ${exam.status === 'completed' ? 'bg-green-100' : 'bg-yellow-100'}
                 `}>
-                  <Text className={`
+                  <Text style={{fontFamily: 'Poppins_400Regular'}}  className={`
                     text-sm capitalize
                     ${exam.status === 'completed' ? 'text-green-700' : 'text-yellow-700'}
                   `}>
@@ -217,26 +217,26 @@ export default function Reports() {
                 </View>
               </View>
 
-              <Text className="text-gray-600 dark:text-gray-400 mb-3">
+              <Text style={{fontFamily: 'Poppins_400Regular'}} className="text-gray-600 dark:text-gray-400 mb-3">
                 {new Date(exam.date).toLocaleDateString()}
               </Text>
 
               <View className="flex-row justify-between">
                 <View className="flex-row items-center">
                   <FontAwesome name="users" size={14} color="#6b7280" />
-                  <Text className="ml-2 text-gray-600 dark:text-gray-400">
+                  <Text style={{fontFamily: 'Poppins_400Regular'}}  className="ml-2 text-gray-600 dark:text-gray-400">
                     {exam.students} students
                   </Text>
                 </View>
                 <View className="flex-row items-center">
                   <FontAwesome name="star" size={14} color="#6b7280" />
-                  <Text className="ml-2 text-gray-600 dark:text-gray-400">
+                  <Text style={{fontFamily: 'Poppins_400Regular'}}  className="ml-2 text-gray-600 dark:text-gray-400">
                     Avg: {exam.avgScore}%
                   </Text>
                 </View>
                 <View className="flex-row items-center">
                   <FontAwesome name="check-circle" size={14} color="#6b7280" />
-                  <Text className="ml-2 text-gray-600 dark:text-gray-400">
+                  <Text style={{fontFamily: 'Poppins_400Regular'}}    className="ml-2 text-gray-600 dark:text-gray-400">
                     Pass: {exam.passRate}%
                   </Text>
                 </View>

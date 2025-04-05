@@ -58,10 +58,10 @@ export default function Index() {
   return (
     <ScrollView className="flex-1 bg-gray-50 dark:bg-gray-900">
       <View className="px-6 py-8 bg-[#1a367b] dark:bg-[#0f1f4d]">
-        <Text className="text-3xl font-bold text-white mb-2">
+        <Text style={{fontFamily: 'Poppins_700Bold'}} className="text-3xl font-bold text-white mb-2">
           ExamLock Dashboard
         </Text>
-        <Text className="text-gray-200 text-lg">
+        <Text style={{fontFamily: 'Poppins_400Regular'}} className="text-gray-200 text-lg">
           Welcome back, Professor Smith
         </Text>
         <NetworkStatus />
@@ -69,7 +69,7 @@ export default function Index() {
 
       <View className="p-6">
         <View className="mb-8">
-          <Text className="text-xl font-semibold mb-4 text-gray-800 dark:text-gray-200">
+          <Text style={{fontFamily: 'Poppins_600SemiBold'}} className="text-xl font-semibold mb-4 text-gray-800 dark:text-gray-200">
             Quick Stats
           </Text>
           <View className="flex-row flex-wrap gap-4">
@@ -80,7 +80,7 @@ export default function Index() {
         </View>
 
         <View className="mb-8">
-          <Text className="text-xl font-semibold mb-4 text-gray-800 dark:text-gray-200">
+          <Text style={{fontFamily: 'Poppins_600SemiBold'}} className="text-xl font-semibold mb-4 text-gray-800 dark:text-gray-200">
             Upcoming Exams
           </Text>
           <View className="gap-4">
@@ -91,7 +91,7 @@ export default function Index() {
         </View>
 
         <View className="mb-8">
-          <Text className="text-xl font-semibold mb-4 text-gray-800 dark:text-gray-200">
+          <Text style={{fontFamily: 'Poppins_600SemiBold'}} className="text-xl font-semibold mb-4 text-gray-800 dark:text-gray-200">
             Unchecked Exams
           </Text>
           <View className="gap-4">
@@ -102,7 +102,7 @@ export default function Index() {
         </View>
 
         <View className="mb-8">
-          <Text className="text-xl font-semibold mb-4 text-gray-800 dark:text-gray-200">
+          <Text style={{fontFamily: 'Poppins_600SemiBold'}}   className="text-xl font-semibold mb-4 text-gray-800 dark:text-gray-200">
             Quick Actions
           </Text>
           <View className="gap-4">

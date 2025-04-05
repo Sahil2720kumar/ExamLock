@@ -53,6 +53,7 @@ export function StatsCard({ title, value, trend, onPress }: StatsCardProps) {
               color={trend.isPositive ? '#4ade80' : '#f87171'}
             />
             <Text
+              style={{fontFamily: 'Poppins_400Regular'}}
               className={`text-xs font-medium ml-1
                 ${trend.isPositive ? 'text-green-700 dark:text-green-300' : 'text-red-700 dark:text-red-300'}`}
             >
@@ -62,11 +63,11 @@ export function StatsCard({ title, value, trend, onPress }: StatsCardProps) {
         )}
       </View>
 
-      <Text className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-1 ">
+      <Text style={{fontFamily: 'Poppins_600SemiBold'}} className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-1 ">
         {value}
       </Text>
 
-      <Text className="text-sm text-gray-600 dark:text-gray-400">
+      <Text style={{fontFamily: 'Poppins_400Regular'}} className="text-sm text-gray-600 dark:text-gray-400">
         {title}
       </Text>
     </Pressable>

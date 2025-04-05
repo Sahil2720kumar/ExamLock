@@ -61,7 +61,7 @@ export default function StudentsList() {
       <View className="px-6 py-8 bg-[#1a367b] dark:bg-[#0f1f4d]">
 
         <View className="flex-row justify-between items-center mb-4">
-          <Text className="text-3xl font-bold text-white">
+          <Text style={{fontFamily: 'Poppins_600SemiBold'}} className="text-3xl font-bold text-white">
             Students
           </Text>
           <TouchableOpacity
@@ -69,7 +69,7 @@ export default function StudentsList() {
             onPress={() => router.push('/students/add')}
           >
             <FontAwesome name="plus" size={16} color="white" />
-            <Text className="text-white ml-2">Add Student</Text>
+            <Text style={{fontFamily: 'Poppins_400Regular'}}  className="text-white ml-2">Add Student</Text>
           </TouchableOpacity>
         </View>
 
@@ -77,6 +77,7 @@ export default function StudentsList() {
         <View className="flex-row items-center bg-white/10 rounded-lg px-4 py-2">
           <FontAwesome name="search" size={16} color="white" />
           <TextInput
+            style={{fontFamily: 'Poppins_400Regular'}}
             className="flex-1 ml-3 text-white"
             placeholder="Search students..."
             placeholderTextColor="rgba(255, 255, 255, 0.6)"
@@ -90,7 +91,7 @@ export default function StudentsList() {
 
         {/* Quick Stats */}
         <View className="flex-row justify-between items-center mb-6">
-          <Text className="text-2xl font-semibold  text-gray-900 dark:text-gray-100">
+          <Text style={{fontFamily: 'Poppins_600SemiBold'}} className="text-2xl font-semibold  text-gray-900 dark:text-gray-100">
             Quick Stats
           </Text>
         </View>
@@ -104,10 +105,10 @@ export default function StudentsList() {
               className="flex-1 min-w-[150px] bg-white dark:bg-gray-800 rounded-xl p-4 shadow-sm"
             >
               <View className={`w-10 h-10 ${stat.color} rounded-full items-center justify-center mb-2`}>
-                <FontAwesome name={stat.icon} size={20} color="white" />
+                <FontAwesome name={stat.icon as any} size={20} color="white" />
               </View>
-              <Text className="text-gray-600 dark:text-gray-400">{stat.title}</Text>
-              <Text className="text-2xl font-bold text-gray-900 dark:text-gray-100">
+              <Text style={{fontFamily: 'Poppins_400Regular'}} className="text-gray-600 dark:text-gray-400">{stat.title}</Text>
+              <Text style={{fontFamily: 'Poppins_600SemiBold'}} className="text-2xl font-bold text-gray-900 dark:text-gray-100">
                 {stat.value}
               </Text>
             </View>
@@ -149,7 +150,7 @@ export default function StudentsList() {
         {/* Students List */}
         <View className="mt-6">
           <View className="flex-row justify-between items-center mb-6">
-            <Text className="text-2xl font-semibold  text-gray-900 dark:text-gray-100">
+            <Text style={{fontFamily: 'Poppins_600SemiBold'}} className="text-2xl font-semibold  text-gray-900 dark:text-gray-100">
               Students
             </Text>
           </View>
@@ -168,10 +169,10 @@ export default function StudentsList() {
                 <View className="flex-1 ml-4">
                   <View className="flex-row justify-between items-start">
                     <View>
-                      <Text className="text-lg font-semibold text-gray-900 dark:text-gray-100">
+                      <Text style={{fontFamily: 'Poppins_600SemiBold'}} className="text-lg font-semibold text-gray-900 dark:text-gray-100">
                         {student.name}
                       </Text>
-                      <Text className="text-gray-500 dark:text-gray-400">
+                      <Text style={{fontFamily: 'Poppins_400Regular'}} className="text-gray-500 dark:text-gray-400">
                         {student.rollNumber}
                       </Text>
                     </View>
@@ -191,13 +192,13 @@ export default function StudentsList() {
                   <View className="flex-row mt-2">
                     <View className="flex-row items-center mr-4">
                       <FontAwesome name="graduation-cap" size={14} color="#6b7280" />
-                      <Text className="ml-1 text-gray-600 dark:text-gray-400">
+                      <Text style={{fontFamily: 'Poppins_400Regular'}} className="ml-1 text-gray-600 dark:text-gray-400">
                         {student.department}
                       </Text>
                     </View>
                     <View className="flex-row items-center">
                       <FontAwesome name="calendar" size={14} color="#6b7280" />
-                      <Text className="ml-1 text-gray-600 dark:text-gray-400">
+                      <Text style={{fontFamily: 'Poppins_400Regular'}} className="ml-1 text-gray-600 dark:text-gray-400">
                         {student.year}
                       </Text>
                     </View>
@@ -208,13 +209,13 @@ export default function StudentsList() {
               <View className="flex-row justify-between mt-4 pt-4 border-t border-gray-100 dark:border-gray-700">
                 <View className="flex-row items-center">
                   <FontAwesome name="file-text" size={14} color="#6b7280" />
-                  <Text className="ml-2 text-gray-600 dark:text-gray-400">
+                  <Text style={{fontFamily: 'Poppins_400Regular'}} className="ml-2 text-gray-600 dark:text-gray-400">
                     {student.examsTaken} Exams Taken
                   </Text>
                 </View>
                 <View className="flex-row items-center">
                   <FontAwesome name="star" size={14} color="#6b7280" />
-                  <Text className="ml-2 text-gray-600 dark:text-gray-400">
+                  <Text style={{fontFamily: 'Poppins_400Regular'}}  className="ml-2 text-gray-600 dark:text-gray-400">
                     {student.avgScore}% Avg. Score
                   </Text>
                 </View>

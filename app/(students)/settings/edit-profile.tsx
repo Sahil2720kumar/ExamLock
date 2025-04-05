@@ -108,7 +108,7 @@ export default function EditProfile() {
           >
             {/* <FontAwesome name="arrow-left" size={20} color="white" /> */}
           </TouchableOpacity>
-          <Text className="text-white text-lg font-semibold">Edit Profile</Text>
+          <Text style={{fontFamily: 'Poppins_600SemiBold'}}    className="text-white text-lg font-semibold">Edit Profile</Text>
           <View className="w-10" /> {/* Spacer for alignment */}
         </View>
       </LinearGradient>
@@ -141,7 +141,7 @@ export default function EditProfile() {
       <View className="px-6">
         {/* Personal Information Card */}
         <View className="bg-white dark:bg-gray-800 rounded-3xl p-6 shadow-lg mb-6">
-          <Text className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
+          <Text style={{fontFamily: 'Poppins_600SemiBold'}}    className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
             Personal Information
           </Text>
           
@@ -198,7 +198,7 @@ export default function EditProfile() {
 
           {/* Gender Selection */}
           <View className="mb-4">
-            <Text className="text-sm font-medium text-gray-600 dark:text-gray-400 mb-2">
+            <Text style={{fontFamily: 'Poppins_400Regular'}}    className="text-sm font-medium text-gray-600 dark:text-gray-400 mb-2">
               Gender
             </Text>
             <View className="flex-row gap-3">
@@ -215,7 +215,7 @@ export default function EditProfile() {
                     personal: { ...prev.personal, gender }
                   }))}
                 >
-                  <Text className={`text-center capitalize ${
+                  <Text style={{fontFamily: 'Poppins_400Regular'}}    className={`text-center capitalize ${
                     formData.personal.gender === gender
                       ? 'text-white'
                       : 'text-gray-700 dark:text-gray-300'
@@ -230,7 +230,7 @@ export default function EditProfile() {
 
         {/* Academic Information Card */}
         <View className="bg-white dark:bg-gray-800 rounded-3xl p-6 shadow-lg mb-6">
-          <Text className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
+          <Text style={{fontFamily: 'Poppins_600SemiBold'}}    className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
             Academic Information
           </Text>
 
@@ -286,7 +286,7 @@ export default function EditProfile() {
 
         {/* Guardian Information Card */}
         <View className="bg-white dark:bg-gray-800 rounded-3xl p-6 shadow-lg mb-6">
-          <Text className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
+          <Text style={{fontFamily: 'Poppins_600SemiBold'}}    className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
             Guardian Information
           </Text>
 
@@ -387,7 +387,7 @@ export default function EditProfile() {
 
         {/* Account Information Card */}
         <View className="bg-white dark:bg-gray-800 rounded-3xl p-6 shadow-lg mb-6">
-          <Text className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
+          <Text style={{fontFamily: 'Poppins_600SemiBold'}}    className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
             Account Information
           </Text>
 
@@ -414,7 +414,7 @@ export default function EditProfile() {
               placeholder="Enter new password"
               secureTextEntry
             />
-            <Text className="text-xs text-gray-500 mt-1">
+            <Text style={{fontFamily: 'Poppins_400Regular'}}    className="text-xs text-gray-500 mt-1">
               Leave blank if you don't want to change password
             </Text>
           </View>
@@ -422,20 +422,20 @@ export default function EditProfile() {
           {/* Password Requirements Info */}
           {formData.account.password && (
             <View className="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-xl mb-4">
-              <Text className="text-sm font-medium text-blue-800 dark:text-blue-200 mb-2">
+              <Text style={{fontFamily: 'Poppins_400Regular'}}    className="text-sm font-medium text-blue-800 dark:text-blue-200 mb-2">
                 Password Requirements:
               </Text>
               <View className="space-y-1">
-                <Text className="text-xs text-blue-700 dark:text-blue-300">
+                <Text style={{fontFamily: 'Poppins_400Regular'}}    className="text-xs text-blue-700 dark:text-blue-300">
                   • Minimum 8 characters
                 </Text>
-                <Text className="text-xs text-blue-700 dark:text-blue-300">
+                <Text style={{fontFamily: 'Poppins_400Regular'}}    className="text-xs text-blue-700 dark:text-blue-300">
                   • At least one uppercase letter
                 </Text>
-                <Text className="text-xs text-blue-700 dark:text-blue-300">
+                <Text style={{fontFamily: 'Poppins_400Regular'}}    className="text-xs text-blue-700 dark:text-blue-300">
                   • At least one number
                 </Text>
-                <Text className="text-xs text-blue-700 dark:text-blue-300">
+                <Text style={{fontFamily: 'Poppins_400Regular'}}    className="text-xs text-blue-700 dark:text-blue-300">
                   • At least one special character
                 </Text>
               </View>
@@ -451,7 +451,7 @@ export default function EditProfile() {
             router.back();
           }}
         >
-          <Text className="text-white text-center font-semibold text-lg">
+          <Text style={{fontFamily: 'Poppins_400Regular'}}  className="text-white text-center font-semibold text-lg">
             Save Changes
           </Text>
         </TouchableOpacity>

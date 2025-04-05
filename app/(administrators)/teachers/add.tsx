@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { View, Text, ScrollView, TouchableOpacity, TextInput, Image, Alert } from 'react-native';
 import { FontAwesome } from '@expo/vector-icons';
 import * as ImagePicker from 'expo-image-picker';
+import InputField from '@/components/InputField';
 
 interface TeacherForm {
   personal: {
@@ -73,37 +74,14 @@ export default function AddTeacher() {
     }
   };
 
-  const InputField = ({ 
-    label, 
-    value, 
-    onChangeText, 
-    placeholder, 
-    required = false,
-    keyboardType = 'default',
-    secureTextEntry = false,
-  }) => (
-    <View className="mb-4">
-      <Text className="text-gray-700 dark:text-gray-300 mb-1">
-        {label} {required && <Text className="text-red-500">*</Text>}
-      </Text>
-      <TextInput
-        className="bg-white dark:bg-gray-800 px-4 py-3 rounded-lg border border-gray-200 dark:border-gray-700"
-        value={value}
-        onChangeText={onChangeText}
-        placeholder={placeholder}
-        placeholderTextColor="#9ca3af"
-        keyboardType={keyboardType}
-        secureTextEntry={secureTextEntry}
-      />
-    </View>
-  );
+ 
 
   const renderStepContent = () => {
     switch (activeStep) {
       case 1:
         return (
           <View>
-            <Text className="text-xl font-semibold text-gray-800 dark:text-gray-200 mb-6">
+            <Text style={{fontFamily: 'Poppins_600SemiBold'}}  className="text-xl font-semibold text-gray-800 dark:text-gray-200 mb-6">
               Personal Information
             </Text>
 
@@ -181,7 +159,7 @@ export default function AddTeacher() {
 
             {/* Gender Selection */}
             <View className="mb-4">
-              <Text className="text-gray-700 dark:text-gray-300 mb-2">Gender</Text>
+              <Text style={{fontFamily: 'Poppins_400Regular'}}  className="text-gray-700 dark:text-gray-300 mb-2">Gender</Text>
               <View className="flex-row gap-4">
                 {['male', 'female', 'other'].map((gender) => (
                   <TouchableOpacity
@@ -197,7 +175,7 @@ export default function AddTeacher() {
                       personal: { ...prev.personal, gender }
                     }))}
                   >
-                    <Text className={`
+                    <Text style={{fontFamily: 'Poppins_400Regular'}}    className={`
                       text-center capitalize
                       ${formData.personal.gender === gender ? 'text-white' : 'text-gray-700 dark:text-gray-300'}
                     `}>
@@ -213,7 +191,7 @@ export default function AddTeacher() {
       case 2:
         return (
           <View>
-            <Text className="text-xl font-semibold text-gray-800 dark:text-gray-200 mb-6">
+            <Text style={{fontFamily: 'Poppins_600SemiBold'}}  className="text-xl font-semibold text-gray-800 dark:text-gray-200 mb-6">
               Professional Information
             </Text>
 
@@ -278,7 +256,7 @@ export default function AddTeacher() {
       case 3:
         return (
           <View>
-            <Text className="text-xl font-semibold text-gray-800 dark:text-gray-200 mb-6">
+            <Text  style={{fontFamily: 'Poppins_600SemiBold'}}  className="text-xl font-semibold text-gray-800 dark:text-gray-200 mb-6">
               Account Setup
             </Text>
 
@@ -318,14 +296,14 @@ export default function AddTeacher() {
             />
 
             <View className="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg mt-4">
-              <Text className="text-blue-800 dark:text-blue-200">
+              <Text style={{fontFamily: 'Poppins_400Regular'}}  className="text-blue-800 dark:text-blue-200">
                 Password requirements:
               </Text>
               <View className="mt-2 space-y-1">
-                <Text className="text-blue-700 dark:text-blue-300">• Minimum 8 characters</Text>
-                <Text className="text-blue-700 dark:text-blue-300">• At least one uppercase letter</Text>
-                <Text className="text-blue-700 dark:text-blue-300">• At least one number</Text>
-                <Text className="text-blue-700 dark:text-blue-300">• At least one special character</Text>
+                <Text style={{fontFamily: 'Poppins_400Regular'}}  className="text-blue-700 dark:text-blue-300">• Minimum 8 characters</Text>
+                <Text style={{fontFamily: 'Poppins_400Regular'}}  className="text-blue-700 dark:text-blue-300">• At least one uppercase letter</Text>
+                <Text style={{fontFamily: 'Poppins_400Regular'}}  className="text-blue-700 dark:text-blue-300">• At least one number</Text>
+                <Text style={{fontFamily: 'Poppins_400Regular'}}  className="text-blue-700 dark:text-blue-300">• At least one special character</Text>
               </View>
             </View>
           </View>
@@ -337,10 +315,10 @@ export default function AddTeacher() {
     <ScrollView className="flex-1 bg-gray-50 dark:bg-gray-900">
       {/* Header */}
       <View className="px-6 py-8 bg-[#1a367b] dark:bg-[#0f1f4d]">
-        <Text className="text-3xl font-bold text-white mb-2">
+        <Text style={{fontFamily: 'Poppins_600SemiBold'}}  className="text-3xl font-bold text-white mb-2">
           Add New Teacher
         </Text>
-        <Text className="text-gray-200 text-lg">
+        <Text style={{fontFamily: 'Poppins_400Regular'}}  className="text-gray-200 text-lg">
           Step {activeStep} of 3
         </Text>
       </View>
@@ -366,7 +344,7 @@ export default function AddTeacher() {
               className="flex-1 bg-gray-200 py-3 rounded-xl"
               onPress={() => setActiveStep(activeStep - 1)}
             >
-              <Text className="text-gray-700 text-center font-semibold">
+              <Text style={{fontFamily: 'Poppins_400Regular'}}  className="text-gray-700 text-center font-semibold">
                 Previous
               </Text>
             </TouchableOpacity>
@@ -383,7 +361,7 @@ export default function AddTeacher() {
               }
             }}
           >
-            <Text className="text-white text-center font-semibold">
+            <Text style={{fontFamily: 'Poppins_400Regular'}}  className="text-white text-center font-semibold">
               {activeStep === 3 ? 'Add Teacher' : 'Next'}
             </Text>
           </TouchableOpacity>

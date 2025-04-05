@@ -69,16 +69,16 @@ export default function EditExam() {
       <View className="px-6 py-8 bg-[#1a367b] dark:bg-[#0f1f4d]">
         <View className="flex-row justify-between items-center">
           <View>
-            <Text className="text-3xl font-bold text-white mb-2">
+            <Text style={{fontFamily: 'Poppins_600SemiBold'}} className="text-3xl font-bold text-white mb-2">
               Edit Exam
             </Text>
-            <Text className="text-gray-200 text-lg">
+            <Text style={{fontFamily: 'Poppins_400Regular'}} className="text-gray-200 text-lg">
               {examDetails.title}
             </Text>
           </View>
           <View className={`px-3 py-1 rounded-full ${examDetails.status === 'scheduled' ? 'bg-blue-200' : 'bg-gray-200'
             }`}>
-            <Text className="capitalize">{examDetails.status}</Text>
+            <Text style={{fontFamily: 'Poppins_400Regular'}} className="capitalize">{examDetails.status}</Text>
           </View>
         </View>
       </View>
@@ -179,7 +179,7 @@ export default function EditExam() {
         {activeTab === 'questions' && (
           <View>
             <View className="flex-row justify-between items-center mb-4">
-              <Text className="text-lg font-semibold text-gray-800 dark:text-gray-200">
+              <Text style={{fontFamily: 'Poppins_600SemiBold'}} className="text-lg font-semibold text-gray-800 dark:text-gray-200">
                 Questions ({questions.length})
               </Text>
               <TouchableOpacity
@@ -187,7 +187,7 @@ export default function EditExam() {
                 onPress={() => router.push('/exam/question/add')}
               >
                 <FontAwesome name="plus" size={14} color="white" />
-                <Text className="text-white ml-2">Add Question</Text>
+                <Text style={{fontFamily: 'Poppins_400Regular'}} className="text-white ml-2">Add Question</Text>
               </TouchableOpacity>
             </View>
 
@@ -199,14 +199,14 @@ export default function EditExam() {
               >
                 <View className="flex-row justify-between items-start">
                   <View className="flex-1">
-                    <Text className="text-sm text-gray-500 dark:text-gray-400 mb-1">
+                    <Text style={{fontFamily: 'Poppins_400Regular'}} className="text-sm text-gray-500 dark:text-gray-400 mb-1">
                       Question {index + 1} • {question.type.toUpperCase()}
                     </Text>
-                    <Text className="text-gray-900 dark:text-gray-100">
+                    <Text style={{fontFamily: 'Poppins_400Regular'}} className="text-gray-900 dark:text-gray-100">
                       {question.question}
                     </Text>
                   </View>
-                  <Text className="text-[#1a367b] font-semibold">
+                  <Text style={{fontFamily: 'Poppins_400Regular'}} className="text-[#1a367b] font-semibold">
                     {question.marks} marks
                   </Text>
                 </View>
@@ -222,7 +222,7 @@ export default function EditExam() {
                             ? 'bg-green-500'
                             : 'bg-gray-200'
                           } mr-2`} />
-                        <Text className="text-gray-700 dark:text-gray-300">
+                        <Text style={{fontFamily: 'Poppins_400Regular'}} className="text-gray-700 dark:text-gray-300">
                           {option}
                         </Text>
                       </View>
@@ -239,18 +239,18 @@ export default function EditExam() {
           <View>
             {/*  Settings Warning: Feature Not Implemented*/}
             <View className="bg-yellow-50 dark:bg-yellow-900/20 rounded-lg p-4 mb-6">
-              <Text className="text-yellow-700 dark:text-yellow-300">
+              <Text style={{fontFamily: 'Poppins_400Regular'}} className="text-yellow-700 dark:text-yellow-300">
                 Settings Warning: Feature Not Implemented
               </Text>
             </View>
             <View className="bg-white dark:bg-gray-800 rounded-xl p-4 mb-4">
-              <Text className="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-4">
+              <Text style={{fontFamily: 'Poppins_600SemiBold'}} className="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-4">
                 Exam Settings
               </Text>
 
               <View className="gap-y-4">
                 <View className="flex-row justify-between items-center">
-                  <Text className="text-gray-700 dark:text-gray-300">
+                  <Text style={{fontFamily: 'Poppins_400Regular'}}  className="text-gray-700 dark:text-gray-300">
                     Randomize Questions
                   </Text>
                   {allowExamSettings.randomizeQuestions ? (
@@ -265,7 +265,7 @@ export default function EditExam() {
                 </View>
 
                 <View className="flex-row justify-between items-center">
-                  <Text className="text-gray-700 dark:text-gray-300">
+                  <Text style={{fontFamily: 'Poppins_400Regular'}}  className="text-gray-700 dark:text-gray-300">
                     Show Results Immediately
                   </Text>
                   {allowExamSettings.showResultsImmediately ? (
@@ -280,7 +280,7 @@ export default function EditExam() {
                 </View>
 
                 <View className="flex-row justify-between items-center">
-                  <Text className="text-gray-700 dark:text-gray-300">
+                  <Text style={{fontFamily: 'Poppins_400Regular'}}  className="text-gray-700 dark:text-gray-300">
                     Allow Review After Submit
                   </Text>
                   {allowExamSettings.allowReviewAfterSubmit ? (
@@ -297,7 +297,7 @@ export default function EditExam() {
             </View>
 
             <View className="bg-white dark:bg-gray-800 rounded-xl p-4">
-              <Text className="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-4">
+              <Text style={{fontFamily: 'Poppins_600SemiBold'}} className="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-4">
                 Advanced Settings
               </Text>
 
@@ -305,7 +305,7 @@ export default function EditExam() {
                 className="flex-row items-center justify-between py-2"
                 onPress={() => {/* Handle navigation */ }}
               >
-                <Text className="text-gray-700 dark:text-gray-300">
+                <Text style={{fontFamily: 'Poppins_400Regular'}}  className="text-gray-700 dark:text-gray-300">
                   Access Control
                 </Text>
                 <FontAwesome name="chevron-right" size={14} color="#6b7280" />
@@ -315,7 +315,7 @@ export default function EditExam() {
                 className="flex-row items-center justify-between py-2"
                 onPress={() => {/* Handle navigation */ }}
               >
-                <Text className="text-gray-700 dark:text-gray-300">
+                <Text style={{fontFamily: 'Poppins_400Regular'}}  className="text-gray-700 dark:text-gray-300">
                   Time Restrictions
                 </Text>
                 <FontAwesome name="chevron-right" size={14} color="#6b7280" />
@@ -325,7 +325,7 @@ export default function EditExam() {
                 className="flex-row items-center justify-between py-2"
                 onPress={() => {/* Handle navigation */ }}
               >
-                <Text className="text-gray-700 dark:text-gray-300">
+                <Text style={{fontFamily: 'Poppins_400Regular'}}  className="text-gray-700 dark:text-gray-300">
                   Grading Options
                 </Text>
                 <FontAwesome name="chevron-right" size={14} color="#6b7280" />
@@ -339,7 +339,7 @@ export default function EditExam() {
           className="bg-[#1a367b] py-3 rounded-xl mt-6"
           onPress={handleSave}
         >
-          <Text className="text-white text-center font-semibold">
+          <Text style={{fontFamily: 'Poppins_400Regular'}}    className="text-white text-center font-semibold">
             Save Changes
           </Text>
         </TouchableOpacity>

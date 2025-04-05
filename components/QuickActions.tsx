@@ -54,12 +54,12 @@ export function QuickActions({ actions }: QuickActionsProps) {
             </View>
 
             <View className="mt-4">
-              <Text className="text-base font-semibold text-gray-900 dark:text-gray-100">
+              <Text style={{fontFamily: 'Poppins_600SemiBold'}} className="text-base font-semibold text-gray-900 dark:text-gray-100">
                 {action.title}
               </Text>
               
               <View className="flex-row items-center mt-2">
-                <Text className="text-sm text-gray-500 dark:text-gray-400 mr-1">
+                <Text style={{fontFamily: 'Poppins_400Regular'}}  className="text-sm text-gray-500 dark:text-gray-400 mr-1">
                   Quick access
                 </Text>
                 <MaterialCommunityIcons

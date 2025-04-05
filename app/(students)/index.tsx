@@ -81,13 +81,13 @@ export default function StudentDashboard() {
             className="w-20 h-20 rounded-full border-4 border-white/20"
           />
           <View className="ml-4 flex-1">
-            <Text className="text-2xl font-bold text-white mb-1">
+            <Text style={{fontFamily: 'Poppins_700Bold'}} className="text-2xl font-bold text-white mb-1">
               {studentInfo.name}
             </Text>
-            <Text className="text-gray-300">
+            <Text style={{fontFamily: 'Poppins_400Regular'}} className="text-gray-300">
               {studentInfo.rollNumber}
             </Text>
-            <Text className="text-gray-300">
+            <Text style={{fontFamily: 'Poppins_400Regular'}}  className="text-gray-300">
               {studentInfo.department} • {studentInfo.year}
             </Text>
           </View>
@@ -113,7 +113,7 @@ export default function StudentDashboard() {
       <View className="p-6">
         {/* Performance Chart */}
         <View className="bg-white dark:bg-gray-800 rounded-xl p-4 mb-6">
-          <Text className="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-4">
+          <Text style={{fontFamily: 'Poppins_600SemiBold'}} className="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-4">
             Academic Performance
           </Text>
           <LineChart
@@ -144,7 +144,7 @@ export default function StudentDashboard() {
 
         {/* Upcoming Exams */}
         <View className="mb-6">
-          <Text className="text-xl font-semibold text-gray-800 dark:text-gray-200 mb-4">
+          <Text style={{fontFamily: 'Poppins_600SemiBold'}} className="text-xl font-semibold text-gray-800 dark:text-gray-200 mb-4">
             Upcoming Exams
           </Text>
           {upcomingExams.map((exam) => (
@@ -155,15 +155,15 @@ export default function StudentDashboard() {
             >
               <View className="flex-row justify-between items-start">
                 <View>
-                  <Text className="text-lg font-semibold text-gray-900 dark:text-gray-100">
+                  <Text style={{fontFamily: 'Poppins_600SemiBold'}} className="text-lg font-semibold text-gray-900 dark:text-gray-100">
                     {exam.subject}
                   </Text>
-                  <Text className="text-gray-500 dark:text-gray-400 mt-1">
+                  <Text style={{fontFamily: 'Poppins_400Regular'}} className="text-gray-500 dark:text-gray-400 mt-1">
                     {exam.teacher}
                   </Text>
                 </View>
                 <View className="bg-blue-50 dark:bg-blue-900/20 px-3 py-1 rounded-full">
-                  <Text className="text-blue-600 dark:text-blue-400">
+                  <Text style={{fontFamily: 'Poppins_400Regular'}}  className="text-blue-600 dark:text-blue-400">
                     {exam.date}
                   </Text>
                 </View>
@@ -171,13 +171,13 @@ export default function StudentDashboard() {
               <View className="flex-row mt-3">
                 <View className="flex-row items-center mr-4">
                   <FontAwesome name="clock-o" size={14} color="#6b7280" />
-                  <Text className="text-gray-500 dark:text-gray-400 ml-1">
+                  <Text style={{fontFamily: 'Poppins_400Regular'}}  className="text-gray-500 dark:text-gray-400 ml-1">
                     {exam.time}
                   </Text>
                 </View>
                 <View className="flex-row items-center">
                   <FontAwesome name="map-marker" size={14} color="#6b7280" />
-                  <Text className="text-gray-500 dark:text-gray-400 ml-1">
+                  <Text style={{fontFamily: 'Poppins_400Regular'}}  className="text-gray-500 dark:text-gray-400 ml-1">
                     {exam.venue}
                   </Text>
                 </View>
@@ -248,7 +248,7 @@ export default function StudentDashboard() {
               <View className={`w-10 h-10 ${action.color} rounded-full items-center justify-center mb-2`}>
                 <FontAwesome name={action.icon} size={20} color="white" />
               </View>
-              <Text className="text-gray-900 dark:text-gray-100 font-medium">
+              <Text style={{fontFamily: 'Poppins_400Regular'}} className="text-gray-900 dark:text-gray-100 font-medium">
                 {action.title}
               </Text>
             </TouchableOpacity>
@@ -257,7 +257,7 @@ export default function StudentDashboard() {
 
       {/* Today Exam */}
       <View className="mb-6 ">
-        <Text className="text-xl font-semibold text-gray-800 dark:text-gray-200 mb-4">
+        <Text style={{fontFamily: 'Poppins_600SemiBold'}} className="text-xl font-semibold text-gray-800 dark:text-gray-200 mb-4">
           Current/Today Exam
         </Text>
         <View className="flex-col gap-4">
@@ -270,15 +270,15 @@ export default function StudentDashboard() {
             >
               <View className="flex-row justify-between items-start">
                 <View>
-                  <Text className="text-lg font-semibold text-gray-900 dark:text-gray-100">
+                  <Text style={{fontFamily: 'Poppins_600SemiBold'}} className="text-lg font-semibold text-gray-900 dark:text-gray-100">
                     {exam.subject}
                   </Text>
-                  <Text className="text-gray-500 dark:text-gray-400 mt-1">
+                  <Text style={{fontFamily: 'Poppins_400Regular'}} className="text-gray-500 dark:text-gray-400 mt-1">
                     {exam.teacher}
                   </Text>
                 </View>
                 <View className="bg-blue-50 dark:bg-blue-900/20 px-3 py-1 rounded-full">
-                  <Text className="text-blue-600 dark:text-blue-400">
+                  <Text style={{fontFamily: 'Poppins_400Regular'}}  className="text-blue-600 dark:text-blue-400">
                     {exam.date}
                   </Text>
                 </View>
@@ -286,13 +286,13 @@ export default function StudentDashboard() {
               <View className="flex-row mt-3">
                 <View className="flex-row items-center mr-4">
                   <FontAwesome name="clock-o" size={14} color="#6b7280" />
-                  <Text className="text-gray-500 dark:text-gray-400 ml-1">
+                  <Text style={{fontFamily: 'Poppins_400Regular'}}  className="text-gray-500 dark:text-gray-400 ml-1">
                     {exam.time}
                   </Text>
                 </View>
                 <View className="flex-row items-center">
                   <FontAwesome name="map-marker" size={14} color="#6b7280" />
-                  <Text className="text-gray-500 dark:text-gray-400 ml-1">
+                  <Text style={{fontFamily: 'Poppins_400Regular'}}  className="text-gray-500 dark:text-gray-400 ml-1">
                     {exam.venue}
                   </Text>
                 </View>
@@ -306,7 +306,7 @@ export default function StudentDashboard() {
 
         {/* Completed Exams */}
         <View className="mb-6">
-          <Text className="text-xl font-semibold text-gray-800 dark:text-gray-200 mb-4">
+          <Text style={{fontFamily: 'Poppins_600SemiBold'}}   className="text-xl font-semibold text-gray-800 dark:text-gray-200 mb-4">
             Completed Exams
           </Text>
           <View className="grid grid-cols-2 gap-4"> 
@@ -376,21 +376,21 @@ export default function StudentDashboard() {
                   </View>
                 </View>
 
-                <Text className="text-lg font-semibold text-gray-900 dark:text-gray-100">
+                  <Text style={{fontFamily: 'Poppins_600SemiBold'}} className="text-lg font-semibold text-gray-900 dark:text-gray-100">
                   {exam.title}
                 </Text>
-                <Text className="text-sm text-gray-500 dark:text-gray-400 mb-2">
+                <Text style={{fontFamily: 'Poppins_400Regular'}} className="text-sm text-gray-500 dark:text-gray-400 mb-2">
                   {exam.subject}
                 </Text>
 
                 <View className="flex-row justify-between items-center mt-2 pt-2 border-t border-gray-100 dark:border-gray-700">
                   <View className="flex-row items-center">
                     <FontAwesome name="calendar" size={12} color="#6b7280" />
-                    <Text className="text-xs text-gray-500 dark:text-gray-400 ml-1">
+                    <Text style={{fontFamily: 'Poppins_400Regular'}} className="text-xs text-gray-500 dark:text-gray-400 ml-1">
                       {exam.date}
                     </Text>
                   </View>
-                  <Text className="text-lg font-bold text-gray-900 dark:text-gray-100">
+                  <Text style={{fontFamily: 'Poppins_600SemiBold'}} className="text-lg font-bold text-gray-900 dark:text-gray-100">
                     {exam.score}%
                   </Text>
                 </View>
