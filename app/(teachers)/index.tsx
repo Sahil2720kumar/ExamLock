@@ -4,6 +4,7 @@ import { NetworkStatus } from '@/components/NetworkStatus';
 import { ExamCard } from '@/components/ExamCard';
 import { StatsCard } from '@/components/StatsCard';
 import { QuickActions } from '@/components/QuickActions';
+import { router } from 'expo-router';
 
 export default function Index() {
   const colorScheme = useColorScheme();
@@ -25,6 +26,25 @@ export default function Index() {
       students: 32,
       duration: '120',
       status: 'draft',
+    },
+  ];
+
+  const uncheckedExams = [
+    {
+      id: 1,
+      title: 'Final Exam - Advanced Mathematics',
+      date: '2024-04-15T09:00:00',
+      students: 45,
+      duration: '180',
+      status: 'completed',
+    },
+    {
+      id: 2,
+      title: 'Midterm - Computer Science',
+      date: '2024-04-10T14:00:00',
+      students: 32,
+      duration: '120',
+      status: 'completed',
     },
   ];
 
@@ -65,7 +85,18 @@ export default function Index() {
           </Text>
           <View className="gap-4">
             {upcomingExams.map((exam) => (
-              <ExamCard key={exam.id} {...exam} />
+              <ExamCard  key={exam.id} {...exam} onPress={() => router.push(`/(teachers)/exam/exam-details?id=${exam.id}`)}/>
+            ))}
+          </View>
+        </View>
+
+        <View className="mb-8">
+          <Text className="text-xl font-semibold mb-4 text-gray-800 dark:text-gray-200">
+            Unchecked Exams
+          </Text>
+          <View className="gap-4">
+            {uncheckedExams.map((exam) => (
+              <ExamCard  key={exam.id} {...exam} onPress={() => router.push(`/(teachers)/exam/uncheck-exam`)}/>
             ))}
           </View>
         </View>

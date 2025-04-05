@@ -33,6 +33,9 @@ export default function AdminDashboard() {
     // Add more activities as needed
   ];
 
+  // router.push('/(students)/');
+// router.push('/(teachers)');
+
   return (
     <ScrollView className="flex-1 bg-gray-50 dark:bg-gray-900">
       {/* Header */}

@@ -9,6 +9,7 @@ export default function Layout() {
   return (
     <>
       <Stack screenOptions={{ headerShown: true, header: (props) => <ExamHeader {...props} showBack={false} showProfile={true} />, }} >
+        <Stack.Screen name="(students)" options={{headerShown: false}}  /> 
         <Stack.Screen name="(administrators)" options={{headerShown: false}} />
         <Stack.Screen name="(teachers)" options={{headerShown: false}} />
         <Stack.Screen name="notifications" options={{ title: 'Notifications', header: (props) => <ExamHeader {...props} showBack={true} showProfile={true} /> }} />

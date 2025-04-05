@@ -11,6 +11,7 @@ const InputField = ({
   keyboardType = 'default',
   numberOfLines = 1,
   required = false, 
+  disabled = false,
   className = ''
 }) => {
   const [isFocused, setIsFocused] = useState(false);
@@ -48,9 +49,10 @@ const InputField = ({
         <TextInput
           className={`       
             px-4 text-gray-900 dark:text-gray-100
-            
+            ${disabled ? 'opacity-50' : ''}
           `}
           value={value}
+          editable={!disabled}
           onChangeText={onChangeText}
           placeholder={ placeholder}
           placeholderTextColor="#9ca3af"
