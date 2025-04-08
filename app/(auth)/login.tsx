@@ -1,35 +1,91 @@
 import { useState } from 'react';
-import { 
-  View, 
-  Text, 
-  TouchableOpacity, 
-  Image, 
-  KeyboardAvoidingView, 
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  Image,
+  KeyboardAvoidingView,
   Platform,
   ScrollView,
-  Pressable
+  Pressable,
+  AppState
 } from 'react-native';
 import { router } from 'expo-router';
 import { LinearGradient } from 'expo-linear-gradient';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import InputField from '@/components/InputField';
+import { supabase } from '@/utils/supabase';
+import { useProfileStore } from '@/store/profileStore';
+import { useSessionStore } from '@/store/sessionStore';
+import { useQuery } from '@tanstack/react-query';
+import { fetchUserByEmail } from '@/api';
+
+
 
 export default function LoginScreen() {
   const [formData, setFormData] = useState({
     username: '',
     password: '',
   });
+  const [isLoading, setIsLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
+  const [error, setError] = useState('');
   const [rememberMe, setRememberMe] = useState(false);
+  const {setProfile} = useProfileStore();
+  const {setSession} = useSessionStore();
 
-  const handleLogin = () => {
+
+  const handleLogin = async () => {
     // Add your login logic here
-    router.push('/(administrators)');
+    setError('');
+    setIsLoading(true);
+    const { data:{session}, error } = await supabase.auth.signInWithPassword({
+      email: formData.username.trim(),
+      password: formData.password.trim(),
+    })
+
+    if (error) {
+      setIsLoading(false);
+      setError(error.message);
+      console.log(error);
+    }
+
+    if (session) {
+      setSession(session.access_token);
+    }
+    
+    const {data:userData,error:userError}=useQuery({
+      queryKey:['user',formData.username.toLowerCase().trim()],
+      queryFn:()=>fetchUserByEmail(formData.username.toLowerCase().trim())
+    })
+    
+    console.log("userData", userData);
+    setProfile(userData[0]);
+    
+    if (userError) {
+      setIsLoading(false);
+      setError(userError.message);
+      console.log(userError);
+    }
+    
+    if (userData[0].role === 'STUDENT') {
+      router.push('/(students)/');
+    } else if (userData[0].role === 'TEACHER') {
+      router.push('/(teacher)/');
+    } else if (userData[0].role === 'ADMINISTRATOR') {
+      router.push('/(administrator)/');
+    } else {
+      setError('Invalid role');
+      setIsLoading(false);
+    }
+    
+    setIsLoading(false);
+    
   };
 
 
   return (
-    <KeyboardAvoidingView 
+    <KeyboardAvoidingView
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
       className="flex-1"
     >
@@ -41,11 +97,11 @@ export default function LoginScreen() {
         >
           <View className="items-center">
             <View className="flex-row items-center justify-center">
-              <Text style={{fontFamily: 'Poppins_700Bold'}} className="text-3xl font-bold text-white mt-4">
+              <Text style={{ fontFamily: 'Poppins_700Bold' }} className="text-3xl font-bold text-white mt-4">
                 ExamLock
               </Text>
             </View>
-            <Text style={{fontFamily: 'Poppins_400Regular'}} className="text-blue-100 text-base mt-2">
+            <Text style={{ fontFamily: 'Poppins_400Regular' }} className="text-blue-100 text-base mt-2">
               Secure Online Examination Platform
             </Text>
           </View>
@@ -54,7 +110,7 @@ export default function LoginScreen() {
         {/* Login Form */}
         <View className="px-6 pt-8">
           <View className="bg-white dark:bg-gray-800 rounded-3xl p-6 shadow-xl">
-            <Text style={{fontFamily: 'Poppins_700Bold'}} className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+            <Text style={{ fontFamily: 'Poppins_700Bold' }} className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
               Welcome Back
             </Text>
 
@@ -66,9 +122,9 @@ export default function LoginScreen() {
                 placeholder="Enter your username"
                 required
                 leftIcon={
-                  <MaterialCommunityIcons 
-                    name="account" 
-                    size={20} 
+                  <MaterialCommunityIcons
+                    name="account"
+                    size={20}
                     color="#6B7280"
                   />
                 }
@@ -82,45 +138,48 @@ export default function LoginScreen() {
                 secureTextEntry={!showPassword}
                 required
                 leftIcon={
-                  <MaterialCommunityIcons 
-                    name="lock" 
-                    size={20} 
+                  <MaterialCommunityIcons
+                    name="lock"
+                    size={20}
                     color="#6B7280"
                   />
                 }
                 rightIcon={
                   <TouchableOpacity onPress={() => setShowPassword(!showPassword)}>
-                    <MaterialCommunityIcons 
-                      name={showPassword ? "eye-off" : "eye"} 
-                      size={20} 
+                    <MaterialCommunityIcons
+                      name={showPassword ? "eye-off" : "eye"}
+                      size={20}
                       color="#6B7280"
                     />
                   </TouchableOpacity>
                 }
               />
 
+              {error && (
+                <Text style={{ fontFamily: 'Poppins_400Regular' }} className="text-red-500 text-left">{error}</Text>
+              )}
+
               {/* Remember Me & Forgot Password */}
               <View className="flex-row items-center justify-between mb-2">
-                <TouchableOpacity 
+                <TouchableOpacity
                   className="flex-row items-center"
                   onPress={() => setRememberMe(!rememberMe)}
                 >
-                  <View className={`w-5 h-5 rounded border ${
-                    rememberMe 
-                      ? 'bg-blue-600 border-blue-600' 
+                  <View className={`w-5 h-5 rounded border ${rememberMe
+                      ? 'bg-blue-600 border-blue-600'
                       : 'border-gray-300 dark:border-gray-600'
-                  } mr-2 items-center justify-center`}>
+                    } mr-2 items-center justify-center`}>
                     {rememberMe && (
                       <MaterialCommunityIcons name="check" size={16} color="white" />
                     )}
                   </View>
-                  <Text style={{fontFamily: 'Poppins_400Regular'}} className="text-gray-600 dark:text-gray-400">
+                  <Text style={{ fontFamily: 'Poppins_400Regular' }} className="text-gray-600 dark:text-gray-400">
                     Remember me
                   </Text>
                 </TouchableOpacity>
 
                 <TouchableOpacity onPress={() => router.push('/forgot-password')}>
-                  <Text style={{fontFamily: 'Poppins_600SemiBold'}} className="text-blue-600 dark:text-blue-400">
+                  <Text style={{ fontFamily: 'Poppins_600SemiBold' }} className="text-blue-600 dark:text-blue-400">
                     Forgot Password?
                   </Text>
                 </TouchableOpacity>
@@ -130,9 +189,10 @@ export default function LoginScreen() {
               <TouchableOpacity
                 className="bg-[#1a367b] py-4 rounded-xl mt-4"
                 onPress={handleLogin}
+                disabled={isLoading}
               >
-                <Text style={{fontFamily: 'Poppins_600SemiBold'}} className="text-white text-center font-semibold text-lg">
-                  Login
+                <Text style={{ fontFamily: 'Poppins_600SemiBold' }} className="text-white text-center font-semibold text-lg">
+                  {isLoading ? 'Logging in...' : 'Login'}
                 </Text>
               </TouchableOpacity>
             </View>
@@ -166,11 +226,11 @@ export default function LoginScreen() {
 
           {/* Sign Up Link */}
           <View className="flex-row justify-center mt-8 mb-8">
-            <Text style={{fontFamily: 'Poppins_400Regular'}} className="text-gray-600 dark:text-gray-400">
+            <Text style={{ fontFamily: 'Poppins_400Regular' }} className="text-gray-600 dark:text-gray-400">
               Don't have an account?{' '}
             </Text>
             <TouchableOpacity onPress={() => router.push('/(auth)/signup')}>
-              <Text style={{fontFamily: 'Poppins_600SemiBold'}} className="text-blue-600 dark:text-blue-400 font-semibold">
+              <Text style={{ fontFamily: 'Poppins_600SemiBold' }} className="text-blue-600 dark:text-blue-400 font-semibold">
                 Sign Up
               </Text>
             </TouchableOpacity>

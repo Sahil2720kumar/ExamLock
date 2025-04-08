@@ -12,6 +12,7 @@ import { router } from 'expo-router';
 import { LinearGradient } from 'expo-linear-gradient';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import InputField from '@/components/InputField';
+import { supabase } from '@/utils/supabase';
 
 
 
@@ -22,7 +23,7 @@ interface SignupForm {
   phone: string;
   password: string;
   confirmPassword: string;
-  role: 'student' | 'teacher' | null;
+  role: 'STUDENT' | 'TEACHER' | null;
 }
 
 export default function SignupScreen() {
@@ -33,19 +34,74 @@ export default function SignupScreen() {
     phone: '',
     password: '',
     confirmPassword: '',
-    role: null,
+    role: 'STUDENT',
   });
 
   const [showPassword, setShowPassword] = useState(false);
   const [currentStep, setCurrentStep] = useState(1);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState('');
 
-  const handleSignup = () => {
+  const handleSignup = async () => {
+    setError('');
+    setIsLoading(true);
+ 
     if (formData.password !== formData.confirmPassword) {
-      Alert.alert('Error', 'Passwords do not match');
+      setError('Passwords do not match');
+      setIsLoading(false);
       return;
     }
+
+    const { data, error } = await supabase.auth.signUp({
+      email: formData.email,
+      password: formData.password,
+    })
+
+    console.log("signup data", data);
+
+    if (error) {
+      setError(error.message);
+      console.log(error.message);
+      setIsLoading(false);
+      return;
+    }
+    
+
+    const { data: userData, error: userError } = await supabase.from('users').insert({
+      email: formData.email,
+      name: formData.firstName + ' ' + formData.lastName,
+      role: formData.role,
+    }).select('*')
+
+    if(userError) {
+      setError(userError.message);
+      setIsLoading(false);
+      return;
+    }
+
+    if(formData.role === 'STUDENT') {
+      const { data: studentData, error: studentError } = await supabase.from('students').insert({
+        user_id: userData[0].id,
+        first_name: formData.firstName,
+        last_name: formData.lastName,
+        email: formData.email,
+        phone: formData.phone,
+      })
+    }
+
+    if(formData.role === 'TEACHER') {
+      const { data: teacherData, error: teacherError } = await supabase.from('teachers').insert({
+        user_id: userData[0].id,
+        first_name: formData.firstName,
+        last_name: formData.lastName,
+        email: formData.email,
+        phone: formData.phone,
+      })
+    }
+
+    setIsLoading(false);
     // Add your signup logic here
-    router.push('/login');
+    router.push('/(auth)/login');
   };
 
   const renderStepIndicator = () => (
@@ -129,8 +185,8 @@ export default function SignupScreen() {
         </Text>
         <View className="flex-row gap-4">
           {[
-            { value: 'student', icon: 'school', label: 'Student' },
-            { value: 'teacher', icon: 'account-group', label: 'Teacher' },
+            { value: 'STUDENT', icon: 'school', label: 'Student' },
+            { value: 'TEACHER', icon: 'account-group', label: 'Teacher' },
             // { value: 'administrator', icon: 'account-group', label: 'Admin' },
           ].map((role) => (
             <TouchableOpacity
@@ -139,7 +195,7 @@ export default function SignupScreen() {
                 ? 'bg-blue-50 border-blue-600 dark:bg-blue-900/20 dark:border-blue-500'
                 : 'border-gray-200 dark:border-gray-700'
                 }`}
-              onPress={() => setFormData(prev => ({ ...prev, role: role.value as 'student' | 'teacher' }))}
+              onPress={() => setFormData(prev => ({ ...prev, role: role.value as 'STUDENT' | 'TEACHER' }))}
             >
               <View className="items-center">
                 <MaterialCommunityIcons
@@ -192,8 +248,12 @@ export default function SignupScreen() {
         }
       />
 
+      {error && (
+        <Text style={{fontFamily: 'Poppins_600SemiBold'}} className="text-red-500 text-left">{error}</Text>
+      )}
+
       {/* Password Requirements */}
-      <View className="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-xl">
+      <View className="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-xl mt-4">
         <Text style={{fontFamily: 'Poppins_600SemiBold'}} className="text-sm font-medium text-blue-800 dark:text-blue-200 mb-2">
           Password Requirements:
         </Text>
@@ -226,9 +286,10 @@ export default function SignupScreen() {
         <TouchableOpacity
           className="flex-1 bg-[#1a367b] py-4 rounded-xl"
           onPress={handleSignup}
+          disabled={isLoading}
         >
           <Text style={{fontFamily: 'Poppins_600SemiBold'}}   className="text-white text-center font-semibold text-lg">
-            Sign Up
+            {isLoading ? 'Signing Up...' : 'Sign Up'}
           </Text>
         </TouchableOpacity>
       </View>

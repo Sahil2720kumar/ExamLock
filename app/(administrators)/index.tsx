@@ -3,11 +3,19 @@ import { FontAwesome } from '@expo/vector-icons';
 import { LineChart, BarChart } from 'react-native-chart-kit';
 import { router } from 'expo-router';
 import { useEffect } from 'react';
+import { useProfileStore } from '@/store/profileStore';
 
 export default function AdminDashboard() {
+  const { profile } = useProfileStore();
 
   // useEffect(() => {
   //   // Delay the navigation slightly to ensure Root Layout is mounted
+  //   if(profile.role !== 'Administrator'){
+  //     router.replace('/(auth)/login');
+  //   }
+
+
+
   //   const timer = setTimeout(() => {
   //     router.replace('/(auth)/login');
   //   }, 0);

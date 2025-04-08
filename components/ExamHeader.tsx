@@ -4,6 +4,8 @@ import { View, Text, TouchableOpacity, Image } from 'react-native';
 import { useRouter, usePathname } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
 import { headerStyles, COLORS } from '@/styles/headerStyles';
+import { useProfileStore } from '@/store/profileStore';
+
 
 const ExamHeader = ({ 
   isSecure = true, 
@@ -14,7 +16,9 @@ const ExamHeader = ({
 }) => {
   const router = useRouter();
   const pathname = usePathname();
-  
+  const { profile } = useProfileStore();
+
+
   return (
     <View style={headerStyles.headerContainer}>
       {showBack ? (
@@ -48,9 +52,9 @@ const ExamHeader = ({
       {showProfile && (
         <TouchableOpacity 
           style={headerStyles.avatarContainer}
-          onPress={() => router.push('/sahil')}
+          onPress={() => router.push(`/${profile.email}`)}
         >
-          <Text style={[headerStyles.avatarText,{fontFamily: 'Poppins_600SemiBold'}]}>JS</Text>
+          <Text style={[headerStyles.avatarText,{fontFamily: 'Poppins_600SemiBold'}]}>{Object.keys(profile).length > 0 ? profile?.name.slice(0, 2) : 'XX'}</Text>
           {notifications > 0 && (
             <View style={headerStyles.notificationBadge}>
               <Text style={[headerStyles.badgeText,{fontFamily: 'Poppins_400Regular'}]}>
