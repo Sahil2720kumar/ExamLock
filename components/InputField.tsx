@@ -9,6 +9,7 @@ const InputField = ({
   placeholder,
   multiline = false,
   keyboardType = 'default',
+  type = 'text',
   numberOfLines = 1,
   required = false,
   disabled = false,
@@ -39,7 +40,6 @@ const InputField = ({
       }).start();
     }
   };
-
   return (
     <View className="mb-4 flex-row justify-start">
       <View className={`    
@@ -56,11 +56,14 @@ const InputField = ({
           </View>
         )}
 
+
         <TextInput
+          type={type}
           style={{fontFamily: 'Poppins_400Regular'}}
           className={`       
-            px-4 text-gray-900 dark:text-gray-100 flex-1 
-            ${disabled ? 'opacity-50' : ''}
+             text-gray-900 dark:text-gray-100 flex-1 
+             ${disabled ? 'opacity-50' : ''}
+             ${className}
           `}
           value={value}
           editable={!disabled}

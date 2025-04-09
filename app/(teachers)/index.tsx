@@ -5,10 +5,16 @@ import { ExamCard } from '@/components/ExamCard';
 import { StatsCard } from '@/components/StatsCard';
 import { QuickActions } from '@/components/QuickActions';
 import { router } from 'expo-router';
+import { useProfileStore } from '@/store/profileStore';
 
 export default function Index() {
   const colorScheme = useColorScheme();
   const isDark = colorScheme === 'dark';
+
+  const { profile } = useProfileStore();
+  if(profile?.role !== 'TEACHER'){
+    router.push('/');
+  }
 
   const upcomingExams = [
     {

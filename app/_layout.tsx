@@ -55,11 +55,13 @@ export default function Layout() {
       fetchSession();
     }
 
-    supabase.auth.onAuthStateChange((_event, session) => {
-      if (session) {
-        setSession(session.access_token);
-      }
-    });
+    // Listen for auth state changes (login, logout, etc.) && useless code
+    // supabase.auth.onAuthStateChange((_event, session) => {
+    //   if (session) {
+    //     console.log("auth state change", session);
+    //     setSession(session.access_token);
+    //   }
+    // });
   }, [session, profile]);
 
 
