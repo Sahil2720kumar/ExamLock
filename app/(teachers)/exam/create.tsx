@@ -5,6 +5,9 @@ import * as ImagePicker from 'expo-image-picker';
 import InputField from '@/components/InputField';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import { convertTo12Hour } from '@/utils/dateTimeHelpers';
+import { createExam, createQuestion } from '@/api/teachers';
+import { useMutation } from '@tanstack/react-query';
+import { router } from 'expo-router';
 
 interface Question {
   id: number;
@@ -47,6 +50,32 @@ export default function CreateExam() {
     setExamDetails({ ...examDetails, endTime: selectedTime.toLocaleTimeString() });
     setIsEndTimePickerVisible(false);
   };
+
+
+
+
+  const {mutate:createExamMutation}=useMutation({
+    mutationFn:()=>createExam(examDetails),
+    onSuccess:(data)=>{
+      console.log("Exam created successfully");
+      console.log("Exam data", data);
+      createQuestionMutation(data[0].id);
+    },
+    onError:(error)=>{
+      console.log("Error creating exam", error);
+    },
+  })
+
+    const {mutate:createQuestionMutation}=useMutation({
+      mutationFn:(examId:string)=>createQuestion(questions,examId),
+      onSuccess:(data)=>{
+        console.log("Question created successfully");
+        console.log("Question data", data);
+      },
+      onError:(error)=>{
+        console.log("Error creating question", error);
+      },
+    })
 
   const [examDetails, setExamDetails] = useState({
     title: '',
@@ -139,8 +168,11 @@ export default function CreateExam() {
   };
 
   const handleSubmit = async () => {
-    console.log('Submit exam', { examDetails, questions });
-
+    // console.log('Submitting exam', { examDetails, questions });
+    // console.log("here");
+    const {data:examData}=createExamMutation();
+    console.log("Exam data", examData);
+    router.push('/(teachers)');
   };
 
   return (
@@ -195,6 +227,7 @@ export default function CreateExam() {
               value={examDetails.students}
               onChangeText={(text) => setExamDetails({ ...examDetails, students: text })}
               placeholder="Enter total student numbers"
+              keyboardType="numeric"
             />
 
             <InputField

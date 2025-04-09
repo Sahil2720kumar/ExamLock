@@ -9,7 +9,6 @@ const InputField = ({
   placeholder,
   multiline = false,
   keyboardType = 'default',
-  type = 'text',
   numberOfLines = 1,
   required = false,
   disabled = false,
@@ -58,12 +57,10 @@ const InputField = ({
 
 
         <TextInput
-          type={type}
           style={{fontFamily: 'Poppins_400Regular'}}
           className={`       
              text-gray-900 dark:text-gray-100 flex-1 
-             ${disabled ? 'opacity-50' : ''}
-             ${className}
+             ${disabled ? ' opacity-50' + className : className}
           `}
           value={value}
           editable={!disabled}

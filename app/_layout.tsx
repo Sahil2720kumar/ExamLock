@@ -42,27 +42,25 @@ export default function Layout() {
         setSession(session.access_token);
 
         const user = await fetchUserByEmail(session?.user?.email!);
-        
+
         console.log("layout user", user);
         if (user) {
           setProfile(user);
           router.push(`/(${user.role.toLowerCase().concat('s')})`);
         }
-      }  
+
+        // Listen for auth state changes (login, logout, etc.) 
+        supabase.auth.onAuthStateChange((_event, session) => {
+          if (session) {
+            setSession(session.access_token);
+          }
+        });
+      }
     }
 
-    if (!session || Object.keys(profile).length === 0) {
-      fetchSession();
-    }
+    fetchSession();
 
-    // Listen for auth state changes (login, logout, etc.) && useless code
-    // supabase.auth.onAuthStateChange((_event, session) => {
-    //   if (session) {
-    //     console.log("auth state change", session);
-    //     setSession(session.access_token);
-    //   }
-    // });
-  }, [session, profile]);
+  }, []);
 
 
   if (!fontsLoaded) {
