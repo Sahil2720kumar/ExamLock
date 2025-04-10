@@ -3,46 +3,35 @@ import { ScrollView } from 'react-native-virtualized-view';
 import { FontAwesome } from '@expo/vector-icons';
 import { useState } from 'react';
 import { router } from 'expo-router';
+import { useProfileStore } from '@/store/profileStore';
+import { deleteOneExam, fetchExamsByTeacherId } from '@/api/teachers';
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
+import { Exam } from '@/types';
 
-interface Exam {
-  id: number;
-  title: string;
-  date: string;
-  duration: string;
-  students: number;
-  status: 'draft' | 'scheduled' | 'active' | 'completed';
-}
 
 export default function ExamManagement() {
-  const [exams, setExams] = useState<Exam[]>([
-    {
-      id: 1,
-      title: 'Final Exam - Advanced Mathematics',
-      date: '2024-04-15T09:00:00',
-      duration: '180',
-      students: 45,
-      status: 'scheduled',
-    },
-    {
-      id: 2,
-      title: 'Midterm - Computer Science',
-      date: '2024-04-10T14:00:00',
-      duration: '120',
-      students: 32,
-      status: 'draft',
-    },
-  ]);
-
   const [isAddModalVisible, setIsAddModalVisible] = useState(false);
-  const [editingExam, setEditingExam] = useState<Exam | null>(null);
+  const queryClient = useQueryClient();
+  // const [editingExam, setEditingExam] = useState<Exam | null>(null);
   const [searchQuery, setSearchQuery] = useState('');
 
-  const [newExam, setNewExam] = useState({
-    title: '',
-    date: '',
-    duration: '',
-    students: '',
-  });
+  const {profile}=useProfileStore();
+  const {data:exams,isLoading,error}=useQuery({
+    queryKey:['exams',profile?.id],
+    queryFn:()=>fetchExamsByTeacherId(profile?.id)
+  })
+
+  const {mutate: deleteExam, isPending: isDeleting} = useMutation({
+    mutationFn: (examId: string) => deleteOneExam(examId),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['exams', profile?.id] });
+      console.log("Exam deleted successfully!");
+    },
+    onError: (error) => {
+      console.log("error", error);
+    } 
+  })
+
 
   const getStatusColor = (status: string) => {
     const colors = {
@@ -54,7 +43,8 @@ export default function ExamManagement() {
     return colors[status as keyof typeof colors] || colors.draft;
   };
 
-  const handleDelete = (id: number) => {
+  const handleDelete = (id: string) => {
+    console.log("handleDelete", id);
     Alert.alert(
       "Delete Exam",
       "Are you sure you want to delete this exam?",
@@ -63,7 +53,11 @@ export default function ExamManagement() {
         { 
           text: "Delete", 
           style: "destructive",
-          onPress: () => setExams(exams.filter(exam => exam.id !== id))
+          onPress: () => {
+            
+            deleteExam(id);
+
+          }
         }
       ]
     );
@@ -71,17 +65,30 @@ export default function ExamManagement() {
 
   const handleEdit = (exam: Exam) => {
     console.log("exam", exam);
-    setEditingExam(exam);
-    router.push("/exam/edit")
+    // setEditingExam(exam);
+    router.push(`/exam/edit?id=${exam.id}`);
   };
  
 
+  if(isLoading){
+    return <Text>Loading...</Text>
+  }
+  if(error){
+    return <Text>Error: {error.message}</Text>
+  }
+
   return (
     <ScrollView className="flex-1 bg-gray-50 dark:bg-gray-900">
+      <View  className={`bg-red-500 p-1 ${isDeleting ? 'block' : 'hidden'}`}>
+          <Text style={{fontFamily: 'Poppins_600SemiBold'}} className="text-center font-bold text-white">
+            Deleting Exam...
+          </Text>
+        </View>
       {/* Header */}
       <View className="px-6 py-8 bg-[#1a367b] dark:bg-[#0f1f4d]">
-        <Text style={{fontFamily: 'Poppins_600SemiBold'}} className="text-3xl font-bold text-white mb-2">
-          Exam Management
+        
+          <Text style={{fontFamily: 'Poppins_600SemiBold'}} className="text-3xl font-bold text-white mb-2">
+            Exam Management
         </Text>
         <Text style={{fontFamily: 'Poppins_400Regular'}} className="text-gray-200 text-lg">
           Manage all your exams in one place
@@ -111,7 +118,7 @@ export default function ExamManagement() {
 
         {/* Exams List */}
         <View className="gap-4">
-          {exams.map((exam) => (
+          {exams?.map((exam) => (
             <View 
               key={exam.id}
               className="bg-white dark:bg-gray-800 rounded-xl p-4 shadow-sm"

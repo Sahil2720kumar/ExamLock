@@ -3,23 +3,53 @@ import { View, Text, ScrollView, TouchableOpacity, Image, Alert } from 'react-na
 import { FontAwesome } from '@expo/vector-icons';
 import * as ImagePicker from 'expo-image-picker';
 import InputField from '@/components/InputField';
-
+import { useLocalSearchParams } from 'expo-router';
+import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
+import { fetchQuestionById, updateQuestionById, deleteQuestion } from '@/api/teachers';
+import { Question } from '@/types';
+import { router } from 'expo-router';
 
 
 export default function QuestionEdit() {
-  const [question, setQuestion] = useState({
-    id: 1,
-    type: 'mcq',
-    question: 'What is the derivative of x²?',
-    options: ['x', '2x', '2x²', 'x½'],
-    correctOption: 1,
-    marks: 5,
-    explanation: 'The derivative of x² is 2x because...',
-    difficulty: 'medium',
-    tags: ['calculus', 'derivatives'],
-    imageUrl: null,
-    solutionImageUrl: null,
+  const { id: questionId, examId } = useLocalSearchParams();
+
+  const queryClient = useQueryClient();
+  const [updatedQuestion, setUpdatedQuestion] = useState<Question>();
+
+  const { data: fetchedQuestion, isLoading: isQuestionLoading, error: questionError } = useQuery({
+    queryKey: ['question', questionId],
+    queryFn: () => fetchQuestionById(questionId as string),
   });
+
+  const { mutate: updateQuestionMutation, isPending: isUpdating } = useMutation({
+    mutationFn: (question: Question) => updateQuestionById(question, questionId as string),
+    onSuccess: () => {
+      console.log("Question updated successfully");
+      queryClient.invalidateQueries({ queryKey: ['questions', examId] });
+      router.back();
+    },
+    onError: (error) => {
+      console.log("Error updating question:", error);
+    }
+  });
+
+  const { mutate: deleteQuestionMutation, isPending: isDeleting } = useMutation({
+    mutationFn: (questionId: string) => deleteQuestion(questionId),
+    onSuccess: () => {
+      console.log("Question deleted successfully");
+      queryClient.invalidateQueries({ queryKey: ['questions', examId] });
+      router.back();
+    },
+    onError: (error) => {
+      console.log("Error deleting question:", error);
+    }
+  });
+
+  useEffect(() => {
+    if (fetchedQuestion) {
+      setUpdatedQuestion(fetchedQuestion);
+    }
+  }, [fetchedQuestion]);
 
   const [isPreviewMode, setIsPreviewMode] = useState(false);
 
@@ -51,9 +81,24 @@ export default function QuestionEdit() {
     }
   };
 
+  const updateQuestionHandler = () => {
+    console.log("updatedQuestion",updatedQuestion);
+    updateQuestionMutation(updatedQuestion as Question);
+  }
+
+  const deleteQuestionHandler = () => {
+    console.log("deletedQuestion",updatedQuestion);
+    deleteQuestionMutation(questionId as string);
+  }
+
   return (
     <ScrollView className="flex-1 bg-gray-50 dark:bg-gray-900">
       {/* Header */}
+      <View  className={`bg-red-500 p-1 ${isDeleting ? 'block' : 'hidden'}`}>
+          <Text style={{fontFamily: 'Poppins_600SemiBold'}} className="text-center font-bold text-white">
+            Deleting Question...
+          </Text>
+        </View>
       <View className="px-6 py-8 bg-[#1a367b] dark:bg-[#0f1f4d]">
         <View className="flex-row justify-between items-center">
           <Text  style={{fontFamily: 'Poppins_600SemiBold'}} className="text-3xl font-bold text-white">
@@ -68,8 +113,8 @@ export default function QuestionEdit() {
                 {isPreviewMode ? 'Edit Mode' : 'Preview'}
               </Text>
             </TouchableOpacity>
-            <TouchableOpacity className="bg-red-500 px-4 py-2 rounded-lg">
-              <Text style={{fontFamily: 'Poppins_400Regular'}} className="text-white" >Delete</Text>
+            <TouchableOpacity onPress={() => deleteQuestionHandler()} disabled={isDeleting} className="bg-red-500 px-4 py-2 rounded-lg">
+              <Text style={{fontFamily: 'Poppins_400Regular'}} className="text-white" >{isDeleting ? 'Deleting...' : 'Delete'}</Text>
             </TouchableOpacity>
           </View>
 
@@ -90,21 +135,21 @@ export default function QuestionEdit() {
                     key={type.id}
                     className={`
                       flex-row items-center px-4 py-2 rounded-lg
-                      ${question.type === type.id
+                      ${updatedQuestion?.type === type.id
                         ? 'bg-[#1a367b]'
                         : 'bg-white dark:bg-gray-800'
                       }
                     `}
-                    onPress={() => setQuestion(prev => ({ ...prev, type: type.id }))}
+                    onPress={() => setUpdatedQuestion(prev => ({ ...prev, type: type.id }) as Question)}
                   >
                     <FontAwesome
                       name={type.icon}
                       size={16}
-                      color={question.type === type.id ? 'white' : '#6b7280'}
+                      color={updatedQuestion?.type === type.id ? 'white' : '#6b7280'}
                     />
                     <Text style={{fontFamily: 'Poppins_400Regular'}} className={`
                       ml-2
-                      ${question.type === type.id
+                      ${updatedQuestion?.type === type.id
                         ? 'text-white'
                         : 'text-gray-700 dark:text-gray-300'
                       }
@@ -120,8 +165,8 @@ export default function QuestionEdit() {
             <View className="bg-white dark:bg-gray-800 rounded-xl p-4 mb-6">
               <InputField
                 label="Question Text"
-                value={question.question}
-                onChangeText={(text) => setQuestion(prev => ({ ...prev, question: text }))}
+                value={updatedQuestion?.question}
+                onChangeText={(text) => setUpdatedQuestion(prev => ({ ...prev, question: text } as Question))}
                 placeholder="Enter your question"
                 multiline
                 numberOfLines={3}
@@ -133,16 +178,16 @@ export default function QuestionEdit() {
                 className="border-2 border-dashed border-gray-300 rounded-lg p-4 mt-4 items-center"
                 onPress={() => pickImage('question')}
               >
-                {question.imageUrl ? (
+                {updatedQuestion?.image_url ? (
                   <View>
                     <Image
-                      source={{ uri: question.imageUrl }}
+                      source={{ uri: updatedQuestion?.image_url }}
                       className="w-full h-40 rounded-lg"
                       resizeMode="cover"
                     />
                     <TouchableOpacity
                       className="absolute top-2 right-2 bg-red-500 rounded-full p-2"
-                      onPress={() => setQuestion(prev => ({ ...prev, imageUrl: null }))}
+                      onPress={() => setUpdatedQuestion(prev => ({ ...prev, image_url: null } as Question))}
                     >
                       <FontAwesome name="trash" size={16} color="white" />
                     </TouchableOpacity>
@@ -157,25 +202,25 @@ export default function QuestionEdit() {
             </View>
 
             {/* Options Section for MCQ */}
-            {question.type === 'mcq' && (
+            {updatedQuestion?.type === 'mcq' && (
               <View className="bg-white dark:bg-gray-800 rounded-xl p-4 mb-6">
                 <Text style={{fontFamily: 'Poppins_600SemiBold'}} className="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-3">
                   Options
                 </Text>
-                {question.options.map((option, index) => (
+                {updatedQuestion?.options?.map((option, index) => (
                   <View key={index} className="flex-row items-center mb-3">
                     <TouchableOpacity
                       className={`
                         w-6 h-6 rounded-full border-2 mr-3
-                        ${question.correctOption === index
+                        ${Number(updatedQuestion?.correct_option) === index
                           ? 'bg-green-500 border-green-500'
                           : 'border-gray-300'
                         }
                         justify-center items-center
                       `}
-                      onPress={() => setQuestion(prev => ({ ...prev, correctOption: index }))}
+                      onPress={() => setUpdatedQuestion(prev => ({ ...prev, correct_option: index } as Question))}
                     >
-                      {question.correctOption === index && (
+                      {Number(updatedQuestion?.correct_option) === index && (
                         <FontAwesome name="check" size={12} color="white" />
                       )}
                     </TouchableOpacity>
@@ -183,9 +228,9 @@ export default function QuestionEdit() {
                       label={`Option ${index + 1}`}
                       value={option}
                       onChangeText={(text) => {
-                        const newOptions = [...question.options];
+                        const newOptions = [...updatedQuestion?.options];
                         newOptions[index] = text;
-                        setQuestion(prev => ({ ...prev, options: newOptions }));
+                        setUpdatedQuestion(prev => ({ ...prev, options: newOptions } as Question));
                       }}
                       placeholder={`Option ${index + 1}`}
                     />
@@ -193,10 +238,10 @@ export default function QuestionEdit() {
                 ))}
                 <TouchableOpacity
                   className="flex-row items-center justify-center mt-2"
-                  onPress={() => setQuestion(prev => ({
+                  onPress={() => setUpdatedQuestion(prev => ({
                     ...prev,
                     options: [...prev.options, '']
-                  }))}
+                  } as Question ))}
                 >
                   <FontAwesome name="plus" size={14} color="#1a367b" />
                   <Text style={{fontFamily: 'Poppins_400Regular'}}  className="text-[#1a367b] ml-2">Add Option</Text>
@@ -214,10 +259,10 @@ export default function QuestionEdit() {
               <View className="mb-4">
                 <Text style={{fontFamily: 'Poppins_400Regular'}} className="text-gray-600 dark:text-gray-400 mb-2">Marks</Text>
                 <InputField
-                  value={question.marks.toString()}
-                  onChangeText={(text) => setQuestion(prev => ({
+                  value={updatedQuestion?.marks?.toString()}
+                  onChangeText={(text) => setUpdatedQuestion(prev => ({
                     ...prev,
-                    marks: parseInt(text) || 1
+                    marks: parseInt(text) || 0
                   }))}
                   placeholder="Enter marks"
                   keyboardType="numeric"
@@ -278,29 +323,29 @@ export default function QuestionEdit() {
             </Text>
             {/* Preview content here */}
             <View className="flex flex-row justify-between">
-              <Text style={{fontFamily: 'Poppins_600SemiBold'}} className="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-3">{question.question}</Text>
-              <Text style={{fontFamily: 'Poppins_400Regular'}} className="text-gray-700 dark:text-gray-300">Marks: {question.marks}</Text>
+              <Text style={{fontFamily: 'Poppins_600SemiBold'}} className="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-3">{updatedQuestion?.question}</Text>
+              <Text style={{fontFamily: 'Poppins_400Regular'}} className="text-gray-700 dark:text-gray-300">Marks: {updatedQuestion?.marks}</Text>
             </View>
-            {question.imageUrl && (
+              {updatedQuestion?.image_url && (
               <Image
-                source={{ uri: question.imageUrl }}
+                source={{ uri: updatedQuestion?.image_url }}
                 className="w-full h-40 rounded-lg"
                 resizeMode="cover"
               />
             )}
-            {question.type === 'mcq' && question.options.map((option, index) => (
+            {updatedQuestion?.type === 'mcq' && updatedQuestion?.options?.map((option, index) => (
               <View key={index} className="flex-row items-center mb-3">
                 <TouchableOpacity
                   className={`
                     w-6 h-6 rounded-full border-2 mr-3
-                    ${question.correctOption === index
+                    ${Number(updatedQuestion?.correct_option) === index
                       ? 'bg-green-500 border-green-500'
                       : 'border-gray-300'
                     }
                     justify-center items-center 
                   `}
                 >
-                  {question.correctOption === index && (
+                  {Number(updatedQuestion?.correct_option) === index && (
                     <FontAwesome name="check" size={12} color="white" />
                   )}
                 </TouchableOpacity>
@@ -308,9 +353,9 @@ export default function QuestionEdit() {
               </View>
             ))}
 
-            {(question.type === 'descriptive' || question.type === 'image') && (
+              {(updatedQuestion?.type === 'descriptive' || updatedQuestion?.type === 'image') && (
               <Image
-                source={{ uri: 'https://www.alexbirkett.com/wp-content/uploads/2022/11/iamalexbirkett_jacked_aliens_wandering_through_lord_of_the_ring_0bee4dd7-c4a1-4f73-9b1b-f407f052054f.png' }}
+                source={{ uri: updatedQuestion?.image_url }}
                 className="w-full h-40 rounded-lg min-h-40 "
                 resizeMode="cover"
               />
@@ -323,7 +368,7 @@ export default function QuestionEdit() {
         <View className="flex-row gap-3 mt-6">
           <TouchableOpacity
             className="flex-1 bg-gray-200 py-3 rounded-xl"
-            onPress={() => Alert.alert('Discard Changes?')}
+            onPress={() => router.back()}
           >
             <Text style={{fontFamily: 'Poppins_400Regular'}} className="text-gray-700 text-center font-semibold">
               Cancel
@@ -331,10 +376,11 @@ export default function QuestionEdit() {
           </TouchableOpacity>
           <TouchableOpacity
             className="flex-1 bg-[#1a367b] py-3 rounded-xl"
-            onPress={() => Alert.alert('Success', 'Question saved successfully!')}
+            onPress={updateQuestionHandler}
+            disabled={isUpdating}
           >
             <Text style={{fontFamily: 'Poppins_400Regular'}}  className="text-white text-center font-semibold">
-              Save Question
+              {isUpdating ? 'Saving...' : 'Save Question'}
             </Text>
           </TouchableOpacity>
         </View>

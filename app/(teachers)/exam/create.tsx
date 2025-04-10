@@ -6,8 +6,9 @@ import InputField from '@/components/InputField';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import { convertTo12Hour } from '@/utils/dateTimeHelpers';
 import { createExam, createQuestion } from '@/api/teachers';
-import { useMutation } from '@tanstack/react-query';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { router } from 'expo-router';
+import { useProfileStore } from '@/store/profileStore';
 
 interface Question {
   id: number;
@@ -29,6 +30,9 @@ export default function CreateExam() {
   const [startDate, setStartDate] = useState(new Date());
   const [startTime, setStartTime] = useState(new Date());
   const [endTime, setEndTime] = useState(new Date());
+  const [isSubmittingExam, setIsSubmittingExam] = useState(false);
+  const { profile } = useProfileStore();
+  const queryClient = useQueryClient();
 
   const handleDateChange = (event: any, selectedDate: any) => {
     setStartDate(selectedDate);
@@ -54,28 +58,31 @@ export default function CreateExam() {
 
 
 
-  const {mutate:createExamMutation}=useMutation({
-    mutationFn:()=>createExam(examDetails),
-    onSuccess:(data)=>{
+  const { mutate: createExamMutation } = useMutation({
+    mutationFn: (teacherId: string) => createExam(examDetails, teacherId),
+    onSuccess: (data) => {
       console.log("Exam created successfully");
-      console.log("Exam data", data);
+      // console.log("Exam data", data);
+      queryClient.invalidateQueries({ queryKey: ['exams', profile?.id] });
       createQuestionMutation(data[0].id);
     },
-    onError:(error)=>{
+    onError: (error) => {
       console.log("Error creating exam", error);
     },
   })
 
-    const {mutate:createQuestionMutation}=useMutation({
-      mutationFn:(examId:string)=>createQuestion(questions,examId),
-      onSuccess:(data)=>{
-        console.log("Question created successfully");
-        console.log("Question data", data);
-      },
-      onError:(error)=>{
-        console.log("Error creating question", error);
-      },
-    })
+  const { mutate: createQuestionMutation } = useMutation({
+    mutationFn: (examId: string) => createQuestion(questions, examId),
+    onSuccess: (data) => {
+      console.log("Question created successfully");
+      // console.log("Question data", data);
+      router.push('/(teachers)/exam');
+      setIsSubmittingExam(false);
+    },
+    onError: (error) => {
+      console.log("Error creating question", error);
+    },
+  })
 
   const [examDetails, setExamDetails] = useState({
     title: '',
@@ -104,11 +111,11 @@ export default function CreateExam() {
   const addQuestion = () => {
     // Check if the current question already exists in the questions array
     const existingQuestionIndex = questions.findIndex(q => q.id === currentQuestion.id);
-    
+
     if (existingQuestionIndex !== -1) {
       // If it exists, we're in "add new" mode, so create a fresh question
       console.log("existing question index: ", existingQuestionIndex);
-      
+
       const existingPreviousQuestion = questions.find(q => q.id === currentQuestion.id);
       setQuestions([...questions]);
       setCurrentQuestion({
@@ -119,22 +126,22 @@ export default function CreateExam() {
         correctOption: 0,
         marks: 0,
       });
-      
+
     } else {
       // If it doesn't exist, add the current question to the array
       // console.log("else questions", questions);
-      
+
       // Create a new array with the current questions plus the new one
       const updatedQuestions = [...questions, currentQuestion];
-      
+
       // Update the state with the new array
       setQuestions(updatedQuestions);
-      
+
       // Use the updated array for finding the existing question
       const existingQuestion = updatedQuestions.find(q => q.id === currentQuestion.id);
-      
+
       // console.log("existing question", existingQuestion);
-      
+
       setCurrentQuestion({
         id: existingQuestion?.id || 0, // Make sure the next ID is unique
         type: existingQuestion?.type || 'mcq',
@@ -144,7 +151,7 @@ export default function CreateExam() {
         marks: existingQuestion?.marks || 0,
       });
     }
-    
+
     // These logs will still show the old state values
     // console.log("current question", currentQuestion);
     // console.log("questions: ", questions);
@@ -168,11 +175,12 @@ export default function CreateExam() {
   };
 
   const handleSubmit = async () => {
+    setIsSubmittingExam(true);
     // console.log('Submitting exam', { examDetails, questions });
     // console.log("here");
-    const {data:examData}=createExamMutation();
-    console.log("Exam data", examData);
-    router.push('/(teachers)');
+    createExamMutation(profile?.id);
+    console.log("isSubmittingExam", isSubmittingExam);
+
   };
 
   return (
@@ -565,7 +573,7 @@ export default function CreateExam() {
             }}
           >
             <Text style={{ fontFamily: 'Poppins_400Regular' }} className="text-white">
-              {currentStep === 3 ? 'Create Exam' : 'Next'}
+              {currentStep === 3 ? isSubmittingExam ? 'Submitting...' : 'Create Exam' : 'Next'}
             </Text>
           </TouchableOpacity>
         </View>

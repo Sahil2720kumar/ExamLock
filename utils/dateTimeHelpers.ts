@@ -16,3 +16,16 @@ export function convertTo12Hour(time24: string) {
   // Return formatted string with hours and minutes
   return `${hours12}:${formattedMinutes} ${period}`;
 }
+
+
+
+// Helper function to safely format dates from DD/MM/YYYY to YYYY-MM-DD
+export function formatDate(dateString:string) {
+  // Check if it's in DD/MM/YYYY format
+  if (dateString.match(/^\d{2}\/\d{2}\/\d{4}$/)) {
+    const [day, month, year] = dateString.split('/');
+    return `${year}-${month}-${day}`;
+  }
+  // Return as is if it's already in YYYY-MM-DD format
+  return dateString;
+}
